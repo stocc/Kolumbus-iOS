@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		CC994C4919C38FAC00283EC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4819C38FAC00283EC5 /* main.m */; };
-		CC994C4C19C38FAC00283EC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4B19C38FAC00283EC5 /* AppDelegate.m */; };
-		CC994C4F19C38FAC00283EC5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4E19C38FAC00283EC5 /* ViewController.m */; };
+		CC994C4C19C38FAC00283EC5 /* JHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */; };
+		CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4E19C38FAC00283EC5 /* JHViewController.m */; };
 		CC994C5219C38FAC00283EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5019C38FAC00283EC5 /* Main.storyboard */; };
 		CC994C5419C38FAD00283EC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5319C38FAD00283EC5 /* Images.xcassets */; };
 		CC994C5719C38FAD00283EC5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */; };
 		CC994C6319C38FAD00283EC5 /* KolumbusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C6219C38FAD00283EC5 /* KolumbusTests.m */; };
+		CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,16 +31,18 @@
 		CC994C4319C38FAC00283EC5 /* Kolumbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kolumbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC994C4719C38FAC00283EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC994C4819C38FAC00283EC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CC994C4A19C38FAC00283EC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CC994C4B19C38FAC00283EC5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CC994C4D19C38FAC00283EC5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CC994C4E19C38FAC00283EC5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CC994C4A19C38FAC00283EC5 /* JHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHAppDelegate.h; sourceTree = "<group>"; };
+		CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHAppDelegate.m; sourceTree = "<group>"; };
+		CC994C4D19C38FAC00283EC5 /* JHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHViewController.h; sourceTree = "<group>"; };
+		CC994C4E19C38FAC00283EC5 /* JHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHViewController.m; sourceTree = "<group>"; };
 		CC994C5119C38FAC00283EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC994C5319C38FAD00283EC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC994C5619C38FAD00283EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CC994C5C19C38FAD00283EC5 /* KolumbusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KolumbusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC994C6119C38FAD00283EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC994C6219C38FAD00283EC5 /* KolumbusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KolumbusTests.m; sourceTree = "<group>"; };
+		CC994C6C19C3956B00283EC5 /* JHSuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSuggestionsViewController.h; sourceTree = "<group>"; };
+		CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSuggestionsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +84,12 @@
 		CC994C4519C38FAC00283EC5 /* Kolumbus */ = {
 			isa = PBXGroup;
 			children = (
-				CC994C4A19C38FAC00283EC5 /* AppDelegate.h */,
-				CC994C4B19C38FAC00283EC5 /* AppDelegate.m */,
-				CC994C4D19C38FAC00283EC5 /* ViewController.h */,
-				CC994C4E19C38FAC00283EC5 /* ViewController.m */,
+				CC994C4A19C38FAC00283EC5 /* JHAppDelegate.h */,
+				CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */,
+				CC994C4D19C38FAC00283EC5 /* JHViewController.h */,
+				CC994C4E19C38FAC00283EC5 /* JHViewController.m */,
+				CC994C6C19C3956B00283EC5 /* JHSuggestionsViewController.h */,
+				CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */,
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
 				CC994C5319C38FAD00283EC5 /* Images.xcassets */,
 				CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */,
@@ -219,8 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC994C4F19C38FAC00283EC5 /* ViewController.m in Sources */,
-				CC994C4C19C38FAC00283EC5 /* AppDelegate.m in Sources */,
+				CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */,
+				CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */,
+				CC994C4C19C38FAC00283EC5 /* JHAppDelegate.m in Sources */,
 				CC994C4919C38FAC00283EC5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

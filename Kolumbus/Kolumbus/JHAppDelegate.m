@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Jugend Hackt. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "JHAppDelegate.h"
 
-@interface AppDelegate ()
+@interface JHAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation JHAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

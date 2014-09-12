@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Jugend Hackt. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "JHViewController.h"
 
-@interface ViewController ()
+@interface JHViewController ()
 
 @end
 
-@implementation ViewController
+@implementation JHViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
