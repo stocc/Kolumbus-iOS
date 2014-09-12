@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		69150C2719C3A600002C4275 /* JHInputTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69150C2619C3A600002C4275 /* JHInputTableViewController.m */; };
+		697D6BBF19C3ABA20096B8EE /* JHLocationPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */; };
+		697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */; };
 		CC994C4919C38FAC00283EC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4819C38FAC00283EC5 /* main.m */; };
 		CC994C4C19C38FAC00283EC5 /* JHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */; };
 		CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4E19C38FAC00283EC5 /* JHViewController.m */; };
@@ -31,6 +33,9 @@
 /* Begin PBXFileReference section */
 		69150C2519C3A600002C4275 /* JHInputTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHInputTableViewController.h; sourceTree = "<group>"; };
 		69150C2619C3A600002C4275 /* JHInputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHInputTableViewController.m; sourceTree = "<group>"; };
+		697D6BBD19C3ABA20096B8EE /* JHLocationPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLocationPickerTableViewController.h; sourceTree = "<group>"; };
+		697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLocationPickerTableViewController.m; sourceTree = "<group>"; };
+		697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CC994C4319C38FAC00283EC5 /* Kolumbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kolumbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC994C4719C38FAC00283EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC994C4819C38FAC00283EC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -53,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +75,7 @@
 		CC994C3A19C38FAC00283EC5 = {
 			isa = PBXGroup;
 			children = (
+				697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */,
 				CC994C4519C38FAC00283EC5 /* Kolumbus */,
 				CC994C5F19C38FAD00283EC5 /* KolumbusTests */,
 				CC994C4419C38FAC00283EC5 /* Products */,
@@ -96,6 +103,8 @@
 				69150C2519C3A600002C4275 /* JHInputTableViewController.h */,
 				69150C2619C3A600002C4275 /* JHInputTableViewController.m */,
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
+				697D6BBD19C3ABA20096B8EE /* JHLocationPickerTableViewController.h */,
+				697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */,
 				CC994C5319C38FAD00283EC5 /* Images.xcassets */,
 				CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */,
 				CC994C4619C38FAC00283EC5 /* Supporting Files */,
@@ -229,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				697D6BBF19C3ABA20096B8EE /* JHLocationPickerTableViewController.m in Sources */,
 				CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */,
 				CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */,
 				CC994C4C19C38FAC00283EC5 /* JHAppDelegate.m in Sources */,
