@@ -8,30 +8,51 @@
 
 #import "JHSuggestionsViewController.h"
 
-@interface JHSuggestionsViewController ()
-
-@end
-
-@implementation JHSuggestionsViewController
+@implementation JHSuggestionsViewController {
+    
+    UITableView *tableView;
+    CGFloat width;
+    CGFloat height;
+    
+    NSMutableArray *input;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    width = self.view.frame.size.width;
+    height = self.view.frame.size.height;
+    
+    tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    
+    input = [[NSMutableArray alloc] initWithArray:@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return input.count;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    
+    
+    return cell;
+    
 }
-*/
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
+    return 1;
+}
+
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tv deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+- (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
 
 @end

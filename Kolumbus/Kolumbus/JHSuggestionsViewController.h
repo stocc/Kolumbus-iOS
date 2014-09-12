@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JHSuggestionsViewController : UIViewController
+static const NSString* url = @"niklas-mbp.local:3000/v1/";
+
+@interface JHSuggestionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
