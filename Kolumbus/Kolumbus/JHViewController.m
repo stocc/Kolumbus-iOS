@@ -8,18 +8,12 @@
 
 #import "JHViewController.h"
 
-@interface JHViewController ()
-
-@end
-
 @implementation JHViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view, typically from a nib.
-    // Hallo Daniel
-    // Hallo Finn!
+    
 }
 
 - (void)didReceiveMemoryWarning {

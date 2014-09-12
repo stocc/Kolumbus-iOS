@@ -23,11 +23,14 @@
     width = self.view.frame.size.width;
     height = self.view.frame.size.height;
     
+    self.navigationController.title = @"Suggestions";
+    
+    input = [[NSMutableArray alloc] initWithArray:@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"]];
+    
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
-    
-    input = [[NSMutableArray alloc] initWithArray:@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"]];
+    [self.view addSubview:tableView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -38,6 +41,14 @@
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, width-70, cell.contentView.frame.size.height-20)];
+    title.backgroundColor = [UIColor clearColor];
+    title.textColor = [UIColor blackColor];
+    title.textAlignment = NSTextAlignmentLeft;
+    title.numberOfLines = 0;
+    title.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+    title.text = input[indexPath.row];
+    [cell.contentView addSubview:title];
     
     return cell;
     
