@@ -22,7 +22,6 @@
         
         responseBlock(responseObject);
         
-        NSLog(@"Response: %@", responseObject);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
