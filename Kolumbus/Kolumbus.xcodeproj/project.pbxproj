@@ -12,6 +12,7 @@
 		CC95B71119C43F800088F04A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC95B71019C43F800088F04A /* MapKit.framework */; };
 		CC95B71319C4518C0088F04A /* JHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B70A19C42C610088F04A /* JHButton.m */; };
 		CC95B71619C451BC0088F04A /* JHInputTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B71519C451BC0088F04A /* JHInputTableViewController.m */; };
+		CC95B71819C45F850088F04A /* icon_new.png in Resources */ = {isa = PBXBuildFile; fileRef = CC95B71719C45F850088F04A /* icon_new.png */; };
 		CC994C4919C38FAC00283EC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4819C38FAC00283EC5 /* main.m */; };
 		CC994C4C19C38FAC00283EC5 /* JHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */; };
 		CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4E19C38FAC00283EC5 /* JHViewController.m */; };
@@ -40,6 +41,7 @@
 		CC95B71019C43F800088F04A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CC95B71419C451BC0088F04A /* JHInputTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHInputTableViewController.h; sourceTree = "<group>"; };
 		CC95B71519C451BC0088F04A /* JHInputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHInputTableViewController.m; sourceTree = "<group>"; };
+		CC95B71719C45F850088F04A /* icon_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_new.png; sourceTree = "<group>"; };
 		CC994C4319C38FAC00283EC5 /* Kolumbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kolumbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC994C4719C38FAC00283EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC994C4819C38FAC00283EC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		CC95B6AE19C413980088F04A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				CC95B71719C45F850088F04A /* icon_new.png */,
 				CC95B6B419C413980088F04A /* transport */,
 				CC95B6CC19C413980088F04A /* travel */,
 			);
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC994C5219C38FAC00283EC5 /* Main.storyboard in Resources */,
+				CC95B71819C45F850088F04A /* icon_new.png in Resources */,
 				CC994C5719C38FAD00283EC5 /* LaunchScreen.xib in Resources */,
 				CC994C5419C38FAD00283EC5 /* Images.xcassets in Resources */,
 			);
