@@ -45,10 +45,11 @@
     self.navigationItem.rightBarButtonItem = map;
     
     // Finish button
-    UIButton *finish = [[UIButton alloc] initWithFrame:CGRectMake(20, height-70, width-40, 50)];
+    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(20, height-70, width-40, 50)];
     finish.layer.masksToBounds = YES;
     finish.layer.cornerRadius = finish.frame.size.height/2;
-    finish.backgroundColor = [UIColor darkGrayColor];
+    [finish setNormalColor:[UIColor colorWithRed:(24.0/255.0) green:(49.0/255.0) blue:(63.0/255.0) alpha:1]];
+    [finish setHighlightedColor:[UIColor colorWithRed:(20.0/255.0) green:(45.0/255.0) blue:(60.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:finish];
     

@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		69150C2719C3A600002C4275 /* JHInputTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69150C2619C3A600002C4275 /* JHInputTableViewController.m */; };
 		697D6BBF19C3ABA20096B8EE /* JHLocationPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */; };
 		697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */; };
+		CC95B70B19C42C610088F04A /* JHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B70A19C42C610088F04A /* JHButton.m */; };
 		CC994C4919C38FAC00283EC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4819C38FAC00283EC5 /* main.m */; };
 		CC994C4C19C38FAC00283EC5 /* JHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */; };
 		CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4E19C38FAC00283EC5 /* JHViewController.m */; };
 		CC994C5219C38FAC00283EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5019C38FAC00283EC5 /* Main.storyboard */; };
 		CC994C5419C38FAD00283EC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5319C38FAD00283EC5 /* Images.xcassets */; };
 		CC994C5719C38FAD00283EC5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */; };
-		CC994C6319C38FAD00283EC5 /* KolumbusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C6219C38FAD00283EC5 /* KolumbusTests.m */; };
 		CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */; };
 		CC994C8319C3B5BC00283EC5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C7119C3B5BC00283EC5 /* AFHTTPRequestOperation.m */; };
 		CC994C8419C3B5BC00283EC5 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C7319C3B5BC00283EC5 /* AFHTTPRequestOperationManager.m */; };
@@ -30,22 +29,12 @@
 		CC994C8E19C3C33000283EC5 /* JHCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C8D19C3C33000283EC5 /* JHCommunicator.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CC994C5D19C38FAD00283EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC994C3B19C38FAC00283EC5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CC994C4219C38FAC00283EC5;
-			remoteInfo = Kolumbus;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		69150C2519C3A600002C4275 /* JHInputTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHInputTableViewController.h; sourceTree = "<group>"; };
-		69150C2619C3A600002C4275 /* JHInputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHInputTableViewController.m; sourceTree = "<group>"; };
 		697D6BBD19C3ABA20096B8EE /* JHLocationPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLocationPickerTableViewController.h; sourceTree = "<group>"; };
 		697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLocationPickerTableViewController.m; sourceTree = "<group>"; };
 		697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CC95B70919C42C610088F04A /* JHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHButton.h; sourceTree = "<group>"; };
+		CC95B70A19C42C610088F04A /* JHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHButton.m; sourceTree = "<group>"; };
 		CC994C4319C38FAC00283EC5 /* Kolumbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kolumbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC994C4719C38FAC00283EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC994C4819C38FAC00283EC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -56,9 +45,6 @@
 		CC994C5119C38FAC00283EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC994C5319C38FAD00283EC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC994C5619C38FAD00283EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CC994C5C19C38FAD00283EC5 /* KolumbusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KolumbusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC994C6119C38FAD00283EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC994C6219C38FAD00283EC5 /* KolumbusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KolumbusTests.m; sourceTree = "<group>"; };
 		CC994C6C19C3956B00283EC5 /* JHSuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSuggestionsViewController.h; sourceTree = "<group>"; };
 		CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSuggestionsViewController.m; sourceTree = "<group>"; };
 		CC994C7019C3B5BB00283EC5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -93,25 +79,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC994C5919C38FAD00283EC5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		CC95B6AE19C413980088F04A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				CC95B70719C414D90088F04A /* icon.png */,
-				CC95B6AF19C413980088F04A /* icon1.png */,
-				CC95B6B019C413980088F04A /* icon2.png */,
-				CC95B6B119C413980088F04A /* icon3.png */,
-				CC95B6B219C413980088F04A /* icon4.png */,
-				CC95B6B319C413980088F04A /* icon0.png */,
 				CC95B6B419C413980088F04A /* transport */,
 				CC95B6CC19C413980088F04A /* travel */,
 			);
@@ -122,29 +95,6 @@
 		CC95B6B419C413980088F04A /* transport */ = {
 			isa = PBXGroup;
 			children = (
-				CC95B6B519C413980088F04A /* bicycle12.png */,
-				CC95B6B619C413980088F04A /* bus28.png */,
-				CC95B6B719C413980088F04A /* car93.png */,
-				CC95B6B819C413980088F04A /* car94.png */,
-				CC95B6B919C413980088F04A /* car95.png */,
-				CC95B6BA19C413980088F04A /* convertible2.png */,
-				CC95B6BB19C413980088F04A /* garage11.png */,
-				CC95B6BC19C413980088F04A /* motorcycle10.png */,
-				CC95B6BD19C413980088F04A /* pickup.png */,
-				CC95B6BE19C413980088F04A /* scooter7.png */,
-				CC95B6BF19C413980088F04A /* sedan2.png */,
-				CC95B6C019C413980088F04A /* semaphore5.png */,
-				CC95B6C119C413980088F04A /* suv.png */,
-				CC95B6C219C413980088F04A /* taxi13.png */,
-				CC95B6C319C413980088F04A /* tow.png */,
-				CC95B6C419C413980088F04A /* tractor4.png */,
-				CC95B6C519C413980088F04A /* traffic17.png */,
-				CC95B6C619C413980088F04A /* trailer3.png */,
-				CC95B6C719C413980088F04A /* train22.png */,
-				CC95B6C819C413980088F04A /* train23.png */,
-				CC95B6C919C413980088F04A /* tram4.png */,
-				CC95B6CA19C413980088F04A /* trolleybus.png */,
-				CC95B6CB19C413980088F04A /* truck31.png */,
 			);
 			path = transport;
 			sourceTree = "<group>";
@@ -152,21 +102,6 @@
 		CC95B6CC19C413980088F04A /* travel */ = {
 			isa = PBXGroup;
 			children = (
-				CC95B6CD19C413980088F04A /* bag30.png */,
-				CC95B6CE19C413980088F04A /* boat18.png */,
-				CC95B6CF19C413980088F04A /* coconut8.png */,
-				CC95B6D019C413980088F04A /* compass67.png */,
-				CC95B6D119C413980088F04A /* credit70.png */,
-				CC95B6D219C413980088F04A /* directions2.png */,
-				CC95B6D319C413980088F04A /* earth186.png */,
-				CC95B6D419C413980088F04A /* passport2.png */,
-				CC95B6D519C413980088F04A /* photo147.png */,
-				CC95B6D619C413980088F04A /* place4.png */,
-				CC95B6D719C413980088F04A /* plane15.png */,
-				CC95B6D819C413980088F04A /* plate17.png */,
-				CC95B6D919C413980088F04A /* sun70.png */,
-				CC95B6DA19C413980088F04A /* taxi14.png */,
-				CC95B6DB19C413980088F04A /* wallet17.png */,
 			);
 			path = travel;
 			sourceTree = "<group>";
@@ -176,7 +111,6 @@
 			children = (
 				697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */,
 				CC994C4519C38FAC00283EC5 /* Kolumbus */,
-				CC994C5F19C38FAD00283EC5 /* KolumbusTests */,
 				CC994C4419C38FAC00283EC5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -185,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				CC994C4319C38FAC00283EC5 /* Kolumbus.app */,
-				CC994C5C19C38FAD00283EC5 /* KolumbusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,6 +138,8 @@
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
 				697D6BBD19C3ABA20096B8EE /* JHLocationPickerTableViewController.h */,
 				697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */,
+				CC95B70919C42C610088F04A /* JHButton.h */,
+				CC95B70A19C42C610088F04A /* JHButton.m */,
 				CC994C5319C38FAD00283EC5 /* Images.xcassets */,
 				CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */,
 				CC994C4619C38FAC00283EC5 /* Supporting Files */,
@@ -218,23 +153,6 @@
 				CC95B6AE19C413980088F04A /* Icons */,
 				CC994C4719C38FAC00283EC5 /* Info.plist */,
 				CC994C4819C38FAC00283EC5 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CC994C5F19C38FAD00283EC5 /* KolumbusTests */ = {
-			isa = PBXGroup;
-			children = (
-				CC994C6219C38FAD00283EC5 /* KolumbusTests.m */,
-				CC994C6019C38FAD00283EC5 /* Supporting Files */,
-			);
-			path = KolumbusTests;
-			sourceTree = "<group>";
-		};
-		CC994C6019C38FAD00283EC5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CC994C6119C38FAD00283EC5 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -285,24 +203,6 @@
 			productReference = CC994C4319C38FAC00283EC5 /* Kolumbus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CC994C5B19C38FAD00283EC5 /* KolumbusTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CC994C6919C38FAD00283EC5 /* Build configuration list for PBXNativeTarget "KolumbusTests" */;
-			buildPhases = (
-				CC994C5819C38FAD00283EC5 /* Sources */,
-				CC994C5919C38FAD00283EC5 /* Frameworks */,
-				CC994C5A19C38FAD00283EC5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CC994C5E19C38FAD00283EC5 /* PBXTargetDependency */,
-			);
-			name = KolumbusTests;
-			productName = KolumbusTests;
-			productReference = CC994C5C19C38FAD00283EC5 /* KolumbusTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -314,10 +214,6 @@
 				TargetAttributes = {
 					CC994C4219C38FAC00283EC5 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					CC994C5B19C38FAD00283EC5 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = CC994C4219C38FAC00283EC5;
 					};
 				};
 			};
@@ -335,7 +231,6 @@
 			projectRoot = "";
 			targets = (
 				CC994C4219C38FAC00283EC5 /* Kolumbus */,
-				CC994C5B19C38FAD00283EC5 /* KolumbusTests */,
 			);
 		};
 /* End PBXProject section */
@@ -345,60 +240,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC95B6ED19C413980088F04A /* suv.png in Resources */,
-				CC95B6F119C413980088F04A /* traffic17.png in Resources */,
-				CC95B70819C414D90088F04A /* icon.png in Resources */,
 				CC994C5219C38FAC00283EC5 /* Main.storyboard in Resources */,
-				CC95B6F519C413980088F04A /* tram4.png in Resources */,
-				CC95B6DD19C413980088F04A /* icon2.png in Resources */,
-				CC95B6FC19C413980088F04A /* credit70.png in Resources */,
-				CC95B6EC19C413980088F04A /* semaphore5.png in Resources */,
-				CC95B6E119C413980088F04A /* bicycle12.png in Resources */,
-				CC95B6F719C413980088F04A /* truck31.png in Resources */,
-				CC95B6EE19C413980088F04A /* taxi13.png in Resources */,
-				CC95B70119C413980088F04A /* place4.png in Resources */,
-				CC95B6F819C413980088F04A /* bag30.png in Resources */,
-				CC95B6E519C413980088F04A /* car95.png in Resources */,
-				CC95B6E019C413980088F04A /* icon0.png in Resources */,
-				CC95B70019C413980088F04A /* photo147.png in Resources */,
-				CC95B6F419C413980088F04A /* train23.png in Resources */,
-				CC95B6EF19C413980088F04A /* tow.png in Resources */,
-				CC95B70419C413980088F04A /* sun70.png in Resources */,
-				CC95B6F619C413980088F04A /* trolleybus.png in Resources */,
-				CC95B6F319C413980088F04A /* train22.png in Resources */,
-				CC95B6E819C413980088F04A /* motorcycle10.png in Resources */,
-				CC95B70219C413980088F04A /* plane15.png in Resources */,
-				CC95B6FD19C413980088F04A /* directions2.png in Resources */,
-				CC95B6E919C413980088F04A /* pickup.png in Resources */,
-				CC95B6FF19C413980088F04A /* passport2.png in Resources */,
-				CC95B6DE19C413980088F04A /* icon3.png in Resources */,
-				CC95B6F219C413980088F04A /* trailer3.png in Resources */,
-				CC95B6E619C413980088F04A /* convertible2.png in Resources */,
-				CC95B70319C413980088F04A /* plate17.png in Resources */,
-				CC95B6E719C413980088F04A /* garage11.png in Resources */,
 				CC994C5719C38FAD00283EC5 /* LaunchScreen.xib in Resources */,
-				CC95B6E319C413980088F04A /* car93.png in Resources */,
-				CC95B6E419C413980088F04A /* car94.png in Resources */,
-				CC95B6E219C413980088F04A /* bus28.png in Resources */,
-				CC95B70619C413980088F04A /* wallet17.png in Resources */,
-				CC95B6F019C413980088F04A /* tractor4.png in Resources */,
-				CC95B6DC19C413980088F04A /* icon1.png in Resources */,
-				CC95B6EB19C413980088F04A /* sedan2.png in Resources */,
-				CC95B6F919C413980088F04A /* boat18.png in Resources */,
-				CC95B6FA19C413980088F04A /* coconut8.png in Resources */,
 				CC994C5419C38FAD00283EC5 /* Images.xcassets in Resources */,
-				CC95B6FE19C413980088F04A /* earth186.png in Resources */,
-				CC95B6FB19C413980088F04A /* compass67.png in Resources */,
-				CC95B6DF19C413980088F04A /* icon4.png in Resources */,
-				CC95B70519C413980088F04A /* taxi14.png in Resources */,
-				CC95B6EA19C413980088F04A /* scooter7.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC994C5A19C38FAD00283EC5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +256,7 @@
 				697D6BBF19C3ABA20096B8EE /* JHLocationPickerTableViewController.m in Sources */,
 				CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */,
 				CC994C8719C3B5BC00283EC5 /* AFSecurityPolicy.m in Sources */,
+				CC95B70B19C42C610088F04A /* JHButton.m in Sources */,
 				CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */,
 				CC994C8419C3B5BC00283EC5 /* AFHTTPRequestOperationManager.m in Sources */,
 				CC994C8819C3B5BC00283EC5 /* AFURLConnectionOperation.m in Sources */,
@@ -427,23 +272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC994C5819C38FAD00283EC5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC994C6319C38FAD00283EC5 /* KolumbusTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CC994C5E19C38FAD00283EC5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CC994C4219C38FAC00283EC5 /* Kolumbus */;
-			targetProxy = CC994C5D19C38FAD00283EC5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CC994C5019C38FAC00283EC5 /* Main.storyboard */ = {
@@ -545,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Kolumbus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -556,44 +386,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Kolumbus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		CC994C6A19C38FAD00283EC5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KolumbusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kolumbus.app/Kolumbus";
-			};
-			name = Debug;
-		};
-		CC994C6B19C38FAD00283EC5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KolumbusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kolumbus.app/Kolumbus";
 			};
 			name = Release;
 		};
@@ -614,15 +411,6 @@
 			buildConfigurations = (
 				CC994C6719C38FAD00283EC5 /* Debug */,
 				CC994C6819C38FAD00283EC5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CC994C6919C38FAD00283EC5 /* Build configuration list for PBXNativeTarget "KolumbusTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CC994C6A19C38FAD00283EC5 /* Debug */,
-				CC994C6B19C38FAD00283EC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
