@@ -39,7 +39,7 @@
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
-    // tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     [self.view addSubview:tableView];
     
     // Show all on Map
@@ -47,7 +47,7 @@
     self.navigationItem.rightBarButtonItem = map;
     
     // Finish button
-    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, height-40, width, 40)];
+    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, height-44, width, 44)];
     [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
     [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
@@ -81,7 +81,15 @@
 }
 
 - (void)finishSuggestions {
-    // TODO
+    
+    JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
+    [self.navigationController pushViewController:timelineVC animated:YES];
+    
+    [JHCommunicator getFinalTripFrom:[NSDate new] until:[NSDate new] spots:@[] finish:^(NSDictionary *response) {
+       
+        [timelineVC loadData:response];
+        
+    }];
 }
 
 - (void)loadData:(NSDictionary *)data {
@@ -94,7 +102,9 @@
         
         businesses = input[@"yelp"][@"hash"][@"businesses"];
         
-        NSLog(@"%i", businesses.count);
+        for (id __unused item in businesses) {
+            [switches addObject:@0];
+        }
         
         [tableView reloadData];
         
@@ -108,6 +118,7 @@
     return businesses.count-1;
 }
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
@@ -135,10 +146,13 @@
     description.textAlignment = NSTextAlignmentLeft;
     description.numberOfLines = 0;
     description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    //description.text = input[1][indexPath.row];
+    description.text = model[@"id"];
     [cell.contentView addSubview:description];
     
-    cell.accessoryType = ([switches[indexPath.row]  isEqual: @0]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
+    
+    if (switches.count>=indexPath.row) {
+        cell.accessoryType = ([switches[indexPath.row]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    }
     
     /*/ Select for route or not
     UISwitch *selectedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(width-70, [self tableView:tv heightForRowAtIndexPath:indexPath]/2-10, 50, 20)];

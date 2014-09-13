@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */; };
-		69CF0D3F19C484960076F681 /* JHDatePickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF0D3E19C484960076F681 /* JHDatePickerTableViewController.m */; };
 		69CF0D4219C4890D0076F681 /* JHAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF0D4119C4890D0076F681 /* JHAboutViewController.m */; };
 		69CF0D4319C4946A0076F681 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD2019C48ED5000A1814 /* SDWebImageDownloaderOperation.m */; };
 		69CF0D4419C4947F0076F681 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD1619C48ED5000A1814 /* NSData+ImageContentType.m */; };
@@ -49,12 +48,12 @@
 		CCA9FD4119C48ED5000A1814 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD2F19C48ED5000A1814 /* UIImageView+HighlightedWebCache.m */; };
 		CCA9FD4219C48ED5000A1814 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD3119C48ED5000A1814 /* UIImageView+WebCache.m */; };
 		CCA9FD4319C48ED5000A1814 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD3319C48ED5000A1814 /* UIView+WebCacheOperation.m */; };
+		CCA9FD4619C49834000A1814 /* JHTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD4519C49834000A1814 /* JHTimelineViewController.m */; };
+		CCA9FD4919C49B24000A1814 /* JHDatePickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD4819C49B24000A1814 /* JHDatePickerTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		69CF0D3D19C484960076F681 /* JHDatePickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDatePickerTableViewController.h; sourceTree = "<group>"; };
-		69CF0D3E19C484960076F681 /* JHDatePickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDatePickerTableViewController.m; sourceTree = "<group>"; };
 		69CF0D4019C4890D0076F681 /* JHAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAboutViewController.h; sourceTree = "<group>"; };
 		69CF0D4119C4890D0076F681 /* JHAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAboutViewController.m; sourceTree = "<group>"; };
 		CC95B70919C42C610088F04A /* JHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHButton.h; sourceTree = "<group>"; };
@@ -132,6 +131,10 @@
 		CCA9FD3119C48ED5000A1814 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		CCA9FD3219C48ED5000A1814 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		CCA9FD3319C48ED5000A1814 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		CCA9FD4419C49834000A1814 /* JHTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTimelineViewController.h; sourceTree = "<group>"; };
+		CCA9FD4519C49834000A1814 /* JHTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTimelineViewController.m; sourceTree = "<group>"; };
+		CCA9FD4719C49B24000A1814 /* JHDatePickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDatePickerTableViewController.h; sourceTree = "<group>"; };
+		CCA9FD4819C49B24000A1814 /* JHDatePickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDatePickerTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,18 +204,20 @@
 				CC994C4D19C38FAC00283EC5 /* JHViewController.h */,
 				CC994C4E19C38FAC00283EC5 /* JHViewController.m */,
 				CC994C5319C38FAD00283EC5 /* Images.xcassets */,
-				CC994C6C19C3956B00283EC5 /* JHSuggestionsViewController.h */,
-				CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */,
-				CC95B70D19C43F730088F04A /* JHMapViewController.h */,
-				CC95B70E19C43F730088F04A /* JHMapViewController.m */,
-				CC95B70919C42C610088F04A /* JHButton.h */,
-				CC95B70A19C42C610088F04A /* JHButton.m */,
-				CC994C8C19C3C33000283EC5 /* JHCommunicator.h */,
-				CC994C8D19C3C33000283EC5 /* JHCommunicator.m */,
 				CC95B71419C451BC0088F04A /* JHInputTableViewController.h */,
 				CC95B71519C451BC0088F04A /* JHInputTableViewController.m */,
-				69CF0D3D19C484960076F681 /* JHDatePickerTableViewController.h */,
-				69CF0D3E19C484960076F681 /* JHDatePickerTableViewController.m */,
+				CC994C6C19C3956B00283EC5 /* JHSuggestionsViewController.h */,
+				CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */,
+				CCA9FD4419C49834000A1814 /* JHTimelineViewController.h */,
+				CCA9FD4519C49834000A1814 /* JHTimelineViewController.m */,
+				CC95B70D19C43F730088F04A /* JHMapViewController.h */,
+				CC95B70E19C43F730088F04A /* JHMapViewController.m */,
+				CCA9FD4719C49B24000A1814 /* JHDatePickerTableViewController.h */,
+				CCA9FD4819C49B24000A1814 /* JHDatePickerTableViewController.m */,
+				CC994C8C19C3C33000283EC5 /* JHCommunicator.h */,
+				CC994C8D19C3C33000283EC5 /* JHCommunicator.m */,
+				CC95B70919C42C610088F04A /* JHButton.h */,
+				CC95B70A19C42C610088F04A /* JHButton.m */,
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
 				69CF0D4019C4890D0076F681 /* JHAboutViewController.h */,
 				69CF0D4119C4890D0076F681 /* JHAboutViewController.m */,
@@ -380,7 +385,9 @@
 				CCA9FD3C19C48ED5000A1814 /* SDWebImagePrefetcher.m in Sources */,
 				CCA9FD4319C48ED5000A1814 /* UIView+WebCacheOperation.m in Sources */,
 				CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */,
+				CCA9FD4919C49B24000A1814 /* JHDatePickerTableViewController.m in Sources */,
 				CC994C8719C3B5BC00283EC5 /* AFSecurityPolicy.m in Sources */,
+				CCA9FD4619C49834000A1814 /* JHTimelineViewController.m in Sources */,
 				CCA9FD3F19C48ED5000A1814 /* UIImage+MultiFormat.m in Sources */,
 				CCA9FD4019C48ED5000A1814 /* UIImage+WebP.m in Sources */,
 				CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */,
@@ -396,7 +403,6 @@
 				69CF0D4219C4890D0076F681 /* JHAboutViewController.m in Sources */,
 				CC994C8B19C3B5BC00283EC5 /* AFURLSessionManager.m in Sources */,
 				CC994C4919C38FAC00283EC5 /* main.m in Sources */,
-				69CF0D3F19C484960076F681 /* JHDatePickerTableViewController.m in Sources */,
 				CC994C8E19C3C33000283EC5 /* JHCommunicator.m in Sources */,
 				CC95B70F19C43F730088F04A /* JHMapViewController.m in Sources */,
 				CCA9FD3419C48ED5000A1814 /* MKAnnotationView+WebCache.m in Sources */,
