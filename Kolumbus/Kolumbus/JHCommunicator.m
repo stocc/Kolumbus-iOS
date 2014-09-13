@@ -46,7 +46,7 @@
     
 }
 
-+ (NSDictionary *)getFinalTrif {
++ (NSDictionary *)getFinalTrip {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
     

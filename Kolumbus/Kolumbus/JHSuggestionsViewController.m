@@ -14,6 +14,8 @@
     CGFloat width;
     CGFloat height;
     
+    BOOL is7;
+    
     NSMutableArray *input;
     NSMutableArray *switches;
 }
@@ -23,6 +25,7 @@
     
     width = self.view.frame.size.width;
     height = self.view.frame.size.height;
+    is7 = ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue] <= 7);
     
     self.title = @"Suggestions";
     
@@ -32,6 +35,7 @@
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
+    tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:tableView];
 }
 
@@ -43,9 +47,10 @@
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
-    UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
+    UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 50, 50)];
     pic.layer.masksToBounds = YES;
     pic.layer.cornerRadius = pic.frame.size.width/2;
+    pic.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon%i", indexPath.row]];
     [cell.contentView addSubview:pic];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
@@ -57,7 +62,7 @@
     title.text = input[0][indexPath.row];
     [cell.contentView addSubview:title];
     
-    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-90, 40)];
+    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-140, 40)];
     description.backgroundColor = [UIColor clearColor];
     description.textColor = [UIColor colorWithWhite:0 alpha:.7];
     description.textAlignment = NSTextAlignmentLeft;
