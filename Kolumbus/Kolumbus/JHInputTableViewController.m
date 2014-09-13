@@ -56,6 +56,9 @@
         [self.locationManager startUpdatingLocation];
     }
     
+    self.startDate = [NSDate date];
+    self.endDate = [NSDate date];
+    
     // Finish button
     finish = [[JHButton alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-108, self.view.frame.size.width, 44)];
     [finish setNormalColor:[UIColor colorWithRed:(255.0/255.0) green:(142.0/255.0) blue:(7.0/255.0) alpha:1]];

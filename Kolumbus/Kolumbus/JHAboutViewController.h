@@ -12,7 +12,6 @@
 @protocol JHABoutVCDelegate <NSObject>
 
 -(void)hideMe;
--(void)hideBtn;
 
 @end
 @interface JHAboutViewController : UIViewController
