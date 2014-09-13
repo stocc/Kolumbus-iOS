@@ -147,7 +147,6 @@
         self.startDateLabel.text = [formatter stringFromDate:date];
     }else{
         self.endDate = date;
-        NSLog(@"%@",date);
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"d.M.Y"];
         self.endDateLabel.text = [formatter stringFromDate:date];
