@@ -62,7 +62,7 @@
 
 }
 
-+ (void)getFinalTripFrom:(NSDate *)startDate until:(NSDate *)endDate spots:(NSString *)spots finish:(void (^)(NSDictionary *response))responseBlock {
++ (void)getFinalTripFrom:(NSDate *)startDate until:(NSDate *)endDate spots:(NSArray *)spots finish:(void (^)(NSDictionary *response))responseBlock {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
     

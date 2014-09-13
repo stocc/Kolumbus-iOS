@@ -50,7 +50,7 @@
     }
     
     // Finish button
-    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-40, self.view.frame.size.width, 40)];
+    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44)];
     [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
     [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
