@@ -10,51 +10,24 @@
 #import <CoreLocation/CoreLocation.h>
 #import "JHDatePickerTableViewController.h"
 #import "JHAboutViewController.h"
-@interface JHInputTableViewController ()<CLLocationManagerDelegate, JHDatePickerDelegate, JHABoutVCDelegate> {
+#import "JHLocationPickerTableViewController.h"
+@interface JHInputTableViewController ()<JHDatePickerDelegate, JHABoutVCDelegate,JHLocationPickerDelegate> {
     JHButton *finish;
 }
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currentLocationActivityIndicator;
-@property (weak, nonatomic) IBOutlet UILabel *locationTextfield;
-@property (strong,nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *budgetSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
 @property (strong, nonatomic) NSString *currentlyEditing;
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @end
 
 @implementation JHInputTableViewController
 
-
--(CLLocationManager *)locationManager{
-    if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
-        
-    }
-    
-    return _locationManager;
-    
-}
-
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.currentLocationActivityIndicator startAnimating];
-    self.currentLocationActivityIndicator.hidden = NO;
-        
-    //add visited count
-    //budget class 1-4
-    //visit intensity 1-10
-    
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    if ([CLLocationManager locationServicesEnabled]) {
-        self.locationManager.delegate = self;
-        [self.locationManager startUpdatingLocation];
-    }
     
     self.startDate = [NSDate date];
     self.endDate = [NSDate date];
@@ -98,14 +71,7 @@
     
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    
-    [manager stopUpdatingLocation];
-    [self.currentLocationActivityIndicator stopAnimating];
-    
-    self.userLocation = locations[0];
-    self.locationTextfield.text = [NSString stringWithFormat:@"%f, %f",self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude];
-}
+
 
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -142,6 +108,10 @@
                     }else{
                         self.currentlyEditing = @"end";
                 }
+    }else if ([segue.identifier isEqualToString:@"pickLocation"]){
+        UINavigationController *navCon = (UINavigationController *)segue.destinationViewController;
+        JHLocationPickerTableViewController *locationPicker = (JHLocationPickerTableViewController *)navCon.viewControllers[0];
+        locationPicker.delegate = self;
     }
 }
 
@@ -168,5 +138,15 @@
 }
 -(void)didNotPickDate{
     [self dismissViewControllerAnimated:YES completion:^{}];
+}
+-(void)didSelectLocation:(CLLocation *)location WithName:(NSString *)name{
+    [self dismissViewControllerAnimated:YES completion:^{}];
+    self.locationLabel.text = name;
+    self.userLocation = location;
+    
+}
+-(void)didNotSelectLocation{
+    [self dismissViewControllerAnimated:YES completion:^{}];
+
 }
 @end
