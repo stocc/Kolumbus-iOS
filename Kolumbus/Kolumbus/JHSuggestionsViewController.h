@@ -8,6 +8,7 @@
 
 #import "JHCommunicator.h"
 #import "JHButton.h"
+#import "JHMapViewController.h"
 #import <UIKit/UIKit.h>
 
 @interface JHSuggestionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

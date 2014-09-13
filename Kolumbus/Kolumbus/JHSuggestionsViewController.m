@@ -27,7 +27,7 @@
     height = self.view.frame.size.height;
     is7 = ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue] <= 7);
     
-    self.title = @"Suggestions";
+    self.title = @"Vorschläge";
     
     // Test data
     input = [[NSMutableArray alloc] initWithArray:@[@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"], @[@"Sehr großes Tor", @"Sehr großer Turm", @"Sehr großer Platz"]]];
@@ -78,6 +78,10 @@
 #pragma mark Finns Funny Functions!
 - (void)showMap {
     // TODO
+    
+    JHMapViewController *mapVC = [[JHMapViewController alloc] initWithRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake(53.0, 13.0), MKCoordinateSpanMake(1, 1))];
+    [self.navigationController pushViewController:mapVC animated:YES];
+    
 }
 
 - (void)finishSuggestions {
