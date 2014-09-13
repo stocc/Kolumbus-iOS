@@ -11,4 +11,8 @@
 
 @interface JHCommunicator : NSObject
 
++ (NSDictionary *)getSuggestions;
++ (NSDictionary *)getSearch;
++ (NSDictionary *)getFinalTrip;
+
 @end
