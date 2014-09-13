@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */; };
+		69BDFE4919C4C7A40066925D /* JHLocationPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BDFE4819C4C7A40066925D /* JHLocationPickerTableViewController.m */; };
 		69CF0D4219C4890D0076F681 /* JHAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF0D4119C4890D0076F681 /* JHAboutViewController.m */; };
 		69CF0D4319C4946A0076F681 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD2019C48ED5000A1814 /* SDWebImageDownloaderOperation.m */; };
 		69CF0D4419C4947F0076F681 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD1619C48ED5000A1814 /* NSData+ImageContentType.m */; };
@@ -59,6 +60,8 @@
 
 /* Begin PBXFileReference section */
 		697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		69BDFE4719C4C7A40066925D /* JHLocationPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLocationPickerTableViewController.h; sourceTree = "<group>"; };
+		69BDFE4819C4C7A40066925D /* JHLocationPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLocationPickerTableViewController.m; sourceTree = "<group>"; };
 		69CF0D4019C4890D0076F681 /* JHAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAboutViewController.h; sourceTree = "<group>"; };
 		69CF0D4119C4890D0076F681 /* JHAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAboutViewController.m; sourceTree = "<group>"; };
 		CC95B70919C42C610088F04A /* JHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHButton.h; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				CC95B70919C42C610088F04A /* JHButton.h */,
 				CC95B70A19C42C610088F04A /* JHButton.m */,
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
+				69BDFE4719C4C7A40066925D /* JHLocationPickerTableViewController.h */,
+				69BDFE4819C4C7A40066925D /* JHLocationPickerTableViewController.m */,
 				69CF0D4019C4890D0076F681 /* JHAboutViewController.h */,
 				69CF0D4119C4890D0076F681 /* JHAboutViewController.m */,
 				CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */,
@@ -413,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69BDFE4919C4C7A40066925D /* JHLocationPickerTableViewController.m in Sources */,
 				69CF0D4419C4947F0076F681 /* NSData+ImageContentType.m in Sources */,
 				69CF0D4519C4947F0076F681 /* SDWebImageDecoder.m in Sources */,
 				69CF0D4619C4947F0076F681 /* SDWebImageManager.m in Sources */,
