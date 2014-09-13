@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */; };
-		698A9AF619C43F1A0079457C /* JHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 698A9AF519C43F1A0079457C /* JHButton.m */; };
-		69B935B119C4290D00D89B34 /* JHInputTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B935B019C4290D00D89B34 /* JHInputTableViewController.m */; };
-		69B935B319C4301300D89B34 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B935B219C4301300D89B34 /* MapKit.framework */; };
+		CC95B70F19C43F730088F04A /* JHMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B70E19C43F730088F04A /* JHMapViewController.m */; };
+		CC95B71119C43F800088F04A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC95B71019C43F800088F04A /* MapKit.framework */; };
+		CC95B71319C4518C0088F04A /* JHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B70A19C42C610088F04A /* JHButton.m */; };
+		CC95B71619C451BC0088F04A /* JHInputTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B71519C451BC0088F04A /* JHInputTableViewController.m */; };
 		CC994C4919C38FAC00283EC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4819C38FAC00283EC5 /* main.m */; };
 		CC994C4C19C38FAC00283EC5 /* JHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */; };
 		CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4E19C38FAC00283EC5 /* JHViewController.m */; };
@@ -32,11 +33,13 @@
 
 /* Begin PBXFileReference section */
 		697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		698A9AF419C43F1A0079457C /* JHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHButton.h; sourceTree = "<group>"; };
-		698A9AF519C43F1A0079457C /* JHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHButton.m; sourceTree = "<group>"; };
-		69B935AF19C4290D00D89B34 /* JHInputTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHInputTableViewController.h; sourceTree = "<group>"; };
-		69B935B019C4290D00D89B34 /* JHInputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHInputTableViewController.m; sourceTree = "<group>"; };
-		69B935B219C4301300D89B34 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CC95B70919C42C610088F04A /* JHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHButton.h; sourceTree = "<group>"; };
+		CC95B70A19C42C610088F04A /* JHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHButton.m; sourceTree = "<group>"; };
+		CC95B70D19C43F730088F04A /* JHMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHMapViewController.h; sourceTree = "<group>"; };
+		CC95B70E19C43F730088F04A /* JHMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHMapViewController.m; sourceTree = "<group>"; };
+		CC95B71019C43F800088F04A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CC95B71419C451BC0088F04A /* JHInputTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHInputTableViewController.h; sourceTree = "<group>"; };
+		CC95B71519C451BC0088F04A /* JHInputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHInputTableViewController.m; sourceTree = "<group>"; };
 		CC994C4319C38FAC00283EC5 /* Kolumbus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kolumbus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC994C4719C38FAC00283EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC994C4819C38FAC00283EC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69B935B319C4301300D89B34 /* MapKit.framework in Frameworks */,
+				CC95B71119C43F800088F04A /* MapKit.framework in Frameworks */,
 				697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +115,7 @@
 		CC994C3A19C38FAC00283EC5 = {
 			isa = PBXGroup;
 			children = (
-				69B935B219C4301300D89B34 /* MapKit.framework */,
+				CC95B71019C43F800088F04A /* MapKit.framework */,
 				697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */,
 				CC994C4519C38FAC00283EC5 /* Kolumbus */,
 				CC994C4419C38FAC00283EC5 /* Products */,
@@ -135,17 +138,19 @@
 				CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */,
 				CC994C4D19C38FAC00283EC5 /* JHViewController.h */,
 				CC994C4E19C38FAC00283EC5 /* JHViewController.m */,
+				CC994C5319C38FAD00283EC5 /* Images.xcassets */,
 				CC994C6C19C3956B00283EC5 /* JHSuggestionsViewController.h */,
 				CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */,
-				69B935AF19C4290D00D89B34 /* JHInputTableViewController.h */,
-				69B935B019C4290D00D89B34 /* JHInputTableViewController.m */,
+				CC95B70D19C43F730088F04A /* JHMapViewController.h */,
+				CC95B70E19C43F730088F04A /* JHMapViewController.m */,
+				CC95B70919C42C610088F04A /* JHButton.h */,
+				CC95B70A19C42C610088F04A /* JHButton.m */,
 				CC994C8C19C3C33000283EC5 /* JHCommunicator.h */,
 				CC994C8D19C3C33000283EC5 /* JHCommunicator.m */,
+				CC95B71419C451BC0088F04A /* JHInputTableViewController.h */,
+				CC95B71519C451BC0088F04A /* JHInputTableViewController.m */,
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
-				CC994C5319C38FAD00283EC5 /* Images.xcassets */,
 				CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */,
-				698A9AF419C43F1A0079457C /* JHButton.h */,
-				698A9AF519C43F1A0079457C /* JHButton.m */,
 				CC994C4619C38FAC00283EC5 /* Supporting Files */,
 			);
 			path = Kolumbus;
@@ -257,8 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				698A9AF619C43F1A0079457C /* JHButton.m in Sources */,
-				69B935B119C4290D00D89B34 /* JHInputTableViewController.m in Sources */,
+				CC95B71319C4518C0088F04A /* JHButton.m in Sources */,
+				CC95B71619C451BC0088F04A /* JHInputTableViewController.m in Sources */,
 				CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */,
 				CC994C8719C3B5BC00283EC5 /* AFSecurityPolicy.m in Sources */,
 				CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */,
@@ -273,6 +278,7 @@
 				CC994C8B19C3B5BC00283EC5 /* AFURLSessionManager.m in Sources */,
 				CC994C4919C38FAC00283EC5 /* main.m in Sources */,
 				CC994C8E19C3C33000283EC5 /* JHCommunicator.m in Sources */,
+				CC95B70F19C43F730088F04A /* JHMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
