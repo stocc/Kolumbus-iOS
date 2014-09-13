@@ -88,15 +88,16 @@
     
     [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Diese Funktion ist noch in Arbeit." delegate:nil cancelButtonTitle:@"Ok, cool" otherButtonTitles:nil, nil] show];
     
-    /*
-    JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
-    [self.navigationController pushViewController:timelineVC animated:YES];
+    //JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
+    //[self.navigationController pushViewController:timelineVC animated:YES];
     
-    [JHCommunicator getFinalTripFrom:[NSDate new] until:[NSDate new] spots:@[] finish:^(NSDictionary *response) {
+    [JHCommunicator getFinalTripFrom:[NSDate new] until:[NSDate new] spots:@[@{@"dinner" : @[@"deine Mutter", @"deine Mum"]}, @{@"lunch" : @[@"Stalin"]}, @{@"sights to see" : @[@"Alex"]}, @{@"museum" : @[@"Hack"]}, @{@"cafe" : @[@"SBux"]}] finish:^(NSDictionary *response) {
        
-        [timelineVC loadData:response];
+        NSLog(@"Resp: %@", response);
         
-    }];*/
+        //[timelineVC loadData:response];
+        
+    }];
 }
 
 - (void)loadData:(NSDictionary *)data {
@@ -108,14 +109,24 @@
         // hide spinner
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
-        for (int i=0; i<input.allKeys.count; i++) {
+        if (input[@"error"]) {
             
-            for (int j=0; j<[input[input.allKeys[i]] count]; j++) {
-                [selections setObject:@1 forKey:[NSString stringWithFormat:@"%i%i", i, j]];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            [[[UIAlertView alloc] initWithTitle:@"Oopsy Daisy" message:[NSString stringWithFormat:@"Da ist was schiefgegangen. :/ Error: %@", input[@"error"]] delegate:nil cancelButtonTitle:@"Dangit" otherButtonTitles:nil, nil] show];
+            
+        } else {
+            
+            for (int i=0; i<input.allKeys.count; i++) {
+                
+                for (int j=0; j<[input[input.allKeys[i]] count]; j++) {
+                    [selections setObject:@1 forKey:[NSString stringWithFormat:@"%i%i", i, j]];
+                }
             }
+            
+            [tableView reloadData];
+            
         }
-        
-        [tableView reloadData];
         
     }
     
@@ -141,7 +152,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @[@"Dinner", @"Lunch", @"Sights", @"Museum", @"Cafe"][section];
+    return @[@"Abendessen", @"Mittagessen", @"Sehenswürdigkeiten", @"Museen", @"Cafes"][section];
 }
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"

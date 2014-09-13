@@ -55,7 +55,7 @@
 }
 
 
-
+/*
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	CGFloat width = self.frame.size.width;
@@ -172,6 +172,6 @@
 	}
 	
 	[self setNeedsDisplay];
-}
+}*/
 
 @end
