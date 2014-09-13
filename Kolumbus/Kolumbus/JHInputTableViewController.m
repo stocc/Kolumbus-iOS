@@ -35,7 +35,14 @@
     [super viewWillAppear:animated];
     [self.currentLocationActivityIndicator startAnimating];
     self.currentLocationActivityIndicator.hidden = NO;
-    [self.locationManager requestWhenInUseAuthorization];
+        
+    //add visited count
+    //budget class 1-4
+    //visit intensity 1-10
+    
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
     if ([CLLocationManager locationServicesEnabled]) {
         self.locationManager.delegate = self;
         [self.locationManager startUpdatingLocation];
