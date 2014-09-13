@@ -17,8 +17,7 @@
     BOOL is7;
     
     NSDictionary *input;                // the parsed data from the server
-    NSArray *businesses;
-    NSMutableArray *switches;
+    NSMutableDictionary *selections;
 }
 
 - (void)viewDidLoad {
@@ -31,9 +30,9 @@
     self.title = @"Vorschläge";
     
     // Test data
-    NSData *testData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"]];
-    input = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
-    switches = [NSMutableArray new];
+    NSData __unused *testData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"]];
+    input = [NSDictionary new]; // = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
+    selections = [NSMutableDictionary new];
     
     // Tableview Setup
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
@@ -87,12 +86,16 @@
 
 - (void)finishSuggestions {
     
-    JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
-    [self.navigationController pushViewController:timelineVC animated:YES];
+    [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Diese Funktion ist noch in Arbeit." delegate:nil cancelButtonTitle:@"Ok, cool" otherButtonTitles:nil, nil] show];
     
-    [JHCommunicator getFinalTripFrom:[NSDate new] until:[NSDate new] spots:@[] finish:^(NSDictionary *response) {
+    //JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
+    //[self.navigationController pushViewController:timelineVC animated:YES];
+    
+    [JHCommunicator getFinalTripFrom:[NSDate new] until:[NSDate new] spots:@[@{@"dinner" : @[@"deine Mutter", @"deine Mum"]}, @{@"lunch" : @[@"Stalin"]}, @{@"sights to see" : @[@"Alex"]}, @{@"museum" : @[@"Hack"]}, @{@"cafe" : @[@"SBux"]}] finish:^(NSDictionary *response) {
        
-        [timelineVC loadData:response];
+        NSLog(@"Resp: %@", response);
+        
+        //[timelineVC loadData:response];
         
     }];
 }
@@ -101,31 +104,55 @@
     
     if (data) {
         
-        NSLog(@"Yass: %@", data);
+        input = data;
         
         // hide spinner
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
-        if (!data[@"error"]) {
-            input = data;
+        if (input[@"error"]) {
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            [[[UIAlertView alloc] initWithTitle:@"Oopsy Daisy" message:[NSString stringWithFormat:@"Da ist was schiefgegangen. :/ Error: %@", input[@"error"]] delegate:nil cancelButtonTitle:@"Dangit" otherButtonTitles:nil, nil] show];
+            
+        } else {
+            
+            for (int i=0; i<input.allKeys.count; i++) {
+                
+                for (int j=0; j<[input[input.allKeys[i]] count]; j++) {
+                    [selections setObject:@1 forKey:[NSString stringWithFormat:@"%i%i", i, j]];
+                }
+            }
+            
+            [tableView reloadData];
+            
         }
-        
-        businesses = input[@"yelp"][@"hash"][@"businesses"];
-        
-        for (id __unused item in businesses) {
-            [switches addObject:@0];
-        }
-        
-        [tableView reloadData];
         
     }
     
 }
 
+- (void)showInfo:(UIButton *)sender {
+    
+    int section = [[[NSString stringWithFormat:@"%i", sender.tag] substringToIndex:1] intValue];
+    int row = [[[NSString stringWithFormat:@"%i", sender.tag] substringFromIndex:1] intValue];
+    
+    NSLog(@"Attempting to show more for section: %i  row: %i", section, row);
+    
+}
+
 
 #pragma mark Table View delegates
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return input.allKeys.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return businesses.count-1;
+    return [input[input.allKeys[section]] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @[@"Abendessen", @"Mittagessen", @"Sehenswürdigkeiten", @"Museen", @"Cafes"][section];
 }
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -133,12 +160,12 @@
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
-    NSDictionary *model = businesses[indexPath.row];
+    NSDictionary *model = input[input.allKeys[indexPath.section]][indexPath.row];
     
     UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 50, 50)];
     pic.layer.masksToBounds = YES;
     pic.layer.cornerRadius = pic.frame.size.width/2;
-    [pic sd_setImageWithURL:[NSURL URLWithString:model[@"snippet_image_url"]] placeholderImage:[UIImage imageNamed:@"icon1"]];
+    [pic sd_setImageWithURL:[NSURL URLWithString:model[@"image_url"]] placeholderImage:[UIImage imageNamed:@"icon1"]];
     [cell.contentView addSubview:pic];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
@@ -156,13 +183,19 @@
     description.textAlignment = NSTextAlignmentLeft;
     description.numberOfLines = 0;
     description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    description.text = model[@"id"];
+    description.text = model[@"location"][@"hash"][@"city"];
     [cell.contentView addSubview:description];
     
+    JSFavStarControl *stars = [[JSFavStarControl alloc] initWithLocation:CGPointMake(70, 56) dotImage:[UIImage imageNamed:@"dot"] starImage:[UIImage imageNamed:@"star"] rating:[model[@"rating"] intValue]];
+    [cell.contentView addSubview:stars];
     
-    if (switches.count>=indexPath.row) {
-        cell.accessoryType = ([switches[indexPath.row]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-    }
+    cell.accessoryType = ([selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
+    UIButton *moreInfo = [[UIButton alloc] initWithFrame:CGRectMake(width-85, 30, 40, 40)];
+    [moreInfo setBackgroundImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    moreInfo.tag = [[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row] intValue];
+    [moreInfo addTarget:self action:@selector(showInfo:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.contentView addSubview:moreInfo];
     
     /*/ Select for route or not
     UISwitch *selectedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(width-70, [self tableView:tv heightForRowAtIndexPath:indexPath]/2-10, 50, 20)];
@@ -176,10 +209,6 @@
     
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 1;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100;
 }
@@ -188,9 +217,8 @@
     
     [tv deselectRowAtIndexPath:indexPath animated:YES];
     
-    // invert the switch/ checkmark
-    //[(UISwitch *)switches[indexPath.row] setOn:![(UISwitch *)switches[indexPath.row] isOn] animated:YES];
-    switches[indexPath.row] = ([switches[indexPath.row]  isEqual: @0]) ? @1 : @0;
+    // invert the checkmark
+    selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]] = ([selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]]  isEqual: @0]) ? @1 : @0;
     [tv reloadData];
 }
 
