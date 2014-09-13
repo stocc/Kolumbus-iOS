@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"Kolumbus";
+    
     input = [NSDictionary new];
     width = self.view.frame.size.width;
     height = self.view.frame.size.height;
@@ -60,7 +62,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [input[input.allKeys[0]] allKeys].count;
+    if (input.allKeys.count != 0) {
+        return [input[input.allKeys[0]] allKeys].count;
+    } else {
+        return 1;
+    }
 }
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -68,27 +74,49 @@
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
-    NSDictionary *model = input[input.allKeys[0]][[input[input.allKeys[0]] allKeys][indexPath.row]];
+    NSDictionary *model;
     
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
+    if (input.allKeys.count != 0) {
+        model = input[input.allKeys[0]][[input[input.allKeys[0]] allKeys][indexPath.row]];
+    }
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 15, width-90, 30)];
     title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor blackColor];
     title.textAlignment = NSTextAlignmentLeft;
     title.numberOfLines = 0;
     title.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-    title.text = @"Sup";
+    title.text = @"Berlin Hbf";
     [cell.contentView addSubview:title];
     
-    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-140, 40)];
+    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 35, width-140, 40)];
     description.backgroundColor = [UIColor clearColor];
     description.textColor = [UIColor colorWithWhite:0 alpha:.7];
     description.textAlignment = NSTextAlignmentLeft;
     description.numberOfLines = 0;
     description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    description.text = @"Test";
+    description.text = @"Dies ist ein Beispieltext!";
     [cell.contentView addSubview:description];
     
-    FGTimelineView *timeline = [[FGTimelineView alloc] initWithFrame:CGRectMake(25, 50, 30, 150)];
+    UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 180, width-90, 30)];
+    title2.backgroundColor = [UIColor clearColor];
+    title2.textColor = [UIColor blackColor];
+    title2.textAlignment = NSTextAlignmentLeft;
+    title2.numberOfLines = 0;
+    title2.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+    title2.text = @"Alexanderplatz";
+    [cell.contentView addSubview:title2];
+    
+    UILabel *description2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 200, width-140, 40)];
+    description2.backgroundColor = [UIColor clearColor];
+    description2.textColor = [UIColor colorWithWhite:0 alpha:.7];
+    description2.textAlignment = NSTextAlignmentLeft;
+    description2.numberOfLines = 0;
+    description2.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    description2.text = @"Das hier ist ja auch einer! :O";
+    [cell.contentView addSubview:description2];
+    
+    FGTimelineView *timeline = [[FGTimelineView alloc] initWithFrame:CGRectMake(25, 30, 30, 200)];
     [cell.contentView addSubview:timeline];
     
     return cell;
@@ -96,12 +124,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 300;
+    return 260;
 }
-
-- (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
-
-
 
 -(void)openDirectionsFromCoordinate:(CLLocationCoordinate2D)from ToCoordinate:(CLLocationCoordinate2D)to{
 

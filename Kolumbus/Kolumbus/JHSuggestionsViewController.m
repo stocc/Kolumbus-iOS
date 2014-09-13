@@ -44,6 +44,7 @@
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
+    tableView.contentOffset = CGPointMake(0, 44);
     [self.view addSubview:tableView];
     
     // Show all on Map
