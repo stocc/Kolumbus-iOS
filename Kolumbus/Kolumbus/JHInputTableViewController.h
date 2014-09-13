@@ -9,7 +9,8 @@
 #import "JHButton.h"
 #import "JHSuggestionsViewController.h"
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+
+@class JHButton;
 @interface JHInputTableViewController : UITableViewController
 @property (strong,nonatomic) CLLocation* userLocation;
 @property (nonatomic) NSInteger budget;
