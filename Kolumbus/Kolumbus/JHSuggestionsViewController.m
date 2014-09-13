@@ -101,7 +101,7 @@
     JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
     [self.navigationController pushViewController:timelineVC animated:YES];
     
-    [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:@[@"test"] finish:^(NSDictionary *response) {
+    [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:@{@"dinner" : @[@"123"], @"lunch" : @[@"123"], @"sights to see" : @[@"123"], @"museum" : @[@"123"], @"cafe" : @[@"123"]} finish:^(NSDictionary *response) {
         
         [timelineVC loadData:response];
         
@@ -194,10 +194,19 @@
     description.text = model[@"location"][@"hash"][@"city"];
     [cell.contentView addSubview:description];
     
-    JSFavStarControl *stars = [[JSFavStarControl alloc] initWithLocation:CGPointMake(70, 56) dotImage:[UIImage imageNamed:@"dot"] starImage:[UIImage imageNamed:@"star"] rating:[model[@"rating"] intValue]];
+    JSFavStarControl *stars = [[JSFavStarControl alloc] initWithLocation:CGPointMake(70, 60) dotImage:[UIImage imageNamed:@"dot"] starImage:[UIImage imageNamed:@"star"] rating:[model[@"rating"] intValue]];
     [cell.contentView addSubview:stars];
     
     cell.accessoryType = ([selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
+    UILabel *reviewCount = [[UILabel alloc] initWithFrame:CGRectMake(175, 53, 100, 40)];
+    reviewCount.backgroundColor = [UIColor clearColor];
+    reviewCount.textColor = [UIColor colorWithWhite:0 alpha:.7];
+    reviewCount.textAlignment = NSTextAlignmentLeft;
+    reviewCount.numberOfLines = 0;
+    reviewCount.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    reviewCount.text = [NSString stringWithFormat:@"(%@)", model[@"review_count"]];
+    [cell.contentView addSubview:reviewCount];
     
     UIButton *moreInfo = [[UIButton alloc] initWithFrame:CGRectMake(width-85, 30, 40, 40)];
     [moreInfo setBackgroundImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
