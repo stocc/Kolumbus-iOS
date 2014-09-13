@@ -13,7 +13,7 @@
 + (NSDictionary *)getSuggestionsFrom:(NSDate *)startDate until:(NSDate *)endDate visitedCount:(int)visits budgetClass:(int)budget visitIntensity:(int)intensity {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
-    
+    NSDictionary __block *result;
     [manager GET:@"suggestions" parameters:@{@"starts_at" : startDate, @"ends_at" : endDate, @"visited_count" : [NSString stringWithFormat:@"%i", visits], @"budget_class" : [NSString stringWithFormat:@"%i", budget], @"visit_intensity" : [NSString stringWithFormat:@"%i", intensity]} success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSError *error;

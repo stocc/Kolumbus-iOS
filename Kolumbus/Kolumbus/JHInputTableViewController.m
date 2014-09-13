@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currentLocationActivityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *locationTextfield;
 @property (strong,nonatomic) CLLocationManager *locationManager;
-@property (strong,nonatomic) CLLocation* userLocation;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *budgetSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
@@ -74,5 +73,17 @@
 
 }
 - (IBAction)stepperChanged:(UIStepper *)sender {
+    self.stepLabel.text = [NSString stringWithFormat:@"%.f",sender.value];
+    
+    NSNumber *stepperValue = [NSNumber numberWithDouble:sender.value];
+    self.visitCount = [stepperValue integerValue];
+}
+- (IBAction)go:(id)sender {
+    
+    self.budget = self.budgetSegmentedControl.selectedSegmentIndex+1;
+    NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
+    self.intensity = [intensityNumber integerValue];
+    
+    [self performSegueWithIdentifier:@"showSuggestions" sender:self];
 }
 @end
