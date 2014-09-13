@@ -90,7 +90,7 @@
     NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
     self.intensity = [intensityNumber intValue];
     
-    [JHCommunicator getSuggestionsFrom:self.startDate until:self.endDate visitedCount:self.visitCount budgetClass:self.budget visitIntensity:self.intensity finish:^(NSDictionary *response){
+    [JHCommunicator getSuggestionsAt:self.userLocation from:self.startDate until:self.endDate visitedCount:self.visitCount budgetClass:self.budget visitIntensity:self.intensity finish:^(NSDictionary *response){
     
         [suggestionsVC loadData:response];
     

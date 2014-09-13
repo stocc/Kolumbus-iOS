@@ -101,6 +101,8 @@
     
     if (data) {
         
+        NSLog(@"Yass: %@", data);
+        
         // hide spinner
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
