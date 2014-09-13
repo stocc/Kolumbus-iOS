@@ -13,4 +13,6 @@
 
 @interface JHSuggestionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+- (void)loadData:(NSDictionary *)data;
+
 @end

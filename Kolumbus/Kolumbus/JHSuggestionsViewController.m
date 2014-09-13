@@ -86,6 +86,10 @@
     // TODO
 }
 
+- (void)loadData:(NSDictionary *)data {
+    
+}
+
 
 #pragma mark Table View delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
