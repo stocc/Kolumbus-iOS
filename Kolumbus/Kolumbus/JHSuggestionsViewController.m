@@ -86,6 +86,9 @@
 
 - (void)finishSuggestions {
     
+    [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Diese Funktion ist noch in Arbeit." delegate:nil cancelButtonTitle:@"Ok, cool" otherButtonTitles:nil, nil] show];
+    
+    /*
     JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
     [self.navigationController pushViewController:timelineVC animated:YES];
     
@@ -93,7 +96,7 @@
        
         [timelineVC loadData:response];
         
-    }];
+    }];*/
 }
 
 - (void)loadData:(NSDictionary *)data {
@@ -130,19 +133,23 @@
     return [input[input.allKeys[section]] count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @[@"Dinner", @"Lunch", @"Sights", @"Museum", @"Cafe"][section];
+}
+
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
-    NSLog(@"Section: %i   Row: %i", indexPath.section, indexPath.row);
-    
     NSDictionary *model = input[input.allKeys[indexPath.section]][indexPath.row];
+    
+    NSLog(@"%@", model);
     
     UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 50, 50)];
     pic.layer.masksToBounds = YES;
     pic.layer.cornerRadius = pic.frame.size.width/2;
-    [pic sd_setImageWithURL:[NSURL URLWithString:model[@"snippet_image_url"]] placeholderImage:[UIImage imageNamed:@"icon1"]];
+    [pic sd_setImageWithURL:[NSURL URLWithString:model[@"image_url"]] placeholderImage:[UIImage imageNamed:@"icon1"]];
     [cell.contentView addSubview:pic];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
