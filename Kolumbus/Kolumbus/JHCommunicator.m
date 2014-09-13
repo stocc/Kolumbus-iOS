@@ -14,6 +14,8 @@
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
     
+    NSDictionary __block *result;
+    
     [manager GET:@"suggestions" parameters:@{@"starts_at" : startDate, @"ends_at" : endDate, @"visited_count" : [NSString stringWithFormat:@"%i", visits], @"budget_class" : [NSString stringWithFormat:@"%i", budget], @"visit_intensity" : [NSString stringWithFormat:@"%i", intensity]} success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSError *error;
@@ -23,11 +25,13 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+        result = @{@"error" : error.description};
+        
         NSLog(@"Error: %@", error.description);
         
     }];
     
-    return [NSDictionary new];
+    return result;
     
 }
 

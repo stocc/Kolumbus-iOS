@@ -99,16 +99,9 @@
                             <outlet property="delegate" destination="AHz-ZZ-qBZ" id="JwR-jB-aiS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Kolumbus" id="mJY-X1-0UH">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Go" id="vDx-Q7-1f8">
-                            <connections>
-                                <segue destination="vx9-wq-ZaN" kind="show" id="NYd-eh-c3T"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Kolumbus" id="mJY-X1-0UH"/>
                     <connections>
                         <outlet property="currentLocationActivityIndicator" destination="Y14-pC-TBy" id="HhX-Ta-ca9"/>
-                        <outlet property="goButton" destination="vDx-Q7-1f8" id="j1u-iI-7G5"/>
                         <outlet property="locationTextfield" destination="AhQ-7q-Jwp" id="1yR-iw-Wdl"/>
                     </connections>
                 </tableViewController>
