@@ -11,6 +11,7 @@
 #import "JHMapViewController.h"
 #import "UIImageView+WebCache.h"
 #import "JHTimelineViewController.h"
+#import "MBProgressHUD.h"
 #import <UIKit/UIKit.h>
 
 @interface JHSuggestionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

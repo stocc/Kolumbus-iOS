@@ -47,11 +47,11 @@
     self.navigationItem.rightBarButtonItem = map;
     
     // Finish button
-    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, height-44, width, 44)];
-    [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
-    [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
+    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-44, self.view.frame.size.width, 44)];
+    [finish setNormalColor:[UIColor colorWithRed:(255.0/255.0) green:(142.0/255.0) blue:(7.0/255.0) alpha:1]];
+    [finish setHighlightedColor:[UIColor colorWithRed:(255.0/255.0) green:(105.0/255.0) blue:(47.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
-    [((UIWindow *)[[UIApplication sharedApplication] windows][0]) addSubview:finish];
+    [self.view addSubview:finish];
     
     UILabel *finishText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 40)];
     finishText.backgroundColor = [UIColor clearColor];
@@ -61,6 +61,11 @@
     finishText.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
     finishText.text = @"Plane meinen Tag!";
     [finish addSubview:finishText];
+    
+    // loading spinner
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading";
     
     
     // ================================================================================================
@@ -95,6 +100,9 @@
 - (void)loadData:(NSDictionary *)data {
     
     if (data) {
+        
+        // hide spinner
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
         if (!data[@"error"]) {
             input = data;

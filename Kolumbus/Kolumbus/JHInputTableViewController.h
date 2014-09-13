@@ -13,6 +13,7 @@
 
 @class JHButton;
 @interface JHInputTableViewController : UITableViewController
+
 @property (strong,nonatomic) CLLocation* userLocation;
 @property (nonatomic) int budget;
 @property (nonatomic) int intensity;

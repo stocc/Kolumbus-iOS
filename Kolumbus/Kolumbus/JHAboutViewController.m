@@ -9,6 +9,7 @@
 #import "JHAboutViewController.h"
 
 @implementation JHAboutViewController
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;

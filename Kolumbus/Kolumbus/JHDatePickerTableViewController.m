@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Jugend Hackt. All rights reserved.
 //
 
+#import "JHInputTableViewController.h"
 #import "JHDatePickerTableViewController.h"
 
 @interface JHDatePickerTableViewController ()
