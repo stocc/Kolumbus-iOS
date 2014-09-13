@@ -26,7 +26,7 @@
     
     self.title = @"Suggestions";
     
-    input = [[NSMutableArray alloc] initWithArray:@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"]];
+    input = [[NSMutableArray alloc] initWithArray:@[@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"], @[@"Sehr großes Tor", @"Sehr großer Turm", @"Sehr großer Platz"]]];
     switches = [NSMutableArray new];
     
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
@@ -36,7 +36,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return input.count;
+    return [input[0] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -48,19 +48,30 @@
     pic.layer.cornerRadius = pic.frame.size.width/2;
     [cell.contentView addSubview:pic];
     
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-70, cell.contentView.frame.size.height-20)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
     title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor blackColor];
     title.textAlignment = NSTextAlignmentLeft;
     title.numberOfLines = 0;
     title.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-    title.text = input[indexPath.row];
+    title.text = input[0][indexPath.row];
     [cell.contentView addSubview:title];
     
+    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-90, 40)];
+    description.backgroundColor = [UIColor clearColor];
+    description.textColor = [UIColor colorWithWhite:0 alpha:.7];
+    description.textAlignment = NSTextAlignmentLeft;
+    description.numberOfLines = 0;
+    description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    description.text = input[1][indexPath.row];
+    [cell.contentView addSubview:description];
+    
+    // Select for route or not
     UISwitch *selectedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(width-70, [self tableView:tv heightForRowAtIndexPath:indexPath]/2-10, 50, 20)];
     [selectedSwitch setOn:YES animated:YES];
     [cell.contentView addSubview:selectedSwitch];
     
+    // add to array for later modification
     [switches addObject:selectedSwitch];
     
     return cell;
