@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */; };
+		69CF0D3F19C484960076F681 /* JHDatePickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF0D3E19C484960076F681 /* JHDatePickerTableViewController.m */; };
+		69CF0D4219C4890D0076F681 /* JHAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF0D4119C4890D0076F681 /* JHAboutViewController.m */; };
 		CC95B70F19C43F730088F04A /* JHMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B70E19C43F730088F04A /* JHMapViewController.m */; };
 		CC95B71119C43F800088F04A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC95B71019C43F800088F04A /* MapKit.framework */; };
 		CC95B71319C4518C0088F04A /* JHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B70A19C42C610088F04A /* JHButton.m */; };
@@ -34,6 +36,10 @@
 
 /* Begin PBXFileReference section */
 		697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		69CF0D3D19C484960076F681 /* JHDatePickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDatePickerTableViewController.h; sourceTree = "<group>"; };
+		69CF0D3E19C484960076F681 /* JHDatePickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDatePickerTableViewController.m; sourceTree = "<group>"; };
+		69CF0D4019C4890D0076F681 /* JHAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAboutViewController.h; sourceTree = "<group>"; };
+		69CF0D4119C4890D0076F681 /* JHAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAboutViewController.m; sourceTree = "<group>"; };
 		CC95B70919C42C610088F04A /* JHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHButton.h; sourceTree = "<group>"; };
 		CC95B70A19C42C610088F04A /* JHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHButton.m; sourceTree = "<group>"; };
 		CC95B70D19C43F730088F04A /* JHMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHMapViewController.h; sourceTree = "<group>"; };
@@ -152,7 +158,11 @@
 				CC994C8D19C3C33000283EC5 /* JHCommunicator.m */,
 				CC95B71419C451BC0088F04A /* JHInputTableViewController.h */,
 				CC95B71519C451BC0088F04A /* JHInputTableViewController.m */,
+				69CF0D3D19C484960076F681 /* JHDatePickerTableViewController.h */,
+				69CF0D3E19C484960076F681 /* JHDatePickerTableViewController.m */,
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
+				69CF0D4019C4890D0076F681 /* JHAboutViewController.h */,
+				69CF0D4119C4890D0076F681 /* JHAboutViewController.m */,
 				CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */,
 				CC994C4619C38FAC00283EC5 /* Supporting Files */,
 			);
@@ -279,8 +289,10 @@
 				CC994C8519C3B5BC00283EC5 /* AFHTTPSessionManager.m in Sources */,
 				CC994C8619C3B5BC00283EC5 /* AFNetworkReachabilityManager.m in Sources */,
 				CC994C8A19C3B5BC00283EC5 /* AFURLResponseSerialization.m in Sources */,
+				69CF0D4219C4890D0076F681 /* JHAboutViewController.m in Sources */,
 				CC994C8B19C3B5BC00283EC5 /* AFURLSessionManager.m in Sources */,
 				CC994C4919C38FAC00283EC5 /* main.m in Sources */,
+				69CF0D3F19C484960076F681 /* JHDatePickerTableViewController.m in Sources */,
 				CC994C8E19C3C33000283EC5 /* JHCommunicator.m in Sources */,
 				CC95B70F19C43F730088F04A /* JHMapViewController.m in Sources */,
 			);

@@ -10,6 +10,7 @@
 #import "JHSuggestionsViewController.h"
 #import <UIKit/UIKit.h>
 
+
 @class JHButton;
 @interface JHInputTableViewController : UITableViewController
 @property (strong,nonatomic) CLLocation* userLocation;
