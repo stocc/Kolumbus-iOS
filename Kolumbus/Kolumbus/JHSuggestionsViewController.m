@@ -62,7 +62,7 @@
     title.text = input[0][indexPath.row];
     [cell.contentView addSubview:title];
     
-    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-90, 40)];
+    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-140, 40)];
     description.backgroundColor = [UIColor clearColor];
     description.textColor = [UIColor colorWithWhite:0 alpha:.7];
     description.textAlignment = NSTextAlignmentLeft;
