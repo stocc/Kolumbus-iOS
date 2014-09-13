@@ -17,7 +17,7 @@
     BOOL is7;
     
     NSDictionary *input;                // the parsed data from the server
-    NSMutableArray *switches;
+    NSMutableDictionary *selections;
 }
 
 - (void)viewDidLoad {
@@ -32,7 +32,7 @@
     // Test data
     NSData __unused *testData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"]];
     input = [NSDictionary new]; // = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
-    switches = [NSMutableArray new];
+    selections = [NSMutableDictionary new];
     
     // Tableview Setup
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
@@ -105,15 +105,13 @@
         
         input = data;
         
-        NSLog(@"%i", [input[input.allKeys[1]] count]);
-        
         // hide spinner
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
         for (int i=0; i<input.allKeys.count; i++) {
             
-            for (id __unused item in input[input.allKeys[i]]) {
-                [switches addObject:@0];
+            for (int j=0; j<[input[input.allKeys[i]] count]; j++) {
+                [selections setObject:@1 forKey:[NSString stringWithFormat:@"%i%i", i, j]];
             }
         }
         
@@ -144,8 +142,6 @@
     
     NSDictionary *model = input[input.allKeys[indexPath.section]][indexPath.row];
     
-    NSLog(@"%@", model);
-    
     UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 50, 50)];
     pic.layer.masksToBounds = YES;
     pic.layer.cornerRadius = pic.frame.size.width/2;
@@ -167,13 +163,13 @@
     description.textAlignment = NSTextAlignmentLeft;
     description.numberOfLines = 0;
     description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    description.text = model[@"id"];
+    description.text = model[@"location"][@"hash"][@"city"];
     [cell.contentView addSubview:description];
     
+    JSFavStarControl *stars = [[JSFavStarControl alloc] initWithLocation:CGPointMake(70, 55) dotImage:[UIImage imageNamed:@"dot"] starImage:[UIImage imageNamed:@"star"] rating:[model[@"rating"] intValue]];
+    [cell.contentView addSubview:stars];
     
-    if (switches.count>=indexPath.row) {
-        //cell.accessoryType = ([switches[indexPath.row]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-    }
+    cell.accessoryType = ([selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
     /*/ Select for route or not
     UISwitch *selectedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(width-70, [self tableView:tv heightForRowAtIndexPath:indexPath]/2-10, 50, 20)];
@@ -195,9 +191,8 @@
     
     [tv deselectRowAtIndexPath:indexPath animated:YES];
     
-    // invert the switch/ checkmark
-    //[(UISwitch *)switches[indexPath.row] setOn:![(UISwitch *)switches[indexPath.row] isOn] animated:YES];
-    switches[indexPath.row] = ([switches[indexPath.row]  isEqual: @0]) ? @1 : @0;
+    // invert the checkmark
+    selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]] = ([selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]]  isEqual: @0]) ? @1 : @0;
     [tv reloadData];
 }
 
