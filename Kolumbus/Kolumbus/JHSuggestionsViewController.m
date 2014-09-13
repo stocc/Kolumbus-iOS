@@ -117,7 +117,7 @@
     UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 50, 50)];
     pic.layer.masksToBounds = YES;
     pic.layer.cornerRadius = pic.frame.size.width/2;
-    [pic setImageWithURL:[NSURL URLWithString:model[@"snippet_image_url"]] placeholderImage:[UIImage imageNamed:@"icon1"]];
+    [pic sd_setImageWithURL:[NSURL URLWithString:model[@"snippet_image_url"]] placeholderImage:[UIImage imageNamed:@"icon1"]];
     [cell.contentView addSubview:pic];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];

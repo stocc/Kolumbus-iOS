@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WXV-KW-8Ab">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
@@ -113,7 +112,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <sections>
                             <tableViewSection id="mKP-Yg-Cpc">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" textLabel="ejK-iv-NZe" detailTextLabel="QpU-HV-kjV" rowHeight="44" style="IBUITableViewCellStyleValue1" id="XQn-m3-lqG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell2" textLabel="ejK-iv-NZe" detailTextLabel="QpU-HV-kjV" rowHeight="44" style="IBUITableViewCellStyleValue1" id="XQn-m3-lqG">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XQn-m3-lqG" id="Gqx-hH-sme">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -132,8 +131,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BrE-14-FNm" kind="presentation" identifier="pickDateForStart" id="ZGz-wR-xtC"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" textLabel="z3M-km-BWe" detailTextLabel="Oo8-Py-abt" rowHeight="44" style="IBUITableViewCellStyleValue1" id="3yE-IY-2bW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell3" textLabel="z3M-km-BWe" detailTextLabel="Oo8-Py-abt" rowHeight="44" style="IBUITableViewCellStyleValue1" id="3yE-IY-2bW">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3yE-IY-2bW" id="2CV-Nq-8Dy">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -152,6 +154,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BrE-14-FNm" kind="presentation" identifier="pickDateForEnd" id="g27-fA-8uA"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="sZU-1z-Xh9">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -325,11 +330,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     <connections>
                         <outlet property="budgetSegmentedControl" destination="Ewh-MN-7un" id="BcC-ne-SEK"/>
                         <outlet property="currentLocationActivityIndicator" destination="Y14-pC-TBy" id="HhX-Ta-ca9"/>
+                        <outlet property="endDateLabel" destination="Oo8-Py-abt" id="ZMC-eL-uRQ"/>
                         <outlet property="intensitySlider" destination="jSo-Hg-A47" id="fp5-UH-4nH"/>
                         <outlet property="locationTextfield" destination="AhQ-7q-Jwp" id="1yR-iw-Wdl"/>
+                        <outlet property="startDateLabel" destination="QpU-HV-kjV" id="ao7-Sk-5JT"/>
                         <outlet property="stepLabel" destination="nvg-59-ob6" id="9ud-sj-gul"/>
                         <segue destination="vx9-wq-ZaN" kind="show" identifier="showSuggestions" id="IHA-tt-tf8"/>
-                        <segue destination="BrE-14-FNm" kind="presentation" id="JHh-Iw-JcF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWd-xU-cVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -344,10 +350,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <datePicker key="tableFooterView" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="ej5-CG-yCX">
+                            <rect key="frame" x="0.0" y="153" width="600" height="216"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <date key="date" timeIntervalSinceReferenceDate="432314033.53535903">
+                                <!--2014-09-13 15:13:53 +0000-->
+                            </date>
+                            <locale key="locale" localeIdentifier="de"/>
+                            <connections>
+                                <action selector="changedDate:" destination="ZWX-oV-Kpk" eventType="valueChanged" id="c8L-dM-LUX"/>
+                            </connections>
+                        </datePicker>
                         <sections>
                             <tableViewSection id="1ie-Zt-4gc">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LE1-Mu-3mX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="LE1-Mu-3mX">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LE1-Mu-3mX" id="uPU-Xd-8zv">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -358,41 +375,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPO-el-D5t">
-                                                    <rect key="frame" x="15" y="5" width="570" height="31.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="GPO-el-D5t" secondAttribute="bottom" constant="7.5" id="0ek-Ty-Zny"/>
-                                                <constraint firstAttribute="trailing" secondItem="GPO-el-D5t" secondAttribute="trailing" constant="15" id="27E-o6-ror"/>
-                                                <constraint firstAttribute="bottom" secondItem="GPO-el-D5t" secondAttribute="bottom" id="4Ei-5T-gyN"/>
                                                 <constraint firstItem="qrP-7P-dO7" firstAttribute="top" secondItem="uPU-Xd-8zv" secondAttribute="top" constant="1" id="BJa-fC-Ea2"/>
-                                                <constraint firstItem="GPO-el-D5t" firstAttribute="top" secondItem="uPU-Xd-8zv" secondAttribute="top" constant="5" id="BgB-pf-Jih"/>
                                                 <constraint firstAttribute="trailing" secondItem="qrP-7P-dO7" secondAttribute="trailing" constant="15" id="DP9-Fb-vfq"/>
                                                 <constraint firstItem="qrP-7P-dO7" firstAttribute="leading" secondItem="uPU-Xd-8zv" secondAttribute="leading" constant="15" id="FRs-Zr-Omk"/>
-                                                <constraint firstAttribute="bottom" secondItem="GPO-el-D5t" secondAttribute="bottom" constant="7.5" id="YUc-YF-jww"/>
-                                                <constraint firstItem="GPO-el-D5t" firstAttribute="top" secondItem="uPU-Xd-8zv" secondAttribute="top" constant="12" id="gIH-vE-56y"/>
-                                                <constraint firstAttribute="trailing" secondItem="GPO-el-D5t" secondAttribute="trailing" constant="16" id="gOE-jn-gzk"/>
-                                                <constraint firstItem="GPO-el-D5t" firstAttribute="top" secondItem="uPU-Xd-8zv" secondAttribute="top" constant="5" id="iGh-7B-udt"/>
                                                 <constraint firstAttribute="bottom" secondItem="qrP-7P-dO7" secondAttribute="bottom" constant="1" id="kZ4-TE-qOa"/>
-                                                <constraint firstItem="GPO-el-D5t" firstAttribute="leading" secondItem="uPU-Xd-8zv" secondAttribute="leading" constant="15" id="ndq-fC-3T3"/>
-                                                <constraint firstAttribute="trailing" secondItem="GPO-el-D5t" secondAttribute="trailing" constant="16" id="qP5-WM-NYM"/>
-                                                <constraint firstAttribute="trailing" secondItem="GPO-el-D5t" secondAttribute="trailing" constant="15" id="u1q-t3-ahW"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="4Ei-5T-gyN"/>
-                                                    <exclude reference="BgB-pf-Jih"/>
-                                                    <exclude reference="YUc-YF-jww"/>
-                                                    <exclude reference="gIH-vE-56y"/>
-                                                    <exclude reference="gOE-jn-gzk"/>
-                                                    <exclude reference="qP5-WM-NYM"/>
-                                                    <exclude reference="u1q-t3-ahW"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -403,14 +392,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             <outlet property="delegate" destination="ZWX-oV-Kpk" id="3ni-TB-tMG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4ud-eX-0fB"/>
+                    <navigationItem key="navigationItem" id="4ud-eX-0fB">
+                        <barButtonItem key="leftBarButtonItem" title="Abbrechen" id="cp5-co-Jiq">
+                            <connections>
+                                <action selector="cancel:" destination="ZWX-oV-Kpk" id="4Fk-bc-6NZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Fertig" style="done" id="6nv-nC-n78">
+                            <connections>
+                                <action selector="done:" destination="ZWX-oV-Kpk" id="ZxJ-cU-Rwg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="dateLabel" destination="GPO-el-D5t" id="wCO-5K-h6Y"/>
+                        <outlet property="datePicker" destination="ej5-CG-yCX" id="FgW-9Q-hSd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPL-hH-zR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="888" y="1143"/>
+            <point key="canvasLocation" x="888" y="1248"/>
         </scene>
         <!--Suggestions View Controller-->
         <scene sceneID="jmO-Gn-9DC">
@@ -466,10 +466,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjj-gL-O70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="1144"/>
+            <point key="canvasLocation" x="119" y="1248"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon_new.png" width="120" height="120"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="g27-fA-8uA"/>
+    </inferredMetricsTieBreakers>
 </document>
