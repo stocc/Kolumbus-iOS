@@ -42,11 +42,6 @@
     // tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:tableView];
     
-    // dirty, but has to stay!!!
-    for (id __unused item in input) {
-        [switches addObject:@0];
-    }
-    
     // Show all on Map
     UIBarButtonItem *map = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"place4"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMap)];
     self.navigationItem.rightBarButtonItem = map;
@@ -56,7 +51,7 @@
     [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
     [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:finish];
+    [((UIWindow *)[[UIApplication sharedApplication] windows][0]) addSubview:finish];
     
     UILabel *finishText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 40)];
     finishText.backgroundColor = [UIColor clearColor];
@@ -110,7 +105,7 @@
 
 #pragma mark Table View delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [input allKeys].count;
+    return businesses.count-1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
