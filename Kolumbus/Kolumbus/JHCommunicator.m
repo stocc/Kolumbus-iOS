@@ -28,4 +28,40 @@
     
 }
 
++ (NSDictionary *)getSearch {
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
+    
+    [manager GET:@"search" parameters:@[@"q"] success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSLog(@"Response: %@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"Error: %@", error.description);
+        
+    }];
+    
+    return [NSDictionary new];
+    
+}
+
++ (NSDictionary *)getFinalTrif {
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
+    
+    [manager GET:@"final_trip" parameters:@[@"spots"] success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSLog(@"Response: %@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"Error: %@", error.description);
+        
+    }];
+    
+    return [NSDictionary new];
+    
+}
+
 @end
