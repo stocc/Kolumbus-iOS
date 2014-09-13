@@ -297,8 +297,15 @@
     
     [JHCommunicator getSearch:query coordinates:userLocation finish:^(NSDictionary *response){
     
-        NSDictionary *result = response[@"businesses"][0];
-        NSLog(@"%@",result);
+        if (![response[@"businesses"] count] == 0) {
+            NSDictionary *result = response[@"businesses"][0];
+            NSLog(@"%@",result);
+        }else{
+            
+            [[[UIAlertView alloc] initWithTitle:@"Fehler" message:@"Ort nicht gefunden" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        
+        }
+
     }];
 
 
