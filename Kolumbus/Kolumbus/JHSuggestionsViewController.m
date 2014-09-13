@@ -30,7 +30,8 @@
     self.title = @"Vorschläge";
     
     // Test data
-    input = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"]] options:NSJSONReadingMutableLeaves error:nil];
+    NSData *testData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"]];
+    input = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
     switches = [NSMutableArray new];
     
     NSLog(@"%@", input);
