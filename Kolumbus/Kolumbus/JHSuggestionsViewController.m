@@ -16,7 +16,7 @@
     
     BOOL is7;
     
-    NSMutableArray *input;
+    NSDictionary *input;                // the parsed data from the server
     NSMutableArray *switches;
 }
 
@@ -30,8 +30,10 @@
     self.title = @"Vorschläge";
     
     // Test data
-    input = [[NSMutableArray alloc] initWithArray:@[@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"], @[@"Sehr großes Tor", @"Sehr großer Turm", @"Sehr großer Platz"]]];
+    input = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"]] options:NSJSONReadingMutableLeaves error:nil];
     switches = [NSMutableArray new];
+    
+    NSLog(@"%@", input);
     
     // Tableview Setup
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
@@ -40,7 +42,8 @@
     tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:tableView];
     
-    for (id __unused item in input[0]) {
+    // dirty, but has to stay!!!
+    for (id __unused item in input) {
         [switches addObject:@0];
     }
     
@@ -88,12 +91,19 @@
 
 - (void)loadData:(NSDictionary *)data {
     
+    if (data) {
+        
+        input = data;
+        
+        
+    }
+    
 }
 
 
 #pragma mark Table View delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [input[0] count];
+    return [input allKeys].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,7 +122,7 @@
     title.textAlignment = NSTextAlignmentLeft;
     title.numberOfLines = 0;
     title.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-    title.text = input[0][indexPath.row];
+    //title.text = [input objectForKey:@"title"];
     [cell.contentView addSubview:title];
     
     UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-140, 40)];
@@ -121,7 +131,7 @@
     description.textAlignment = NSTextAlignmentLeft;
     description.numberOfLines = 0;
     description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    description.text = input[1][indexPath.row];
+    //description.text = input[1][indexPath.row];
     [cell.contentView addSubview:description];
     
     cell.accessoryType = ([switches[indexPath.row]  isEqual: @0]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
