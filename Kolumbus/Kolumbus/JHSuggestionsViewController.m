@@ -66,7 +66,6 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"Loading";
     
-    
     // ================================================================================================
     
     /*/ Testing area 51
@@ -85,17 +84,26 @@
 }
 
 - (void)finishSuggestions {
+
+    // parse selected ones into array 'selecteds'
+    NSMutableArray *selecteds = [NSMutableArray new];
+    [selections enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([selections[key]  isEqual: @0]) {
+            [selecteds addObject:key];
+        }
+    }];
     
-    [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Diese Funktion ist noch in Arbeit." delegate:nil cancelButtonTitle:@"Ok, cool" otherButtonTitles:nil, nil] show];
+    NSLog(@"%@", selecteds);
     
-    //JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
-    //[self.navigationController pushViewController:timelineVC animated:YES];
+    if (selecteds.count == 0)
+        [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Bitte wähle mindestens einen Vorschlag aus" delegate:nil cancelButtonTitle:@"Ok, mach ich" otherButtonTitles:nil, nil] show];
     
-    [JHCommunicator getFinalTripFrom:[NSDate new] until:[NSDate new] spots:@[@{@"dinner" : @[@"deine Mutter", @"deine Mum"]}, @{@"lunch" : @[@"Stalin"]}, @{@"sights to see" : @[@"Alex"]}, @{@"museum" : @[@"Hack"]}, @{@"cafe" : @[@"SBux"]}] finish:^(NSDictionary *response) {
-       
-        NSLog(@"Resp: %@", response);
+    JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
+    [self.navigationController pushViewController:timelineVC animated:YES];
+    
+    [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:@[@"test"] finish:^(NSDictionary *response) {
         
-        //[timelineVC loadData:response];
+        [timelineVC loadData:response];
         
     }];
 }
