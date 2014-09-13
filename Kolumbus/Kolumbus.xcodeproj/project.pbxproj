@@ -17,7 +17,6 @@
 		CC994C5219C38FAC00283EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5019C38FAC00283EC5 /* Main.storyboard */; };
 		CC994C5419C38FAD00283EC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5319C38FAD00283EC5 /* Images.xcassets */; };
 		CC994C5719C38FAD00283EC5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */; };
-		CC994C6319C38FAD00283EC5 /* KolumbusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C6219C38FAD00283EC5 /* KolumbusTests.m */; };
 		CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */; };
 		CC994C8319C3B5BC00283EC5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C7119C3B5BC00283EC5 /* AFHTTPRequestOperation.m */; };
 		CC994C8419C3B5BC00283EC5 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C7319C3B5BC00283EC5 /* AFHTTPRequestOperationManager.m */; };
@@ -30,16 +29,6 @@
 		CC994C8B19C3B5BC00283EC5 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C8219C3B5BC00283EC5 /* AFURLSessionManager.m */; };
 		CC994C8E19C3C33000283EC5 /* JHCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C8D19C3C33000283EC5 /* JHCommunicator.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CC994C5D19C38FAD00283EC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC994C3B19C38FAC00283EC5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CC994C4219C38FAC00283EC5;
-			remoteInfo = Kolumbus;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		697D6BBD19C3ABA20096B8EE /* JHLocationPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLocationPickerTableViewController.h; sourceTree = "<group>"; };
@@ -58,9 +47,6 @@
 		CC994C5119C38FAC00283EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC994C5319C38FAD00283EC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC994C5619C38FAD00283EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CC994C5C19C38FAD00283EC5 /* KolumbusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KolumbusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC994C6119C38FAD00283EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC994C6219C38FAD00283EC5 /* KolumbusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KolumbusTests.m; sourceTree = "<group>"; };
 		CC994C6C19C3956B00283EC5 /* JHSuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSuggestionsViewController.h; sourceTree = "<group>"; };
 		CC994C6D19C3956B00283EC5 /* JHSuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSuggestionsViewController.m; sourceTree = "<group>"; };
 		CC994C7019C3B5BB00283EC5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -93,13 +79,6 @@
 			files = (
 				69B935B319C4301300D89B34 /* MapKit.framework in Frameworks */,
 				697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC994C5919C38FAD00283EC5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +115,6 @@
 				69B935B219C4301300D89B34 /* MapKit.framework */,
 				697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */,
 				CC994C4519C38FAC00283EC5 /* Kolumbus */,
-				CC994C5F19C38FAD00283EC5 /* KolumbusTests */,
 				CC994C4419C38FAC00283EC5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -145,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				CC994C4319C38FAC00283EC5 /* Kolumbus.app */,
-				CC994C5C19C38FAD00283EC5 /* KolumbusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +144,8 @@
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
 				697D6BBD19C3ABA20096B8EE /* JHLocationPickerTableViewController.h */,
 				697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */,
+				CC95B70919C42C610088F04A /* JHButton.h */,
+				CC95B70A19C42C610088F04A /* JHButton.m */,
 				CC994C5319C38FAD00283EC5 /* Images.xcassets */,
 				CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */,
 				CC994C4619C38FAC00283EC5 /* Supporting Files */,
@@ -180,23 +159,6 @@
 				CC95B6AE19C413980088F04A /* Icons */,
 				CC994C4719C38FAC00283EC5 /* Info.plist */,
 				CC994C4819C38FAC00283EC5 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CC994C5F19C38FAD00283EC5 /* KolumbusTests */ = {
-			isa = PBXGroup;
-			children = (
-				CC994C6219C38FAD00283EC5 /* KolumbusTests.m */,
-				CC994C6019C38FAD00283EC5 /* Supporting Files */,
-			);
-			path = KolumbusTests;
-			sourceTree = "<group>";
-		};
-		CC994C6019C38FAD00283EC5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CC994C6119C38FAD00283EC5 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -247,24 +209,6 @@
 			productReference = CC994C4319C38FAC00283EC5 /* Kolumbus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CC994C5B19C38FAD00283EC5 /* KolumbusTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CC994C6919C38FAD00283EC5 /* Build configuration list for PBXNativeTarget "KolumbusTests" */;
-			buildPhases = (
-				CC994C5819C38FAD00283EC5 /* Sources */,
-				CC994C5919C38FAD00283EC5 /* Frameworks */,
-				CC994C5A19C38FAD00283EC5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CC994C5E19C38FAD00283EC5 /* PBXTargetDependency */,
-			);
-			name = KolumbusTests;
-			productName = KolumbusTests;
-			productReference = CC994C5C19C38FAD00283EC5 /* KolumbusTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -276,10 +220,6 @@
 				TargetAttributes = {
 					CC994C4219C38FAC00283EC5 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					CC994C5B19C38FAD00283EC5 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = CC994C4219C38FAC00283EC5;
 					};
 				};
 			};
@@ -297,7 +237,6 @@
 			projectRoot = "";
 			targets = (
 				CC994C4219C38FAC00283EC5 /* Kolumbus */,
-				CC994C5B19C38FAD00283EC5 /* KolumbusTests */,
 			);
 		};
 /* End PBXProject section */
@@ -331,6 +270,7 @@
 				697D6BBF19C3ABA20096B8EE /* JHLocationPickerTableViewController.m in Sources */,
 				CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */,
 				CC994C8719C3B5BC00283EC5 /* AFSecurityPolicy.m in Sources */,
+				CC95B70B19C42C610088F04A /* JHButton.m in Sources */,
 				CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */,
 				CC994C8419C3B5BC00283EC5 /* AFHTTPRequestOperationManager.m in Sources */,
 				CC994C8819C3B5BC00283EC5 /* AFURLConnectionOperation.m in Sources */,
@@ -346,23 +286,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC994C5819C38FAD00283EC5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC994C6319C38FAD00283EC5 /* KolumbusTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CC994C5E19C38FAD00283EC5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CC994C4219C38FAC00283EC5 /* Kolumbus */;
-			targetProxy = CC994C5D19C38FAD00283EC5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CC994C5019C38FAC00283EC5 /* Main.storyboard */ = {
@@ -464,6 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Kolumbus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -475,44 +400,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Kolumbus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		CC994C6A19C38FAD00283EC5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KolumbusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kolumbus.app/Kolumbus";
-			};
-			name = Debug;
-		};
-		CC994C6B19C38FAD00283EC5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KolumbusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kolumbus.app/Kolumbus";
 			};
 			name = Release;
 		};
@@ -533,15 +425,6 @@
 			buildConfigurations = (
 				CC994C6719C38FAD00283EC5 /* Debug */,
 				CC994C6819C38FAD00283EC5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CC994C6919C38FAD00283EC5 /* Build configuration list for PBXNativeTarget "KolumbusTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CC994C6A19C38FAD00283EC5 /* Debug */,
-				CC994C6B19C38FAD00283EC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

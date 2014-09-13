@@ -28,22 +28,32 @@
     
 }
 
-+ (NSDictionary *)getSearch {
++ (NSDictionary *)getSearch:(NSString *)query coordinates:(CLLocation *)location {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
     
-    [manager GET:@"search" parameters:@[@"q"] success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDictionary __block *result;
+    
+    [manager GET:@"search" parameters:@{@"q" : query, @"accomodation_lat" : [NSString stringWithFormat:@"%f", location.coordinate.latitude], @"accomodation_lng" : [NSString stringWithFormat:@"%f", location.coordinate.longitude]} success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSLog(@"Response: %@", responseObject);
+        NSError *error;
+        result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&error];
+        
+        NSLog(@"Response: %@", result);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        result = @{@"error" : error.description};
         
         NSLog(@"Error: %@", error.description);
         
     }];
     
-    return [NSDictionary new];
-    
+    if (result) {
+        return result;
+    } else {
+        return @{@"error" : @"no dict"};
+    }
 }
 
 + (NSDictionary *)getFinalTrip {
