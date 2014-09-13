@@ -29,16 +29,32 @@
     
     self.title = @"Suggestions";
     
+    // Test data
     input = [[NSMutableArray alloc] initWithArray:@[@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"], @[@"Sehr großes Tor", @"Sehr großer Turm", @"Sehr großer Platz"]]];
     switches = [NSMutableArray new];
     
+    // Tableview Setup
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:tableView];
+    
+    // Show all on Map
+    UIBarButtonItem *map = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"place4"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMap)];
+    self.navigationItem.rightBarButtonItem = map;
+    
+    // Finish button
+    
 }
 
+#pragma mark Finns Funny Functions!
+- (void)showMap {
+    // TODO
+}
+
+
+#pragma mark Table View delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [input[0] count];
 }
