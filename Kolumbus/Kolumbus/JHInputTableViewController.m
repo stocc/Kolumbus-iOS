@@ -77,16 +77,11 @@
     
     // explanation: The new view gets pushed and the app downloads the info in the background (async) and when it's ready, the new view displays the new info
     
-    self.budget = self.budgetSegmentedControl.selectedSegmentIndex+1;
+    self.budget = (int)self.budgetSegmentedControl.selectedSegmentIndex+1;
     NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
-    self.intensity = [intensityNumber integerValue];
+    self.intensity = [intensityNumber intValue];
     
     [JHCommunicator getSuggestionsFrom:nil until:nil visitedCount:self.visitCount budgetClass:self.budget visitIntensity:self.intensity finish:^(NSDictionary *response){}];
-    
-    
-    
-    [self performSegueWithIdentifier:@"showSuggestions" sender:self];
-
     
 }
 
@@ -114,13 +109,13 @@
     self.stepLabel.text = [NSString stringWithFormat:@"%.f",sender.value];
     
     NSNumber *stepperValue = [NSNumber numberWithDouble:sender.value];
-    self.visitCount = [stepperValue integerValue];
+    self.visitCount = (int)[stepperValue integerValue];
 }
 - (IBAction)go:(id)sender {
     
-    self.budget = self.budgetSegmentedControl.selectedSegmentIndex+1;
+    self.budget = (int)self.budgetSegmentedControl.selectedSegmentIndex+1;
     NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
-    self.intensity = [intensityNumber integerValue];
+    self.intensity = (int)[intensityNumber integerValue];
     
     [self performSegueWithIdentifier:@"showSuggestions" sender:self];
 }
