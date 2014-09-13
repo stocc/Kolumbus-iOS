@@ -10,7 +10,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import "JHDatePickerTableViewController.h"
 #import "JHAboutViewController.h"
-@interface JHInputTableViewController ()<CLLocationManagerDelegate, JHDatePickerDelegate, JHABoutVCDelegate>
+@interface JHInputTableViewController ()<CLLocationManagerDelegate, JHDatePickerDelegate, JHABoutVCDelegate> {
+    JHButton *finish;
+}
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currentLocationActivityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *locationTextfield;
@@ -52,7 +54,7 @@
     }
     
     // Finish button
-    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44)];
+    finish = [[JHButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44)];
     [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
     [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
@@ -117,10 +119,12 @@
     if ([segue.identifier isEqualToString:@"about"]) {
         JHAboutViewController *aboutVC = (JHAboutViewController *)segue.destinationViewController;
         aboutVC.delegate = self;
+        [finish removeFromSuperview];
     }
 }
 -(void)hideMe{
     [self dismissViewControllerAnimated:YES completion:^{}];
+    [((UIWindow *)[[UIApplication sharedApplication] windows][0]) addSubview:finish];
 }
 
 @end
