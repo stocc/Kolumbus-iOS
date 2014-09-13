@@ -45,12 +45,30 @@
     self.navigationItem.rightBarButtonItem = map;
     
     // Finish button
+    UIButton *finish = [[UIButton alloc] initWithFrame:CGRectMake(20, height-70, width-40, 50)];
+    finish.layer.masksToBounds = YES;
+    finish.layer.cornerRadius = finish.frame.size.height/2;
+    finish.backgroundColor = [UIColor darkGrayColor];
+    [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:finish];
     
+    UILabel *finishText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width-40, 50)];
+    finishText.backgroundColor = [UIColor clearColor];
+    finishText.textColor = [UIColor whiteColor];
+    finishText.textAlignment = NSTextAlignmentCenter;
+    finishText.numberOfLines = 0;
+    finishText.font = [UIFont fontWithName:@"Helvetica Neue" size:30];
+    finishText.text = @"Fertig";
+    [finish addSubview:finishText];
 }
 
 #pragma mark Finns Funny Functions!
 - (void)showMap {
     // TODO
+}
+
+- (void)finishSuggestions {
+    
 }
 
 
