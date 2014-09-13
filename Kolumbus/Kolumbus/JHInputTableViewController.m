@@ -134,6 +134,11 @@
             self.currentlyEditing = @"end";
         }
         
+                if ([segue.identifier rangeOfString:@"Start"].length != 0) {
+                        self.currentlyEditing = @"start";
+                    }else{
+                        self.currentlyEditing = @"end";
+                }
     }
 }
 
