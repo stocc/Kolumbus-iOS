@@ -76,7 +76,17 @@
     [self.navigationController pushViewController:suggestionsVC animated:YES];
     
     // explanation: The new view gets pushed and the app downloads the info in the background (async) and when it's ready, the new view displays the new info
-    //[JHCommunicator getSuggestionsFrom:<#(NSDate *)#> until:<#(NSDate *)#> visitedCount:<#(int)#> budgetClass:<#(int)#> visitIntensity:<#(int)#>];
+    
+    self.budget = self.budgetSegmentedControl.selectedSegmentIndex+1;
+    NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
+    self.intensity = [intensityNumber integerValue];
+    
+    [JHCommunicator getSuggestionsFrom:nil until:nil visitedCount:self.visitCount budgetClass:self.budget visitIntensity:self.intensity finish:^(NSDictionary *response){}];
+    
+    
+    
+    [self performSegueWithIdentifier:@"showSuggestions" sender:self];
+
     
 }
 
