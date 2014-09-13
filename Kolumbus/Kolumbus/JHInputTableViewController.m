@@ -15,6 +15,9 @@
 @property (strong,nonatomic) CLLocationManager *locationManager;
 @property (strong,nonatomic) CLLocation* userLocation;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goButton;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *budgetSegmentedControl;
+@property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
+@property (weak, nonatomic) IBOutlet UILabel *stepLabel;
 @end
 
 @implementation JHInputTableViewController
@@ -69,5 +72,7 @@
 
     NSLog(@"Location error %@",error.description);
 
+}
+- (IBAction)stepperChanged:(UIStepper *)sender {
 }
 @end
