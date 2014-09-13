@@ -60,7 +60,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1; //input.count;
+    return [input[input.allKeys[0]] allKeys].count;
 }
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -68,7 +68,7 @@
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
-    NSDictionary *model = input[@"jo"][indexPath.row];
+    NSDictionary *model = input[input.allKeys[0]][[input[input.allKeys[0]] allKeys][indexPath.row]];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
     title.backgroundColor = [UIColor clearColor];
