@@ -49,7 +49,7 @@
     finish.layer.masksToBounds = YES;
     finish.layer.cornerRadius = finish.frame.size.height/2;
     [finish setNormalColor:[UIColor colorWithRed:(24.0/255.0) green:(49.0/255.0) blue:(63.0/255.0) alpha:1]];
-    [finish setHighlightedColor:[UIColor colorWithRed:(20.0/255.0) green:(45.0/255.0) blue:(60.0/255.0) alpha:1]];
+    [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:finish];
     
@@ -61,6 +61,14 @@
     finishText.font = [UIFont fontWithName:@"Helvetica Neue" size:30];
     finishText.text = @"Fertig";
     [finish addSubview:finishText];
+    
+    
+    // ================================================================================================
+    
+    // Testing area 51
+    
+    NSDictionary *test = [JHCommunicator getSearch:@"store" coordinates:[[CLLocation alloc] initWithLatitude:52.530639 longitude:13.413480]];
+    NSLog(@"test: %@", test[@"foursquare"][@"venues"]);
 }
 
 #pragma mark Finns Funny Functions!
@@ -69,7 +77,7 @@
 }
 
 - (void)finishSuggestions {
-    
+    // TODO
 }
 
 

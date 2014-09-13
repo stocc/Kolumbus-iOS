@@ -7,12 +7,13 @@
 //
 
 #import "AFNetworking.h"
+#import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
 
 @interface JHCommunicator : NSObject
 
 + (NSDictionary *)getSuggestions;
-+ (NSDictionary *)getSearch;
++ (NSDictionary *)getSearch:(NSString *)query coordinates:(CLLocation *)location;
 + (NSDictionary *)getFinalTrip;
 
 @end
