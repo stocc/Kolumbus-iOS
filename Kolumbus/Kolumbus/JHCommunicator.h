@@ -12,8 +12,9 @@
 
 @interface JHCommunicator : NSObject
 
-+ (NSDictionary *)getSuggestionsFrom:(NSDate *)startDate until:(NSDate *)endDate visitedCount:(int)visits budgetClass:(int)budget visitIntensity:(int)intensity;
-+ (NSDictionary *)getSearch:(NSString *)query coordinates:(CLLocation *)location;
-+ (NSDictionary *)getFinalTrip;
++ (void)getSuggestionsFrom:(NSDate *)startDate until:(NSDate *)endDate visitedCount:(int)visits budgetClass:(int)budget visitIntensity:(int)intensity finish:(void (^)(NSDictionary *response))responseBlock;
++ (void)getSearch:(NSString *)query coordinates:(CLLocation *)location finish:(void (^)(NSDictionary *response))responseBlock;
++ (void)getFinalTripFrom:(NSDate *)startDate until:(NSDate *)endDate spots:(NSString *)spots finish:(void (^)(NSDictionary *response))responseBlock;
+
 
 @end

@@ -64,13 +64,13 @@
 
 }
 
-+ (void)getFinalTripFrom:(NSDate *)startDate until:(NSDate *)endDate finish:(void (^)(NSDictionary *response))responseBlock {
++ (void)getFinalTripFrom:(NSDate *)startDate until:(NSDate *)endDate spots:(NSString *)spots finish:(void (^)(NSDictionary *response))responseBlock {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
     
     NSDictionary __block *result;
     
-    [manager GET:@"final_trip" parameters:@[@"spots"] success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager GET:@"final_trip" parameters:@{@"starts_at" : startDate, @"ends_at" : endDate, @"spots" : spots} success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSError *error;
         result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&error];
