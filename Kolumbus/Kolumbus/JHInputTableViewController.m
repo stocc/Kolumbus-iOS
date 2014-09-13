@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *budgetSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
+@property (strong, nonatomic) NSString *currentlyEditing;
+@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
 @end
 
 @implementation JHInputTableViewController
@@ -84,7 +87,7 @@
     NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
     self.intensity = [intensityNumber intValue];
     
-    [JHCommunicator getSuggestionsFrom:[NSDate new] until:[NSDate new] visitedCount:self.visitCount budgetClass:self.budget visitIntensity:self.intensity finish:^(NSDictionary *response){
+    [JHCommunicator getSuggestionsFrom:self.startDate until:self.endDate visitedCount:self.visitCount budgetClass:self.budget visitIntensity:self.intensity finish:^(NSDictionary *response){
     
         [suggestionsVC loadData:response];
     
@@ -127,4 +130,24 @@
     [((UIWindow *)[[UIApplication sharedApplication] windows][0]) addSubview:finish];
 }
 
+
+-(void)didFinishPickingDate:(NSDate *)date{
+    if ([self.currentlyEditing isEqualToString:@"start"]) {
+        self.startDate = date;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"d.M.Y"];
+        self.startDateLabel.text = [formatter stringFromDate:date];
+    }else{
+        self.endDate = date;
+        NSLog(@"%@",date);
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"d.M.Y"];
+        self.endDateLabel.text = [formatter stringFromDate:date];
+    }
+    self.currentlyEditing = @"";
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+-(void)didNotPickDate{
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
 @end
