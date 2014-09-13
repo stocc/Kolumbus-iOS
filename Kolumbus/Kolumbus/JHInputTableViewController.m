@@ -123,6 +123,17 @@
         JHAboutViewController *aboutVC = (JHAboutViewController *)segue.destinationViewController;
         aboutVC.delegate = self;
         [finish removeFromSuperview];
+    }else if ([segue.identifier containsString:@"pickDateFor"]){
+        
+                UINavigationController *navCon = (UINavigationController *)segue.destinationViewController;
+                JHDatePickerTableViewController *datePicker = (JHDatePickerTableViewController *)navCon.viewControllers[0];
+                datePicker.delegate = self;
+        
+                if ([segue.identifier containsString:@"Start"]) {
+                        self.currentlyEditing = @"start";
+                    }else{
+                            self.currentlyEditing = @"end";
+    }
     }
 }
 -(void)hideMe{
