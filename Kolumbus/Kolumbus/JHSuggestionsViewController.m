@@ -25,7 +25,7 @@
     
     width = self.view.frame.size.width;
     height = self.view.frame.size.height;
-    is7 = ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue] >= 7);
+    is7 = ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue] <= 7);
     
     self.title = @"Suggestions";
     
@@ -35,7 +35,7 @@
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
-    tableView.contentInset = UIEdgeInsetsMake(70, 0, 0, 0);
+    tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:tableView];
 }
 
