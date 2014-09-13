@@ -12,5 +12,12 @@
 
 @class JHButton;
 @interface JHInputTableViewController : UITableViewController
+@property (strong,nonatomic) CLLocation* userLocation;
+@property (nonatomic) NSInteger budget;
+@property (nonatomic) NSInteger intensity;
+@property (nonatomic) NSInteger visitCount;
+
+@property (nonatomic,strong) NSDate *startDate; //NYI
+@property (nonatomic,strong) NSDate *endDate;  //NYI
 
 @end

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WXV-KW-8Ab">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -214,17 +213,26 @@
                             <outlet property="delegate" destination="AHz-ZZ-qBZ" id="JwR-jB-aiS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Kolumbus" id="mJY-X1-0UH"/>
+                    <navigationItem key="navigationItem" title="Kolumbus" id="mJY-X1-0UH">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Go" id="vDx-Q7-1f8">
+                            <connections>
+                                <action selector="go:" destination="AHz-ZZ-qBZ" id="qPw-RK-UEM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="budgetSegmentedControl" destination="Ewh-MN-7un" id="BcC-ne-SEK"/>
                         <outlet property="currentLocationActivityIndicator" destination="Y14-pC-TBy" id="HhX-Ta-ca9"/>
+                        <outlet property="goButton" destination="vDx-Q7-1f8" id="j1u-iI-7G5"/>
+                        <outlet property="intensitySlider" destination="jSo-Hg-A47" id="fp5-UH-4nH"/>
                         <outlet property="locationTextfield" destination="AhQ-7q-Jwp" id="1yR-iw-Wdl"/>
                         <outlet property="stepLabel" destination="nvg-59-ob6" id="9ud-sj-gul"/>
+                        <segue destination="vx9-wq-ZaN" kind="show" identifier="showSuggestions" id="IHA-tt-tf8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWd-xU-cVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="381"/>
+            <point key="canvasLocation" x="119" y="381"/>
         </scene>
         <!--Suggestions View Controller-->
         <scene sceneID="jmO-Gn-9DC">
