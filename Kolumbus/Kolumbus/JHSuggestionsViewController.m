@@ -16,7 +16,8 @@
     
     BOOL is7;
     
-    NSMutableArray *input;
+    NSDictionary *input;                // the parsed data from the server
+    NSArray *businesses;
     NSMutableArray *switches;
 }
 
@@ -30,19 +31,16 @@
     self.title = @"Vorschläge";
     
     // Test data
-    input = [[NSMutableArray alloc] initWithArray:@[@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"], @[@"Sehr großes Tor", @"Sehr großer Turm", @"Sehr großer Platz"]]];
+    NSData *testData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"]];
+    input = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
     switches = [NSMutableArray new];
     
     // Tableview Setup
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
-    tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
+    // tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:tableView];
-    
-    for (id __unused item in input[0]) {
-        [switches addObject:@0];
-    }
     
     // Show all on Map
     UIBarButtonItem *map = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"place4"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMap)];
@@ -53,7 +51,7 @@
     [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
     [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:finish];
+    [((UIWindow *)[[UIApplication sharedApplication] windows][0]) addSubview:finish];
     
     UILabel *finishText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 40)];
     finishText.backgroundColor = [UIColor clearColor];
@@ -86,20 +84,40 @@
     // TODO
 }
 
+- (void)loadData:(NSDictionary *)data {
+    
+    if (data) {
+        
+        if (!data[@"error"]) {
+            input = data;
+        }
+        
+        businesses = input[@"yelp"][@"hash"][@"businesses"];
+        
+        NSLog(@"%i", businesses.count);
+        
+        [tableView reloadData];
+        
+    }
+    
+}
+
 
 #pragma mark Table View delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [input[0] count];
+    return businesses.count-1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
+    NSDictionary *model = businesses[indexPath.row];
+    
     UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 50, 50)];
     pic.layer.masksToBounds = YES;
     pic.layer.cornerRadius = pic.frame.size.width/2;
-    pic.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon%i", indexPath.row]];
+    [pic setImageWithURL:[NSURL URLWithString:model[@"snippet_image_url"]] placeholderImage:[UIImage imageNamed:@"icon1"]];
     [cell.contentView addSubview:pic];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
@@ -108,7 +126,7 @@
     title.textAlignment = NSTextAlignmentLeft;
     title.numberOfLines = 0;
     title.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-    title.text = input[0][indexPath.row];
+    title.text = model[@"name"];
     [cell.contentView addSubview:title];
     
     UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-140, 40)];
@@ -117,7 +135,7 @@
     description.textAlignment = NSTextAlignmentLeft;
     description.numberOfLines = 0;
     description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    description.text = input[1][indexPath.row];
+    //description.text = input[1][indexPath.row];
     [cell.contentView addSubview:description];
     
     cell.accessoryType = ([switches[indexPath.row]  isEqual: @0]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;

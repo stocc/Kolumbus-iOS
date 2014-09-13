@@ -9,8 +9,11 @@
 #import "JHCommunicator.h"
 #import "JHButton.h"
 #import "JHMapViewController.h"
+#import "UIImageView+WebCache.h"
 #import <UIKit/UIKit.h>
 
 @interface JHSuggestionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+- (void)loadData:(NSDictionary *)data;
 
 @end
