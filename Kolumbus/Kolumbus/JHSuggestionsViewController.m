@@ -40,6 +40,10 @@
     tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:tableView];
     
+    for (id __unused item in input[0]) {
+        [switches addObject:@0];
+    }
+    
     // Show all on Map
     UIBarButtonItem *map = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"place4"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMap)];
     self.navigationItem.rightBarButtonItem = map;
@@ -114,13 +118,15 @@
     description.text = input[1][indexPath.row];
     [cell.contentView addSubview:description];
     
-    // Select for route or not
+    cell.accessoryType = ([switches[indexPath.row]  isEqual: @0]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
+    
+    /*/ Select for route or not
     UISwitch *selectedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(width-70, [self tableView:tv heightForRowAtIndexPath:indexPath]/2-10, 50, 20)];
     [selectedSwitch setOn:YES animated:YES];
     [cell.contentView addSubview:selectedSwitch];
     
     // add to array for later modification
-    [switches addObject:selectedSwitch];
+    [switches addObject:selectedSwitch];*/
     
     return cell;
     
@@ -138,9 +144,10 @@
     
     [tv deselectRowAtIndexPath:indexPath animated:YES];
     
-    // invert the switch
-    [(UISwitch *)switches[indexPath.row] setOn:![(UISwitch *)switches[indexPath.row] isOn] animated:YES];
-    
+    // invert the switch/ checkmark
+    //[(UISwitch *)switches[indexPath.row] setOn:![(UISwitch *)switches[indexPath.row] isOn] animated:YES];
+    switches[indexPath.row] = ([switches[indexPath.row]  isEqual: @0]) ? @1 : @0;
+    [tv reloadData];
 }
 
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
