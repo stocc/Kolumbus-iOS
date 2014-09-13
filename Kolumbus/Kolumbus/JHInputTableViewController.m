@@ -49,9 +49,37 @@
         self.locationManager.delegate = self;
         [self.locationManager startUpdatingLocation];
     }
+    
+    // Finish button
+    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-104, self.view.frame.size.width, 40)];
+    [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
+    [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
+    [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:finish];
+    
+    UILabel *finishText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+    finishText.backgroundColor = [UIColor clearColor];
+    finishText.textColor = [UIColor whiteColor];
+    finishText.textAlignment = NSTextAlignmentCenter;
+    finishText.numberOfLines = 0;
+    finishText.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+    finishText.text = @"Zeig mir Vorschläge!";
+    [finish addSubview:finishText];
 
 
 }
+
+- (void)finishSuggestions {
+    
+    // TODO (macht Finn)
+    JHSuggestionsViewController *suggestionsVC = [[JHSuggestionsViewController alloc] init];
+    [self.navigationController pushViewController:suggestionsVC animated:YES];
+    
+    // explanation: The new view gets pushed and the app downloads the info in the background (async) and when it's ready, the new view displays the new info
+    //[JHCommunicator getSuggestionsFrom:<#(NSDate *)#> until:<#(NSDate *)#> visitedCount:<#(int)#> budgetClass:<#(int)#> visitIntensity:<#(int)#>];
+    
+}
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
     [manager stopUpdatingLocation];

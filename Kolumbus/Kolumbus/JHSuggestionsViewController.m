@@ -67,10 +67,10 @@
     
     // ================================================================================================
     
-    // Testing area 51
+    /*/ Testing area 51
     
     NSDictionary *test = [JHCommunicator getSearch:@"store" coordinates:[[CLLocation alloc] initWithLatitude:52.530639 longitude:13.413480]];
-    NSLog(@"test: %@", test[@"foursquare"][@"venues"]);
+    NSLog(@"test: %@", test[@"foursquare"][@"venues"]);             //*/
 }
 
 #pragma mark Finns Funny Functions!

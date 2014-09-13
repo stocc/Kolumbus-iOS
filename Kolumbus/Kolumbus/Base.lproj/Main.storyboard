@@ -224,8 +224,6 @@
                     <connections>
                         <outlet property="budgetSegmentedControl" destination="Ewh-MN-7un" id="BcC-ne-SEK"/>
                         <outlet property="currentLocationActivityIndicator" destination="Y14-pC-TBy" id="HhX-Ta-ca9"/>
-                        <outlet property="goButton" destination="vDx-Q7-1f8" id="j1u-iI-7G5"/>
-                        <outlet property="intensitySlider" destination="jSo-Hg-A47" id="fp5-UH-4nH"/>
                         <outlet property="locationTextfield" destination="AhQ-7q-Jwp" id="1yR-iw-Wdl"/>
                         <outlet property="stepLabel" destination="nvg-59-ob6" id="9ud-sj-gul"/>
                         <segue destination="vx9-wq-ZaN" kind="show" identifier="showSuggestions" id="IHA-tt-tf8"/>

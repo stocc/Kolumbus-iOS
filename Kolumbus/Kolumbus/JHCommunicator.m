@@ -10,7 +10,7 @@
 
 @implementation JHCommunicator
 
-+ (NSDictionary *)getSuggestionsFrom:(NSDate *)startDate until:(NSDate *)endDate visitedCount:(int)visits budgetClass:(int)budget visitIntensity:(int)intensity {
++ (void)getSuggestionsFrom:(NSDate *)startDate until:(NSDate *)endDate visitedCount:(int)visits budgetClass:(int)budget visitIntensity:(int)intensity finish:(void (^)(NSDictionary *response))responseBlock {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
     NSDictionary __block *result;
@@ -19,19 +19,23 @@
         NSError *error;
         result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&error];
         
+        responseBlock(result);
+        
         NSLog(@"Response: %@", responseObject);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        result = @{@"error" : error.description};
+        
+        responseBlock(result);
         
         NSLog(@"Error: %@", error.description);
         
     }];
     
-    return [NSDictionary new];
-    
 }
 
-+ (NSDictionary *)getSearch:(NSString *)query coordinates:(CLLocation *)location {
++ (void)getSearch:(NSString *)query coordinates:(CLLocation *)location finish:(void (^)(NSDictionary *response))responseBlock {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
     
@@ -42,38 +46,46 @@
         NSError *error;
         result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&error];
         
+        responseBlock(result);
+        
         NSLog(@"Response: %@", result);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         result = @{@"error" : error.description};
         
+        responseBlock(result);
+        
         NSLog(@"Error: %@", error.description);
         
     }];
-    
-    if (result) {
-        return result;
-    } else {
-        return @{@"error" : @"no dict"};
-    }
+
 }
 
-+ (NSDictionary *)getFinalTrip {
++ (void)getFinalTripFrom:(NSDate *)startDate until:(NSDate *)endDate finish:(void (^)(NSDictionary *response))responseBlock {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://niklas-mbp.local:3000/v1/"]];
     
+    NSDictionary __block *result;
+    
     [manager GET:@"final_trip" parameters:@[@"spots"] success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSError *error;
+        result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&error];
+        
+        responseBlock(result);
         
         NSLog(@"Response: %@", responseObject);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+        result = @{@"error" : error.description};
+        
+        responseBlock(result);
+        
         NSLog(@"Error: %@", error.description);
         
     }];
-    
-    return [NSDictionary new];
     
 }
 

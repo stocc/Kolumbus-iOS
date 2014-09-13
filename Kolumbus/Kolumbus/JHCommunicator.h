@@ -12,7 +12,7 @@
 
 @interface JHCommunicator : NSObject
 
-+ (NSDictionary *)getSuggestions;
++ (NSDictionary *)getSuggestionsFrom:(NSDate *)startDate until:(NSDate *)endDate visitedCount:(int)visits budgetClass:(int)budget visitIntensity:(int)intensity;
 + (NSDictionary *)getSearch:(NSString *)query coordinates:(CLLocation *)location;
 + (NSDictionary *)getFinalTrip;
 
