@@ -121,6 +121,15 @@
     
 }
 
+- (void)showInfo:(UIButton *)sender {
+    
+    int section = [[[NSString stringWithFormat:@"%i", sender.tag] substringToIndex:1] intValue];
+    int row = [[[NSString stringWithFormat:@"%i", sender.tag] substringFromIndex:1] intValue];
+    
+    NSLog(@"Attempting to show more for section: %i  row: %i", section, row);
+    
+}
+
 
 #pragma mark Table View delegates
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -166,10 +175,16 @@
     description.text = model[@"location"][@"hash"][@"city"];
     [cell.contentView addSubview:description];
     
-    JSFavStarControl *stars = [[JSFavStarControl alloc] initWithLocation:CGPointMake(70, 55) dotImage:[UIImage imageNamed:@"dot"] starImage:[UIImage imageNamed:@"star"] rating:[model[@"rating"] intValue]];
+    JSFavStarControl *stars = [[JSFavStarControl alloc] initWithLocation:CGPointMake(70, 56) dotImage:[UIImage imageNamed:@"dot"] starImage:[UIImage imageNamed:@"star"] rating:[model[@"rating"] intValue]];
     [cell.contentView addSubview:stars];
     
     cell.accessoryType = ([selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
+    UIButton *moreInfo = [[UIButton alloc] initWithFrame:CGRectMake(width-85, 30, 40, 40)];
+    [moreInfo setBackgroundImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    moreInfo.tag = [[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row] intValue];
+    [moreInfo addTarget:self action:@selector(showInfo:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.contentView addSubview:moreInfo];
     
     /*/ Select for route or not
     UISwitch *selectedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(width-70, [self tableView:tv heightForRowAtIndexPath:indexPath]/2-10, 50, 20)];
