@@ -74,7 +74,7 @@
 
 
 
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
 
     NSLog(@"Location error %@",error.description);
 

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Jugend Hackt. All rights reserved.
 //
 
+#import "FGTimelineView.h"
 #import "MBProgressHUD.h"
 #import <UIKit/UIKit.h>
 

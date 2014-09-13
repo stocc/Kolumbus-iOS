@@ -19,7 +19,7 @@
 @property (nonatomic) int intensity;
 @property (nonatomic) int visitCount;
 
-@property (nonatomic,strong) NSDate *startDate; //NYI
-@property (nonatomic,strong) NSDate *endDate;  //NYI
+@property (nonatomic,strong) NSDate *startDate;
+@property (nonatomic,strong) NSDate *endDate; 
 
 @end
