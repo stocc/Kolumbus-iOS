@@ -8,30 +8,93 @@
 
 #import "JHSuggestionsViewController.h"
 
-@interface JHSuggestionsViewController ()
-
-@end
-
-@implementation JHSuggestionsViewController
+@implementation JHSuggestionsViewController {
+    
+    UITableView *tableView;
+    CGFloat width;
+    CGFloat height;
+    
+    NSMutableArray *input;
+    NSMutableArray *switches;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    width = self.view.frame.size.width;
+    height = self.view.frame.size.height;
+    
+    self.title = @"Suggestions";
+    
+    input = [[NSMutableArray alloc] initWithArray:@[@[@"Brandenburger Tor", @"Fernsehturm", @"Alexanderplatz"], @[@"Sehr großes Tor", @"Sehr großer Turm", @"Sehr großer Platz"]]];
+    switches = [NSMutableArray new];
+    
+    tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    [self.view addSubview:tableView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [input[0] count];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    
+    UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
+    pic.layer.masksToBounds = YES;
+    pic.layer.cornerRadius = pic.frame.size.width/2;
+    [cell.contentView addSubview:pic];
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
+    title.backgroundColor = [UIColor clearColor];
+    title.textColor = [UIColor blackColor];
+    title.textAlignment = NSTextAlignmentLeft;
+    title.numberOfLines = 0;
+    title.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+    title.text = input[0][indexPath.row];
+    [cell.contentView addSubview:title];
+    
+    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-90, 40)];
+    description.backgroundColor = [UIColor clearColor];
+    description.textColor = [UIColor colorWithWhite:0 alpha:.7];
+    description.textAlignment = NSTextAlignmentLeft;
+    description.numberOfLines = 0;
+    description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    description.text = input[1][indexPath.row];
+    [cell.contentView addSubview:description];
+    
+    // Select for route or not
+    UISwitch *selectedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(width-70, [self tableView:tv heightForRowAtIndexPath:indexPath]/2-10, 50, 20)];
+    [selectedSwitch setOn:YES animated:YES];
+    [cell.contentView addSubview:selectedSwitch];
+    
+    // add to array for later modification
+    [switches addObject:selectedSwitch];
+    
+    return cell;
+    
 }
-*/
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
+
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tv deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // invert the switch
+    [(UISwitch *)switches[indexPath.row] setOn:![(UISwitch *)switches[indexPath.row] isOn] animated:YES];
+    
+}
+
+- (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
 
 @end

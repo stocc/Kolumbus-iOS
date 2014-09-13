@@ -209,6 +209,25 @@
             </objects>
             <point key="canvasLocation" x="888" y="381"/>
         </scene>
+        <!--Suggestions View Controller-->
+        <scene sceneID="ImV-B2-MUG">
+            <objects>
+                <viewController id="CMG-MT-K5J" customClass="JHSuggestionsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gem-P0-NxQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="e7i-vE-a1j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gk3-x6-ndx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v7Y-lX-0ye" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="328"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="bry-qB-dTR">
             <objects>
