@@ -7,6 +7,11 @@
 //
 
 #import "JHSuggestionsViewController.h"
+#import "JHInputTableViewController.h"
+
+@interface JHSuggestionsViewController ()<UISearchBarDelegate>
+
+@end
 
 @implementation JHSuggestionsViewController {
     
@@ -66,6 +71,25 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"Loading";
     
+    
+    
+    
+    
+    //Daniel: SearchDisplayController for new entries
+    
+    
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.frame = CGRectMake(0, 0, 0, 38);
+    searchBar.delegate = self;
+    tableView.tableHeaderView = searchBar;
+
+
+
+
+
+
+
     // ================================================================================================
     
     /*/ Testing area 51
@@ -231,5 +255,45 @@
 }
 
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
+
+
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if ([searchText length] == 0) {
+        [self performSelector:@selector(hideKeyboardWithSearchBar:) withObject:searchBar afterDelay:0];
+    }
+}
+
+- (void)hideKeyboardWithSearchBar:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    
+    NSString *query = searchBar.text;
+    
+    JHInputTableViewController *inputTVC = (JHInputTableViewController *)self.navigationController.viewControllers[0];
+    CLLocation *userLocation = inputTVC.userLocation;
+    
+    
+    
+    
+    [JHCommunicator getSearch:query coordinates:userLocation finish:^(NSDictionary *response){
+    
+        NSDictionary *result = response[@"businesses"][0];
+        NSLog(@"%@",result);
+    }];
+
+
+}
+
 
 @end
