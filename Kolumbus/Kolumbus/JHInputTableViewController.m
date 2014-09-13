@@ -52,7 +52,7 @@
     }
     
     // Finish button
-    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-40, self.view.frame.size.width, 40)];
+    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-104, self.view.frame.size.width, 40)];
     [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
     [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
@@ -75,6 +75,9 @@
     // TODO (macht Finn)
     JHSuggestionsViewController *suggestionsVC = [[JHSuggestionsViewController alloc] init];
     [self.navigationController pushViewController:suggestionsVC animated:YES];
+    
+    // explanation: The new view gets pushed and the app downloads the info in the background (async) and when it's ready, the new view displays the new info
+    //[JHCommunicator getSuggestionsFrom:<#(NSDate *)#> until:<#(NSDate *)#> visitedCount:<#(int)#> budgetClass:<#(int)#> visitIntensity:<#(int)#>];
     
 }
 
