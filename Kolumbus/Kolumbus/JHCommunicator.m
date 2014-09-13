@@ -59,7 +59,7 @@
 
 }
 
-+ (void)getFinalTripFrom:(NSDate *)startDate until:(NSDate *)endDate spots:(NSArray *)spots finish:(void (^)(NSDictionary *response))responseBlock {
++ (void)getFinalTripFrom:(NSDate *)startDate until:(NSDate *)endDate spots:(NSDictionary *)spots finish:(void (^)(NSDictionary *response))responseBlock {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://secure-mountain-7532.herokuapp.com/v1/"]];
     
@@ -68,7 +68,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat=@"dd-MM-yyyy";
     
-    [manager GET:@"final_trip" parameters:@{@"starts_at" : [formatter stringFromDate:startDate], @"ends_at" : [formatter stringFromDate:endDate], @"spots" : spots} success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager GET:@"final_trip" parameters:@{@"starts_at" : [formatter stringFromDate:startDate], @"ends_at" : [formatter stringFromDate:endDate], @"spots" : [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:spots options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]} success:^(NSURLSessionDataTask *task, id responseObject) {
         
         responseBlock(responseObject);
         

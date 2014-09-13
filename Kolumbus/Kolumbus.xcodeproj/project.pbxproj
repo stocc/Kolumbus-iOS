@@ -37,6 +37,7 @@
 		CC994C8A19C3B5BC00283EC5 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C8019C3B5BC00283EC5 /* AFURLResponseSerialization.m */; };
 		CC994C8B19C3B5BC00283EC5 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C8219C3B5BC00283EC5 /* AFURLSessionManager.m */; };
 		CC994C8E19C3C33000283EC5 /* JHCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C8D19C3C33000283EC5 /* JHCommunicator.m */; };
+		CC99770619C4F2980076CBA1 /* FGTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC99770519C4F2980076CBA1 /* FGTimelineView.m */; };
 		CCA9FD3419C48ED5000A1814 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD1419C48ED5000A1814 /* MKAnnotationView+WebCache.m */; };
 		CCA9FD3619C48ED5000A1814 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD1819C48ED5000A1814 /* SDImageCache.m */; };
 		CCA9FD3719C48ED5000A1814 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD1A19C48ED5000A1814 /* SDWebImageCompat.m */; };
@@ -106,6 +107,8 @@
 		CC994C8219C3B5BC00283EC5 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		CC994C8C19C3C33000283EC5 /* JHCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCommunicator.h; sourceTree = "<group>"; };
 		CC994C8D19C3C33000283EC5 /* JHCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommunicator.m; sourceTree = "<group>"; };
+		CC99770419C4F2980076CBA1 /* FGTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGTimelineView.h; sourceTree = "<group>"; };
+		CC99770519C4F2980076CBA1 /* FGTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGTimelineView.m; sourceTree = "<group>"; };
 		CCA9FD1319C48ED5000A1814 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		CCA9FD1419C48ED5000A1814 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		CCA9FD1519C48ED5000A1814 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				CC994C8D19C3C33000283EC5 /* JHCommunicator.m */,
 				CC95B70919C42C610088F04A /* JHButton.h */,
 				CC95B70A19C42C610088F04A /* JHButton.m */,
+				CC99770419C4F2980076CBA1 /* FGTimelineView.h */,
+				CC99770519C4F2980076CBA1 /* FGTimelineView.m */,
 				CC994C5019C38FAC00283EC5 /* Main.storyboard */,
 				69BDFE4719C4C7A40066925D /* JHLocationPickerTableViewController.h */,
 				69BDFE4819C4C7A40066925D /* JHLocationPickerTableViewController.m */,
@@ -420,6 +425,7 @@
 			files = (
 				69BDFE4919C4C7A40066925D /* JHLocationPickerTableViewController.m in Sources */,
 				69CF0D4419C4947F0076F681 /* NSData+ImageContentType.m in Sources */,
+				CC99770619C4F2980076CBA1 /* FGTimelineView.m in Sources */,
 				69CF0D4519C4947F0076F681 /* SDWebImageDecoder.m in Sources */,
 				69CF0D4619C4947F0076F681 /* SDWebImageManager.m in Sources */,
 				69CF0D4319C4946A0076F681 /* SDWebImageDownloaderOperation.m in Sources */,

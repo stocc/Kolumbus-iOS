@@ -31,10 +31,10 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     
-    // loading spinner
+    /*/ loading spinner
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Loading";
+    hud.labelText = @"Loading";         //*/
     
 }
 
@@ -60,7 +60,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return input.count;
+    return 1; //input.count;
 }
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -87,6 +87,9 @@
     description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
     description.text = @"Test";
     [cell.contentView addSubview:description];
+    
+    FGTimelineView *timeline = [[FGTimelineView alloc] initWithFrame:CGRectMake(25, 50, 30, 150)];
+    [cell.contentView addSubview:timeline];
     
     return cell;
     
