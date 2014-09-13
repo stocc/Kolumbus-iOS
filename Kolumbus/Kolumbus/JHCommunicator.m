@@ -65,7 +65,10 @@
     
     NSDictionary __block *result;
     
-    [manager GET:@"final_trip" parameters:@{@"starts_at" : startDate, @"ends_at" : endDate, @"spots" : spots} success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat=@"dd-MM-yyyy";
+    
+    [manager GET:@"final_trip" parameters:@{@"starts_at" : [formatter stringFromDate:startDate], @"ends_at" : [formatter stringFromDate:endDate], @"spots" : spots} success:^(NSURLSessionDataTask *task, id responseObject) {
         
         responseBlock(responseObject);
         
