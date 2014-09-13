@@ -49,21 +49,19 @@
     self.navigationItem.rightBarButtonItem = map;
     
     // Finish button
-    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(20, height-70, width-40, 50)];
-    finish.layer.masksToBounds = YES;
-    finish.layer.cornerRadius = finish.frame.size.height/2;
-    [finish setNormalColor:[UIColor colorWithRed:(24.0/255.0) green:(49.0/255.0) blue:(63.0/255.0) alpha:1]];
+    JHButton *finish = [[JHButton alloc] initWithFrame:CGRectMake(0, height-40, width, 40)];
+    [finish setNormalColor:[UIColor colorWithRed:(30.0/255.0) green:(50.0/255.0) blue:(65.0/255.0) alpha:1]];
     [finish setHighlightedColor:[UIColor colorWithRed:(15.0/255.0) green:(40.0/255.0) blue:(55.0/255.0) alpha:1]];
     [finish addTarget:self action:@selector(finishSuggestions) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:finish];
     
-    UILabel *finishText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width-40, 50)];
+    UILabel *finishText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 40)];
     finishText.backgroundColor = [UIColor clearColor];
     finishText.textColor = [UIColor whiteColor];
     finishText.textAlignment = NSTextAlignmentCenter;
     finishText.numberOfLines = 0;
-    finishText.font = [UIFont fontWithName:@"Helvetica Neue" size:30];
-    finishText.text = @"Fertig";
+    finishText.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+    finishText.text = @"Plane meinen Tag!";
     [finish addSubview:finishText];
     
     
