@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currentLocationActivityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *locationTextfield;
 @property (strong,nonatomic) CLLocationManager *locationManager;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *goButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *budgetSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
@@ -76,7 +75,12 @@
     [self.navigationController pushViewController:suggestionsVC animated:YES];
     
     // explanation: The new view gets pushed and the app downloads the info in the background (async) and when it's ready, the new view displays the new info
-    //[JHCommunicator getSuggestionsFrom:<#(NSDate *)#> until:<#(NSDate *)#> visitedCount:<#(int)#> budgetClass:<#(int)#> visitIntensity:<#(int)#>];
+    
+    self.budget = (int)self.budgetSegmentedControl.selectedSegmentIndex+1;
+    NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
+    self.intensity = [intensityNumber intValue];
+    
+    [JHCommunicator getSuggestionsFrom:nil until:nil visitedCount:self.visitCount budgetClass:self.budget visitIntensity:self.intensity finish:^(NSDictionary *response){}];
     
 }
 
@@ -87,11 +91,6 @@
     
     self.userLocation = locations[0];
     self.locationTextfield.text = [NSString stringWithFormat:@"%f, %f",self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude];
-    self.goButton.enabled = YES;
-    
-    
-    
-
 }
 
 
@@ -104,14 +103,7 @@
     self.stepLabel.text = [NSString stringWithFormat:@"%.f",sender.value];
     
     NSNumber *stepperValue = [NSNumber numberWithDouble:sender.value];
-    self.visitCount = [stepperValue integerValue];
+    self.visitCount = (int)[stepperValue integerValue];
 }
-- (IBAction)go:(id)sender {
-    
-    self.budget = self.budgetSegmentedControl.selectedSegmentIndex+1;
-    NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
-    self.intensity = [intensityNumber integerValue];
-    
-    [self performSegueWithIdentifier:@"showSuggestions" sender:self];
-}
+
 @end
