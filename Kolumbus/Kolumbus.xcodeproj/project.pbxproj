@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		697D6BBF19C3ABA20096B8EE /* JHLocationPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */; };
 		697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */; };
 		CC95B70B19C42C610088F04A /* JHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B70A19C42C610088F04A /* JHButton.m */; };
 		CC95B70F19C43F730088F04A /* JHMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95B70E19C43F730088F04A /* JHMapViewController.m */; };
@@ -32,8 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		697D6BBD19C3ABA20096B8EE /* JHLocationPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLocationPickerTableViewController.h; sourceTree = "<group>"; };
-		697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLocationPickerTableViewController.m; sourceTree = "<group>"; };
 		697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CC95B70919C42C610088F04A /* JHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHButton.h; sourceTree = "<group>"; };
 		CC95B70A19C42C610088F04A /* JHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHButton.m; sourceTree = "<group>"; };
@@ -151,6 +148,8 @@
 				697D6BBD19C3ABA20096B8EE /* JHLocationPickerTableViewController.h */,
 				697D6BBE19C3ABA20096B8EE /* JHLocationPickerTableViewController.m */,
 				CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */,
+				698A9AF419C43F1A0079457C /* JHButton.h */,
+				698A9AF519C43F1A0079457C /* JHButton.m */,
 				CC994C4619C38FAC00283EC5 /* Supporting Files */,
 			);
 			path = Kolumbus;
@@ -262,10 +261,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				697D6BBF19C3ABA20096B8EE /* JHLocationPickerTableViewController.m in Sources */,
+				698A9AF619C43F1A0079457C /* JHButton.m in Sources */,
+				69B935B119C4290D00D89B34 /* JHInputTableViewController.m in Sources */,
 				CC994C6E19C3956B00283EC5 /* JHSuggestionsViewController.m in Sources */,
 				CC994C8719C3B5BC00283EC5 /* AFSecurityPolicy.m in Sources */,
-				CC95B70B19C42C610088F04A /* JHButton.m in Sources */,
 				CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */,
 				CC994C8419C3B5BC00283EC5 /* AFHTTPRequestOperationManager.m in Sources */,
 				CC994C8819C3B5BC00283EC5 /* AFURLConnectionOperation.m in Sources */,
