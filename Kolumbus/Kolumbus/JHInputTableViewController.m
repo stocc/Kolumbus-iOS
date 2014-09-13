@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currentLocationActivityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *locationTextfield;
 @property (strong,nonatomic) CLLocationManager *locationManager;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *goButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *budgetSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
@@ -92,11 +91,6 @@
     
     self.userLocation = locations[0];
     self.locationTextfield.text = [NSString stringWithFormat:@"%f, %f",self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude];
-    self.goButton.enabled = YES;
-    
-    
-    
-
 }
 
 
@@ -111,12 +105,5 @@
     NSNumber *stepperValue = [NSNumber numberWithDouble:sender.value];
     self.visitCount = (int)[stepperValue integerValue];
 }
-- (IBAction)go:(id)sender {
-    
-    self.budget = (int)self.budgetSegmentedControl.selectedSegmentIndex+1;
-    NSNumber *intensityNumber = [NSNumber numberWithFloat:[self.intensitySlider value]];
-    self.intensity = (int)[intensityNumber integerValue];
-    
-    [self performSegueWithIdentifier:@"showSuggestions" sender:self];
-}
+
 @end
