@@ -8,7 +8,9 @@
 
 #import "JHInputTableViewController.h"
 #import <CoreLocation/CoreLocation.h>
-@interface JHInputTableViewController ()<CLLocationManagerDelegate>
+#import "JHDatePickerTableViewController.h"
+#import "JHAboutViewController.h"
+@interface JHInputTableViewController ()<CLLocationManagerDelegate, JHDatePickerDelegate, JHABoutVCDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currentLocationActivityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *locationTextfield;
@@ -108,6 +110,17 @@
     
     NSNumber *stepperValue = [NSNumber numberWithDouble:sender.value];
     self.visitCount = (int)[stepperValue integerValue];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"about"]) {
+        JHAboutViewController *aboutVC = (JHAboutViewController *)segue.destinationViewController;
+        aboutVC.delegate = self;
+    }
+}
+-(void)hideMe{
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end
