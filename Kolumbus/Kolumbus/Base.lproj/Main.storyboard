@@ -31,18 +31,18 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kolumbus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJM-Vy-Qe9">
-                                <rect key="frame" x="100" y="92" width="89" height="23"/>
+                                <rect key="frame" x="110" y="92" width="89" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="für Jugend hackt 2014" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="184" translatesAutoresizingMaskIntoConstraints="NO" id="iau-io-koX">
-                                <rect key="frame" x="100" y="185" width="154" height="18"/>
+                                <rect key="frame" x="110" y="185" width="154" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="von Niklas Riekenbrauck, Finn Gaida, Moritz Weide, Rico Klimpel, Daniel Petri" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="184" translatesAutoresizingMaskIntoConstraints="NO" id="Q45-xA-Y1u">
-                                <rect key="frame" x="100" y="123" width="181" height="54"/>
+                                <rect key="frame" x="110" y="123" width="181" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -128,7 +128,7 @@ THE SOFTWARE
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_new.png" translatesAutoresizingMaskIntoConstraints="NO" id="HLs-Ur-Tfs">
-                                <rect key="frame" x="4" y="99" width="88" height="88"/>
+                                <rect key="frame" x="14" y="99" width="88" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="Cxc-rT-6hW"/>
                                     <constraint firstAttribute="height" constant="88" id="sH7-Ga-6ZV"/>
@@ -137,7 +137,7 @@ THE SOFTWARE
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HLs-Ur-Tfs" firstAttribute="leading" secondItem="Ocl-iJ-FvV" secondAttribute="leading" constant="4" id="8nr-im-MPv"/>
+                            <constraint firstItem="HLs-Ur-Tfs" firstAttribute="leading" secondItem="Ocl-iJ-FvV" secondAttribute="leading" constant="14" id="8nr-im-MPv"/>
                             <constraint firstItem="mJM-Vy-Qe9" firstAttribute="leading" secondItem="HLs-Ur-Tfs" secondAttribute="trailing" constant="8" id="9lv-S1-jis"/>
                             <constraint firstItem="coT-WH-cqV" firstAttribute="leading" secondItem="MQo-xI-d3d" secondAttribute="leading" id="Al3-7P-Hiv"/>
                             <constraint firstItem="Q45-xA-Y1u" firstAttribute="top" secondItem="mJM-Vy-Qe9" secondAttribute="bottom" constant="8" id="CG9-eN-nTP"/>
@@ -491,18 +491,30 @@ THE SOFTWARE
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="result" textLabel="Sqh-Cr-Pu5" rowHeight="44" style="IBUITableViewCellStyleDefault" id="2Kj-Pn-Tyk">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="result" rowHeight="44" id="2Kj-Pn-Tyk">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Kj-Pn-Tyk" id="aF6-KV-E0x">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Suchen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sqh-Cr-Pu5">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Suchen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uA-8E-cG6">
+                                                    <rect key="frame" x="15" y="0.5" width="570" height="42.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Z9P-rW-Krg">
+                                                    <rect key="frame" x="565" y="12" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1uA-8E-cG6" firstAttribute="top" secondItem="aF6-KV-E0x" secondAttribute="top" constant="0.5" id="0EG-bD-P1o"/>
+                                                <constraint firstAttribute="trailing" secondItem="Z9P-rW-Krg" secondAttribute="trailing" constant="15" id="0YL-P6-fgX"/>
+                                                <constraint firstAttribute="trailing" secondItem="1uA-8E-cG6" secondAttribute="trailing" constant="15" id="601-0P-zqW"/>
+                                                <constraint firstItem="Z9P-rW-Krg" firstAttribute="top" secondItem="aF6-KV-E0x" secondAttribute="top" constant="12" id="8B0-ZF-7Mi"/>
+                                                <constraint firstAttribute="bottom" secondItem="1uA-8E-cG6" secondAttribute="bottom" constant="0.5" id="8ob-rH-wFj"/>
+                                                <constraint firstItem="1uA-8E-cG6" firstAttribute="leading" secondItem="aF6-KV-E0x" secondAttribute="leading" constant="15" id="aCL-4F-fTw"/>
+                                                <constraint firstAttribute="bottom" secondItem="Z9P-rW-Krg" secondAttribute="bottom" constant="11.5" id="kIU-rq-HDb"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -522,6 +534,7 @@ THE SOFTWARE
                     </navigationItem>
                     <connections>
                         <outlet property="currentLocationActivityIndicator" destination="a9F-RH-wQ0" id="cV0-ul-h7d"/>
+                        <outlet property="geocodingActivityIndicator" destination="Z9P-rW-Krg" id="29q-0q-anx"/>
                         <outlet property="searchTextField" destination="acP-M5-Jvg" id="aTc-wC-PGl"/>
                     </connections>
                 </tableViewController>

@@ -11,6 +11,7 @@
 @interface JHLocationPickerTableViewController() <CLLocationManagerDelegate>
 @property (strong,nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currentLocationActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *geocodingActivityIndicator;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (nonatomic,strong) CLGeocoder* geocoder;
 
@@ -55,11 +56,12 @@
     }else if (indexPath.row==1){
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-
+        [self.geocodingActivityIndicator startAnimating];
         [self.geocoder geocodeAddressString:self.searchTextField.text completionHandler:^(NSArray *placemarks, NSError *error){
             
             if ([placemarks count]==0) {
                 [[[UIAlertView alloc] initWithTitle:@"Fehler" message:@"Konnte Adresse nicht finden" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                [self.geocodingActivityIndicator stopAnimating];
             }else{
                 CLPlacemark *result = placemarks[0];
                 NSLog(@"%@",result.name);
