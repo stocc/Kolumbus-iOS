@@ -17,6 +17,7 @@
     BOOL is7;
     
     NSDictionary *input;                // the parsed data from the server
+    NSArray *businesses;
     NSMutableArray *switches;
 }
 
@@ -34,13 +35,11 @@
     input = [NSJSONSerialization JSONObjectWithData:testData options:NSJSONReadingMutableLeaves error:nil];
     switches = [NSMutableArray new];
     
-    NSLog(@"%@", input);
-    
     // Tableview Setup
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
-    tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
+    // tableView.contentInset = (is7) ? UIEdgeInsetsMake(70, 0, 0, 0) : UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:tableView];
     
     // dirty, but has to stay!!!
@@ -94,8 +93,15 @@
     
     if (data) {
         
-        input = data;
+        if (!data[@"error"]) {
+            input = data;
+        }
         
+        businesses = input[@"yelp"][@"hash"][@"businesses"];
+        
+        NSLog(@"%i", businesses.count);
+        
+        [tableView reloadData];
         
     }
     
@@ -111,10 +117,12 @@
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     
+    NSDictionary *model = businesses[indexPath.row];
+    
     UIImageView *pic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 50, 50)];
     pic.layer.masksToBounds = YES;
     pic.layer.cornerRadius = pic.frame.size.width/2;
-    pic.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon%i", indexPath.row]];
+    [pic setImageWithURL:[NSURL URLWithString:model[@"snippet_image_url"]] placeholderImage:[UIImage imageNamed:@"icon1"]];
     [cell.contentView addSubview:pic];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, width-90, 30)];
@@ -123,7 +131,7 @@
     title.textAlignment = NSTextAlignmentLeft;
     title.numberOfLines = 0;
     title.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-    //title.text = [input objectForKey:@"title"];
+    title.text = model[@"name"];
     [cell.contentView addSubview:title];
     
     UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 30, width-140, 40)];
