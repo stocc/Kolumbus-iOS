@@ -132,8 +132,8 @@
                 if ([segue.identifier containsString:@"Start"]) {
                         self.currentlyEditing = @"start";
                     }else{
-                            self.currentlyEditing = @"end";
-    }
+                        self.currentlyEditing = @"end";
+                }
     }
 }
 -(void)hideMe{
@@ -147,6 +147,7 @@
         self.startDate = date;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"d.M.Y"];
+        NSLog(@"%@",[formatter stringFromDate:date]);
         self.startDateLabel.text = [formatter stringFromDate:date];
     }else{
         self.endDate = date;
