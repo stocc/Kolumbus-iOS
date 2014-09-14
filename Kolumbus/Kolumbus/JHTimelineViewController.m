@@ -35,6 +35,9 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     
+    UIBarButtonItem *share = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
+    self.navigationItem.rightBarButtonItem = share;
+    
     /*/ loading spinner
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
@@ -44,13 +47,20 @@
     
 }
 
+- (void)share {
+    
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", @"E-Mail", @"Nachricht", nil];
+    [sheet showInView:self.view];
+    
+}
+
 - (void)loadData:(NSDictionary *)data {
     
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
     if (data[@"error"]) {
         [[[UIAlertView alloc] initWithTitle:@"Wow" message:[NSString stringWithFormat:@"You crashed it :( Error is: %@", data[@"error"]] delegate:nil cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil] show];
-        [self.navigationController popViewControllerAnimated:YES];
+        // DEBUG [self.navigationController popViewControllerAnimated:YES];
     } else {
         
         input = data;
@@ -66,23 +76,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (input.allKeys.count != 0) {
-        return [input[input.allKeys[0]] allKeys].count;
-    } else {
-        return 1;
-    }
+    return _suggestions.allKeys.count-1;
 }
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSDictionary *model;
-    
-    if (input.allKeys.count != 0) {
-        model = input[input.allKeys[0]][[input[input.allKeys[0]] allKeys][indexPath.row]];
-    }
+    NSDictionary *model = _suggestions[_suggestions.allKeys[indexPath.row]];
+    NSDictionary *model2;
+    if (_suggestions.allKeys.count>=indexPath.row+1)
+        model2 = _suggestions[_suggestions.allKeys[indexPath.row+1]];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(70, 15, width-90, 30)];
     title.backgroundColor = [UIColor clearColor];
@@ -90,7 +96,7 @@
     title.textAlignment = NSTextAlignmentLeft;
     title.numberOfLines = 0;
     title.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-    title.text = @"Berlin Hbf";
+    title.text = model[@"name"];
     [cell.contentView addSubview:title];
     
     UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(70, 35, width-140, 40)];
@@ -99,8 +105,21 @@
     description.textAlignment = NSTextAlignmentLeft;
     description.numberOfLines = 0;
     description.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    description.text = @"Dies ist ein Beispieltext!";
+    description.text = model[@"location"][@"hash"][@"city"];
     [cell.contentView addSubview:description];
+    
+    UIImageView *train = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"train22"]];
+    train.frame = CGRectMake(80, 100, 36, 54);
+    [cell.contentView addSubview:train];
+    
+    UILabel *trainText = [[UILabel alloc] initWithFrame:CGRectMake(150, 100, width-160, 40)];
+    trainText.backgroundColor = [UIColor clearColor];
+    trainText.textColor = [UIColor colorWithWhite:0 alpha:.7];
+    trainText.textAlignment = NSTextAlignmentLeft;
+    trainText.numberOfLines = 0;
+    trainText.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    trainText.text = @"-- GMaps Calc here --";
+    [cell.contentView addSubview:trainText];
     
     UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 180, width-90, 30)];
     title2.backgroundColor = [UIColor clearColor];
@@ -108,7 +127,7 @@
     title2.textAlignment = NSTextAlignmentLeft;
     title2.numberOfLines = 0;
     title2.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-    title2.text = @"Alexanderplatz";
+    title2.text = model2[@"name"];;
     [cell.contentView addSubview:title2];
     
     UILabel *description2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 200, width-140, 40)];
@@ -117,7 +136,7 @@
     description2.textAlignment = NSTextAlignmentLeft;
     description2.numberOfLines = 0;
     description2.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    description2.text = @"Das hier ist ja auch einer! :O";
+    description2.text = model2[@"location"][@"hash"][@"city"];
     [cell.contentView addSubview:description2];
     
     FGTimelineView *timeline = [[FGTimelineView alloc] initWithFrame:CGRectMake(25, 30, 30, 200)];

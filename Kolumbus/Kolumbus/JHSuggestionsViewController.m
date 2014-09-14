@@ -112,25 +112,36 @@
 
     // parse selected ones into array 'selecteds'
     NSMutableArray *selecteds = [NSMutableArray new];
+    NSMutableDictionary *selects = [NSMutableDictionary new];
     [selections enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([selections[key]  isEqual: @0]) {
             [selecteds addObject:key];
         }
     }];
     
-    NSLog(@"%@", selecteds);
-    
-    if (selecteds.count == 0)
-        [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Bitte wähle mindestens einen Vorschlag aus" delegate:nil cancelButtonTitle:@"Ok, mach ich" otherButtonTitles:nil, nil] show];
-    
-    JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
-    [self.navigationController pushViewController:timelineVC animated:YES];
-    
-    [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:@{@"dinner" : @[@"123"], @"lunch" : @[@"123"], @"sights to see" : @[@"123"], @"museum" : @[@"123"], @"cafe" : @[@"123"]} finish:^(NSDictionary *response) {
+    if (selecteds.count <= 1) {
+        [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Bitte wähle mindestens zwei Vorschläge aus." delegate:nil cancelButtonTitle:@"Ok, mach ich" otherButtonTitles:nil, nil] show];
+    } else {
         
-        [timelineVC loadData:response];
+        // put all of the selected objects into one dictionary!
+        for (int i=0; i<selecteds.count; i++) {
+            int section = [[[NSString stringWithFormat:@"%@", selecteds[i]] substringToIndex:1] intValue];
+            int row = [[[NSString stringWithFormat:@"%@", selecteds[i]] substringFromIndex:1] intValue];
         
-    }];
+            [selects setValue:input[input.allKeys[section]][row] forKey:selecteds[i]];
+        }
+    
+        JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
+        timelineVC.suggestions = selects;
+        [self.navigationController pushViewController:timelineVC animated:YES];
+        
+        [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:selects finish:^(NSDictionary *response) {
+            
+            [timelineVC loadData:response];
+            
+        }];
+        
+    }
 }
 
 - (void)loadData:(NSDictionary *)data {
