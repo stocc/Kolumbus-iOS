@@ -377,9 +377,6 @@ THE SOFTWARE
                                 <!--2014-09-13 15:13:53 +0000-->
                             </date>
                             <locale key="locale" localeIdentifier="de"/>
-                            <connections>
-                                <action selector="changedDate:" destination="ZWX-oV-Kpk" eventType="valueChanged" id="c8L-dM-LUX"/>
-                            </connections>
                         </datePicker>
                         <sections>
                             <tableViewSection id="1ie-Zt-4gc">
