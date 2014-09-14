@@ -9,6 +9,8 @@
 #import "JHTimelineViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "AFNetworking.h"
+
 
 @implementation JHTimelineViewController {
     
@@ -40,6 +42,8 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"Loading";         //*/
+    
+    [self getTravelTimeForDirectionsFromCoordinate:CLLocationCoordinate2DMake(52.5138057, 13.3572135) toCoordinate:CLLocationCoordinate2DMake(52.530496,13.4135999)];
     
 }
 
@@ -171,6 +175,35 @@
         
     }
 
+}
+
+-(void)getTravelTimeForDirectionsFromCoordinate:(CLLocationCoordinate2D)from toCoordinate:(CLLocationCoordinate2D)to{
+    //TODO write completion handler so it can be passed back
+    
+    
+    NSString *googleDirectionsKey = @"AIzaSyBxbgQLjYoh6tVtFzyso_TwaGZp-Mq9foQ";
+
+
+    //Get JSON from that URL
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://maps.googleapis.com/maps/api/directions/"]];
+
+    [manager GET:@"json" parameters:@{@"origin":[NSString stringWithFormat:@"%f,%f",from.latitude,from.longitude],
+                                      @"destination":[NSString stringWithFormat:@"%f,%f",to.latitude,to.longitude],
+                                      @"mode":@"transit",
+                                      @"departure_time":[NSString stringWithFormat:@"%.f",[[NSDate date] timeIntervalSince1970]],
+                                      @"key":googleDirectionsKey}
+    success:^(NSURLSessionDataTask *task, id responseObject){
+    
+        NSNumber *duration = responseObject[@"routes"][0][@"legs"][0][@"duration"][@"value"];
+    
+    
+    }failure:^(NSURLSessionDataTask *task, NSError *error) {
+    
+    
+    
+    
+    }];
 
 }
+
 @end
