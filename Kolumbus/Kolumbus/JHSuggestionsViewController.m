@@ -123,15 +123,19 @@
         [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Bitte wähle mindestens zwei Vorschläge aus." delegate:nil cancelButtonTitle:@"Ok, mach ich" otherButtonTitles:nil, nil] show];
     } else {
         
+        // put all of the selected objects into one dictionary!
         for (int i=0; i<selecteds.count; i++) {
-            [selects setValue:input[selecteds[i]] forKey:selecteds[i]];
+            int section = [[[NSString stringWithFormat:@"%@", selecteds[i]] substringToIndex:1] intValue];
+            int row = [[[NSString stringWithFormat:@"%@", selecteds[i]] substringFromIndex:1] intValue];
+        
+            [selects setValue:input[input.allKeys[section]][row] forKey:selecteds[i]];
         }
     
         JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
         timelineVC.suggestions = selects;
         [self.navigationController pushViewController:timelineVC animated:YES];
         
-        [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:@{@"dinner" : @[@"123"], @"lunch" : @[@"123"], @"sights to see" : @[@"123"], @"museum" : @[@"123"], @"cafe" : @[@"123"]} finish:^(NSDictionary *response) {
+        [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:selects finish:^(NSDictionary *response) {
             
             [timelineVC loadData:response];
             
