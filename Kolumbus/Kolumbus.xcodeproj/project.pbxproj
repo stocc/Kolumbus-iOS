@@ -49,6 +49,7 @@
 		CC994C8B19C3B5BC00283EC5 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C8219C3B5BC00283EC5 /* AFURLSessionManager.m */; };
 		CC994C8E19C3C33000283EC5 /* JHCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C8D19C3C33000283EC5 /* JHCommunicator.m */; };
 		CC99770619C4F2980076CBA1 /* FGTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC99770519C4F2980076CBA1 /* FGTimelineView.m */; };
+		CC9EACA519C5838F00CADB24 /* train22.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9EACA419C5838F00CADB24 /* train22.png */; };
 		CCA9FD3419C48ED5000A1814 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD1419C48ED5000A1814 /* MKAnnotationView+WebCache.m */; };
 		CCA9FD3619C48ED5000A1814 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD1819C48ED5000A1814 /* SDImageCache.m */; };
 		CCA9FD3719C48ED5000A1814 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9FD1A19C48ED5000A1814 /* SDWebImageCompat.m */; };
@@ -130,6 +131,7 @@
 		CC994C8D19C3C33000283EC5 /* JHCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCommunicator.m; sourceTree = "<group>"; };
 		CC99770419C4F2980076CBA1 /* FGTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGTimelineView.h; sourceTree = "<group>"; };
 		CC99770519C4F2980076CBA1 /* FGTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGTimelineView.m; sourceTree = "<group>"; };
+		CC9EACA419C5838F00CADB24 /* train22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = train22.png; path = transport/train22.png; sourceTree = "<group>"; };
 		CCA9FD1319C48ED5000A1814 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		CCA9FD1419C48ED5000A1814 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		CCA9FD1519C48ED5000A1814 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		CC95B6AE19C413980088F04A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				CC9EACA419C5838F00CADB24 /* train22.png */,
 				CCC20B8B19C4D5FC00425F85 /* more.png */,
 				CC95B71719C45F850088F04A /* icon_new.png */,
 				CC95B6B419C413980088F04A /* transport */,
@@ -457,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC994C5219C38FAC00283EC5 /* Main.storyboard in Resources */,
+				CC9EACA519C5838F00CADB24 /* train22.png in Resources */,
 				CC95B71819C45F850088F04A /* icon_new.png in Resources */,
 				CC95B71A19C477760088F04A /* test.json in Resources */,
 				CCC20B8819C4CB0800425F85 /* dot.png in Resources */,
