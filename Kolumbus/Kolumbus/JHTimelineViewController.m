@@ -46,18 +46,22 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"Loading";
     
+    [MBProgressHUD performSelector:@selector(hideAllHUDsForView:animated:) withObject:self.view afterDelay:3];
+    
     
     // ========== ETAs ===========
     // soooo, erstmal rausfinden, von wo nach vo und wie oft
     
     for (int i=1; i<_suggestions.allKeys.count; i++) {
         
-        CLLocationCoordinate2D first = CLLocationCoordinate2DMake([_suggestions[_suggestions.allKeys[i-1]][@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [_suggestions[_suggestions.allKeys[i-1]][@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]);
+        /*CLLocationCoordinate2D first = CLLocationCoordinate2DMake([_suggestions[_suggestions.allKeys[i-1]][@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [_suggestions[_suggestions.allKeys[i-1]][@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]);
         
         CLLocationCoordinate2D second = CLLocationCoordinate2DMake([_suggestions[_suggestions.allKeys[i]][@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [_suggestions[_suggestions.allKeys[i]][@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]);
         
         // get duration
-        [self getTravelTimeForDirectionsFromCoordinate:first toCoordinate:second];
+        [self getTravelTimeForDirectionsFromCoordinate:first toCoordinate:second];      //*/
+        
+        [self getTravelTimeForDirectionsFromAddress:_suggestions[_suggestions.allKeys[i-1]][@"location"][@"hash"][@"display_address"] toAddress:_suggestions[_suggestions.allKeys[i]][@"location"][@"hash"][@"display_address"]];
         
     }
     
@@ -88,6 +92,8 @@
 }
 
 - (void)setDurationString:(id)sender {
+
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [tableView reloadData];
 }
 
@@ -98,6 +104,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _suggestions.allKeys.count-1;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    durations = [NSMutableArray new];
 }
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -239,6 +249,35 @@
     }failure:^(NSURLSessionDataTask *task, NSError *error) {
     
     }];
+    
+}
+
+-(void)getTravelTimeForDirectionsFromAddress:(NSArray *)from toAddress:(NSArray *)to {
+    //TODO write completion handler so it can be passed back
+    
+    
+    NSString *googleDirectionsKey = @"AIzaSyBxbgQLjYoh6tVtFzyso_TwaGZp-Mq9foQ";
+    
+    //Get JSON from that URL
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://maps.googleapis.com/maps/api/directions/"]];
+    
+    [manager GET:@"json" parameters:@{@"origin":[from[0] stringByAppendingString:from[1]],
+                                      @"destination":[to[0] stringByAppendingString:to[1]],
+                                      @"mode":@"transit",
+                                      @"departure_time":[NSString stringWithFormat:@"%.f",[[NSDate date] timeIntervalSince1970]],
+                                      @"key":googleDirectionsKey}
+         success:^(NSURLSessionDataTask *task, id responseObject){
+             
+             if ([responseObject[@"routes"] count] != 0) {
+                 
+                 [durations addObject:responseObject[@"routes"][0][@"legs"][0][@"duration"][@"text"]];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"JHETA" object:nil];
+                 
+             }
+             
+         }failure:^(NSURLSessionDataTask *task, NSError *error) {
+             
+         }];
     
 }
 

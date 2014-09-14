@@ -135,11 +135,11 @@
         timelineVC.suggestions = selects;
         [self.navigationController pushViewController:timelineVC animated:YES];
         
-        [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:selects finish:^(NSDictionary *response) {
+        /*[JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:selects finish:^(NSDictionary *response) {
             
             [timelineVC loadData:response];
             
-        }];
+        }];*/
         
     }
 }
