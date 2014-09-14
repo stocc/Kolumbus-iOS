@@ -20,6 +20,7 @@
     CGFloat height;
     
     BOOL is7;
+    BOOL allChecked;
     
     NSDictionary *input;                // the parsed data from the server
     NSMutableDictionary *selections;
@@ -31,6 +32,7 @@
     width = self.view.frame.size.width;
     height = self.view.frame.size.height;
     is7 = ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue] <= 7);
+    allChecked = NO;
     
     self.title = @"Vorschläge";
     
@@ -48,7 +50,7 @@
     [self.view addSubview:tableView];
     
     // Show all on Map
-    UIBarButtonItem *map = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"place4"] style:UIBarButtonItemStyleBordered target:self action:@selector(showMap)];
+    UIBarButtonItem *map = [[UIBarButtonItem alloc] initWithTitle:@"Select All" style:UIBarButtonItemStyleBordered target:self action:@selector(selectAll)];
     self.navigationItem.rightBarButtonItem = map;
     
     // Finish button
@@ -108,6 +110,19 @@
     
 }
 
+- (void)selectAll {
+    
+    for (int i=0; i<selections.count; i++) {
+        selections[selections.allKeys[i]] = (allChecked) ? @1 : @0;
+    }
+    
+    self.navigationItem.rightBarButtonItem.title = (allChecked) ? @"Select all" : @"Deselect";
+    allChecked = !allChecked;
+    
+    [tableView reloadData];
+    
+}
+
 - (void)finishSuggestions {
 
     // parse selected ones into array 'selecteds'
@@ -149,6 +164,8 @@
     if (data) {
         
         input = data;
+        
+        NSLog(@"%@", input);
         
         // hide spinner
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

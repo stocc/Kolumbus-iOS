@@ -91,7 +91,7 @@
     
 }
 
-- (void)setDurationString:(id)sender {
+- (void)setDurationString:(NSNotification *)notification {
 
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [tableView reloadData];
@@ -142,10 +142,7 @@
     train.frame = CGRectMake(80, 100, 36, 54);
     [cell.contentView addSubview:train];
     
-    NSString *etaString;
-    if (durations.count != 0 && indexPath.row<durations.count) {
-        etaString = durations[indexPath.row];
-    }
+    NSString *etaString = (indexPath.row<durations.count) ? durations[indexPath.row] : @"0min";
     
     UILabel *trainText = [[UILabel alloc] initWithFrame:CGRectMake(150, 100, width-160, 40)];
     trainText.backgroundColor = [UIColor clearColor];
@@ -192,7 +189,9 @@
     NSDictionary *model = _suggestions[_suggestions.allKeys[indexPath.row]];
     NSDictionary *model2 = _suggestions[_suggestions.allKeys[indexPath.row+1]];
     
-    [self openDirectionsFromCoordinate:CLLocationCoordinate2DMake([model[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]) ToCoordinate:CLLocationCoordinate2DMake([model2[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model2[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue])];
+    /*[self openDirectionsFromCoordinate:CLLocationCoordinate2DMake([model[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]) ToCoordinate:CLLocationCoordinate2DMake([model2[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model2[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue])]; //*/
+    
+    [self openDirectionsFromAddress:model[@"location"][@"hash"][@"display_address"] To:model2[@"location"][@"hash"][@"display_address"]];
     
 }
 
@@ -221,6 +220,33 @@
         
     }
 
+}
+
+-(void)openDirectionsFromAddress:(NSArray *)from To:(NSArray *)to{
+    
+    //comgooglemaps://?saddr=Google+Inc,+8th+Avenue,+New+York,+NY&daddr=John+F.+Kennedy+International+Airport,+Van+Wyck+Expressway,+Jamaica,+New+York&directionsmode=transit
+    
+    //http://maps.apple.com/?daddr=San+Francisco,+CA&saddr=cupertino
+    
+    if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
+        NSString *urlString = [NSString stringWithFormat:@"comgooglemaps-x-callback://?saddr=%@&daddr=%@&directionsmode=transit&x-success=kolumbus://&x-source=Kolumbus",
+                               [from[0] stringByAppendingString:from[1]],
+                               [to[0] stringByAppendingString:to[1]]];
+        
+        
+        
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    } else {
+        NSString *urlString = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%@&daddr=%@",
+                               [from[0] stringByAppendingString:from[1]],
+                               [to[0] stringByAppendingString:to[1]]];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        
+        
+    }
+    
 }
 
 -(void)getTravelTimeForDirectionsFromCoordinate:(CLLocationCoordinate2D)from toCoordinate:(CLLocationCoordinate2D)to {
@@ -270,8 +296,10 @@
              
              if ([responseObject[@"routes"] count] != 0) {
                  
-                 [durations addObject:responseObject[@"routes"][0][@"legs"][0][@"duration"][@"text"]];
-                 [[NSNotificationCenter defaultCenter] postNotificationName:@"JHETA" object:nil];
+                 id resp = responseObject[@"routes"][0][@"legs"][0][@"duration"][@"text"];
+                 
+                 [durations addObject:resp];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"JHETA" object:resp];
                  
              }
              
