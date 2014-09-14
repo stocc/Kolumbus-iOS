@@ -194,7 +194,7 @@
                                       @"key":googleDirectionsKey}
     success:^(NSURLSessionDataTask *task, id responseObject){
     
-        NSInteger duration = responseObject[@"routes"][0][@"legs"][0][@"duration"][@"value"];
+        NSNumber *duration = responseObject[@"routes"][0][@"legs"][0][@"duration"][@"value"];
     
     
     }failure:^(NSURLSessionDataTask *task, NSError *error) {
