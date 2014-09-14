@@ -100,6 +100,10 @@
     description.text = @"Dies ist ein Beispieltext!";
     [cell.contentView addSubview:description];
     
+    UIImageView *train = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"train22"]];
+    train.frame = CGRectMake(80, 100, 36, 54);
+    [cell.contentView addSubview:train];
+    
     UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 180, width-90, 30)];
     title2.backgroundColor = [UIColor clearColor];
     title2.textColor = [UIColor blackColor];
