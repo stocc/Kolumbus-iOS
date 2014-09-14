@@ -46,7 +46,7 @@
     finishText.textAlignment = NSTextAlignmentCenter;
     finishText.numberOfLines = 0;
     finishText.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-    finishText.text = @"Zeig mir Vorschläge!";
+    finishText.text = @"Zeig mir Vorschläge →";
     [finish addSubview:finishText];
 
 
