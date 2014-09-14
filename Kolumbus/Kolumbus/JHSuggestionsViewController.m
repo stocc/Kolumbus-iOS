@@ -116,7 +116,7 @@
         selections[selections.allKeys[i]] = (allChecked) ? @1 : @0;
     }
     
-    self.navigationItem.rightBarButtonItem.title = (allChecked) ? @"Select all" : @"Deselect";
+    self.navigationItem.rightBarButtonItem.title = (allChecked) ? @"Alles ausw." : @"Abwählen";
     allChecked = !allChecked;
     
     [tableView reloadData];

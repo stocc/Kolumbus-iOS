@@ -139,7 +139,7 @@
     [cell.contentView addSubview:description];
     
     UIImageView *train = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"train22"]];
-    train.frame = CGRectMake(80, 100, 36, 54);
+    train.frame = CGRectMake(85, 105, 26, 34);
     [cell.contentView addSubview:train];
     
     NSString *etaString = (indexPath.row<durations.count) ? durations[indexPath.row] : @"0min";
@@ -230,17 +230,15 @@
     
     if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
         NSString *urlString = [NSString stringWithFormat:@"comgooglemaps-x-callback://?saddr=%@&daddr=%@&directionsmode=transit&x-success=kolumbus://&x-source=Kolumbus",
-                               [from[0] stringByAppendingString:from[1]],
-                               [to[0] stringByAppendingString:to[1]]];
+                               [NSString stringWithFormat:@"%@, %@", from[0], from[1]],
+                               [NSString stringWithFormat:@"%@, %@", to[0], to[1]]];
         
         
         
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
     } else {
-        NSString *urlString = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%@&daddr=%@",
-                               [from[0] stringByAppendingString:from[1]],
-                               [to[0] stringByAppendingString:to[1]]];
+        NSString *urlString = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%@&daddr=%@", [NSString stringWithFormat:@"%@, %@", from[0], from[1]], [NSString stringWithFormat:@"%@, %@", to[0], to[1]]];
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
         
@@ -287,8 +285,7 @@
     //Get JSON from that URL
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://maps.googleapis.com/maps/api/directions/"]];
     
-    [manager GET:@"json" parameters:@{@"origin":[from[0] stringByAppendingString:from[1]],
-                                      @"destination":[to[0] stringByAppendingString:to[1]],
+    [manager GET:@"json" parameters:@{@"origin":[NSString stringWithFormat:@"%@, %@", from[0], from[1]],                                                            @"destination":[NSString stringWithFormat:@"%@, %@", to[0], to[1]],
                                       @"mode":@"transit",
                                       @"departure_time":[NSString stringWithFormat:@"%.f",[[NSDate date] timeIntervalSince1970]],
                                       @"key":googleDirectionsKey}
