@@ -18,6 +18,8 @@
     CGFloat width;
     CGFloat height;
     
+    NSMutableArray *durations;
+    
     NSDictionary *input;
 }
 
@@ -29,6 +31,7 @@
     input = [NSDictionary new];
     width = self.view.frame.size.width;
     height = self.view.frame.size.height;
+    durations = [NSMutableArray new];
     
     tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     tableView.dataSource = self;
@@ -38,13 +41,34 @@
     UIBarButtonItem *share = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
     self.navigationItem.rightBarButtonItem = share;
 
+    // load until ETAs arrive
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading";
+    
+    
+    // ========== ETAs ===========
+    // soooo, erstmal rausfinden, von wo nach vo und wie oft
+    
+    for (int i=1; i<_suggestions.allKeys.count; i++) {
+        
+        CLLocationCoordinate2D first = CLLocationCoordinate2DMake([_suggestions[_suggestions.allKeys[i-1]][@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [_suggestions[_suggestions.allKeys[i-1]][@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]);
+        
+        CLLocationCoordinate2D second = CLLocationCoordinate2DMake([_suggestions[_suggestions.allKeys[i]][@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [_suggestions[_suggestions.allKeys[i]][@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]);
+        
+        // get duration
+        [self getTravelTimeForDirectionsFromCoordinate:first toCoordinate:second];
+        
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setDurationString:) name:@"JHETA" object:nil];
 }
 
 - (void)share {
     
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", @"E-Mail", @"Nachricht", nil];
     [sheet showInView:self.view];
-    
+
 }
 
 - (void)loadData:(NSDictionary *)data {
@@ -52,7 +76,7 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
     if (data[@"error"]) {
-        [[[UIAlertView alloc] initWithTitle:@"Wow" message:[NSString stringWithFormat:@"You crashed it :( Error is: %@", data[@"error"]] delegate:nil cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil] show];
+        // DEBUG [[[UIAlertView alloc] initWithTitle:@"Wow" message:[NSString stringWithFormat:@"You crashed it :( Error is: %@", data[@"error"]] delegate:nil cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil] show];
         // DEBUG [self.navigationController popViewControllerAnimated:YES];
     } else {
         
@@ -61,6 +85,10 @@
         
     }
     
+}
+
+- (void)setDurationString:(id)sender {
+    [tableView reloadData];
 }
 
 #pragma mark Table View delegates
@@ -104,6 +132,10 @@
     train.frame = CGRectMake(80, 100, 36, 54);
     [cell.contentView addSubview:train];
     
+    NSString *etaString;
+    if (durations.count != 0 && indexPath.row<durations.count) {
+        etaString = durations[indexPath.row];
+    }
     
     UILabel *trainText = [[UILabel alloc] initWithFrame:CGRectMake(150, 100, width-160, 40)];
     trainText.backgroundColor = [UIColor clearColor];
@@ -111,7 +143,7 @@
     trainText.textAlignment = NSTextAlignmentLeft;
     trainText.numberOfLines = 0;
     trainText.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    trainText.text = [self getTravelTimeForDirectionsFromCoordinate:CLLocationCoordinate2DMake([model[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]) toCoordinate:CLLocationCoordinate2DMake([model2[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model2[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue])];
+    trainText.text = [NSString stringWithFormat:@"Fahrzeit beträgt ca. %@", etaString];
     [cell.contentView addSubview:trainText];
     
     UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 180, width-90, 30)];
@@ -181,13 +213,11 @@
 
 }
 
--(NSString *)getTravelTimeForDirectionsFromCoordinate:(CLLocationCoordinate2D)from toCoordinate:(CLLocationCoordinate2D)to{
+-(void)getTravelTimeForDirectionsFromCoordinate:(CLLocationCoordinate2D)from toCoordinate:(CLLocationCoordinate2D)to {
     //TODO write completion handler so it can be passed back
     
     
     NSString *googleDirectionsKey = @"AIzaSyBxbgQLjYoh6tVtFzyso_TwaGZp-Mq9foQ";
-
-    NSString __block *duration;
     
     //Get JSON from that URL
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://maps.googleapis.com/maps/api/directions/"]];
@@ -200,15 +230,15 @@
     success:^(NSURLSessionDataTask *task, id responseObject){
         
         if ([responseObject[@"routes"] count] != 0) {
-            duration = responseObject[@"routes"][0][@"legs"][0][@"duration"][@"text"];
-            NSLog(@"dur %@", duration);
+            
+            [durations addObject:responseObject[@"routes"][0][@"legs"][0][@"duration"][@"text"]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"JHETA" object:nil];
+            
         }
         
     }failure:^(NSURLSessionDataTask *task, NSError *error) {
     
     }];
-    
-    return duration;
     
 }
 
