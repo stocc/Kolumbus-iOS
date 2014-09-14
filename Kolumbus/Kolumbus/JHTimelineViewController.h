@@ -9,6 +9,7 @@
 #import "FGTimelineView.h"
 #import "MBProgressHUD.h"
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface JHTimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

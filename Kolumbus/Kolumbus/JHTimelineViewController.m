@@ -37,14 +37,7 @@
     
     UIBarButtonItem *share = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
     self.navigationItem.rightBarButtonItem = share;
-    
-    /*/ loading spinner
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Loading";         //*/
-    
-    [self getTravelTimeForDirectionsFromCoordinate:CLLocationCoordinate2DMake(52.5138057, 13.3572135) toCoordinate:CLLocationCoordinate2DMake(52.530496,13.4135999)];
-    
+
 }
 
 - (void)share {
@@ -83,7 +76,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSDictionary *model = _suggestions[_suggestions.allKeys[indexPath.row]];
     NSDictionary *model2;
@@ -112,13 +104,14 @@
     train.frame = CGRectMake(80, 100, 36, 54);
     [cell.contentView addSubview:train];
     
+    
     UILabel *trainText = [[UILabel alloc] initWithFrame:CGRectMake(150, 100, width-160, 40)];
     trainText.backgroundColor = [UIColor clearColor];
     trainText.textColor = [UIColor colorWithWhite:0 alpha:.7];
     trainText.textAlignment = NSTextAlignmentLeft;
     trainText.numberOfLines = 0;
     trainText.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
-    trainText.text = @"-- GMaps Calc here --";
+    trainText.text = [self getTravelTimeForDirectionsFromCoordinate:CLLocationCoordinate2DMake([model[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]) toCoordinate:CLLocationCoordinate2DMake([model2[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model2[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue])];
     [cell.contentView addSubview:trainText];
     
     UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 180, width-90, 30)];
@@ -150,6 +143,17 @@
     return 260;
 }
 
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tv deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *model = _suggestions[_suggestions.allKeys[indexPath.row]];
+    NSDictionary *model2 = _suggestions[_suggestions.allKeys[indexPath.row+1]];
+    
+    [self openDirectionsFromCoordinate:CLLocationCoordinate2DMake([model[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue]) ToCoordinate:CLLocationCoordinate2DMake([model2[@"location"][@"hash"][@"coordinate"][@"latitude"] doubleValue], [model2[@"location"][@"hash"][@"coordinate"][@"longitude"] doubleValue])];
+    
+}
+
 -(void)openDirectionsFromCoordinate:(CLLocationCoordinate2D)from ToCoordinate:(CLLocationCoordinate2D)to{
 
     //comgooglemaps://?saddr=Google+Inc,+8th+Avenue,+New+York,+NY&daddr=John+F.+Kennedy+International+Airport,+Van+Wyck+Expressway,+Jamaica,+New+York&directionsmode=transit
@@ -177,13 +181,14 @@
 
 }
 
--(void)getTravelTimeForDirectionsFromCoordinate:(CLLocationCoordinate2D)from toCoordinate:(CLLocationCoordinate2D)to{
+-(NSString *)getTravelTimeForDirectionsFromCoordinate:(CLLocationCoordinate2D)from toCoordinate:(CLLocationCoordinate2D)to{
     //TODO write completion handler so it can be passed back
     
     
     NSString *googleDirectionsKey = @"AIzaSyBxbgQLjYoh6tVtFzyso_TwaGZp-Mq9foQ";
 
-
+    NSString __block *duration;
+    
     //Get JSON from that URL
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://maps.googleapis.com/maps/api/directions/"]];
 
@@ -193,17 +198,18 @@
                                       @"departure_time":[NSString stringWithFormat:@"%.f",[[NSDate date] timeIntervalSince1970]],
                                       @"key":googleDirectionsKey}
     success:^(NSURLSessionDataTask *task, id responseObject){
-    
-        NSNumber *duration = responseObject[@"routes"][0][@"legs"][0][@"duration"][@"value"];
-    
-    
+        
+        if ([responseObject[@"routes"] count] != 0) {
+            duration = responseObject[@"routes"][0][@"legs"][0][@"duration"][@"text"];
+            NSLog(@"dur %@", duration);
+        }
+        
     }failure:^(NSURLSessionDataTask *task, NSError *error) {
     
-    
-    
-    
     }];
-
+    
+    return duration;
+    
 }
 
 @end
