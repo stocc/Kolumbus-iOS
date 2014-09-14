@@ -104,6 +104,15 @@
     train.frame = CGRectMake(80, 100, 36, 54);
     [cell.contentView addSubview:train];
     
+    UILabel *trainText = [[UILabel alloc] initWithFrame:CGRectMake(150, 100, width-160, 40)];
+    trainText.backgroundColor = [UIColor clearColor];
+    trainText.textColor = [UIColor colorWithWhite:0 alpha:.7];
+    trainText.textAlignment = NSTextAlignmentLeft;
+    trainText.numberOfLines = 0;
+    trainText.font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    trainText.text = @"-- GMaps Calc here --";
+    [cell.contentView addSubview:trainText];
+    
     UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(70, 180, width-90, 30)];
     title2.backgroundColor = [UIColor clearColor];
     title2.textColor = [UIColor blackColor];
