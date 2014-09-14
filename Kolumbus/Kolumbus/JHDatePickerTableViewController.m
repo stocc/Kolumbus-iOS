@@ -10,22 +10,12 @@
 #import "JHDatePickerTableViewController.h"
 
 @interface JHDatePickerTableViewController ()
-@property (strong,nonatomic) NSDate *chosenDate;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @end
 
 @implementation JHDatePickerTableViewController
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    self.chosenDate = self.datePicker.date;
-
-}
-- (IBAction)changedDate:(id)sender {
-    self.chosenDate = self.datePicker.date;
-}
 - (IBAction)done:(id)sender {
-    [self.delegate didFinishPickingDate:self.chosenDate];
+    [self.delegate didFinishPickingDate:self.datePicker.date];
 }
 - (IBAction)cancel:(id)sender {
     [self.delegate didNotPickDate];

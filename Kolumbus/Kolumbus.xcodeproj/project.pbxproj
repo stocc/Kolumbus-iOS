@@ -22,7 +22,6 @@
 		CC95B71A19C477760088F04A /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = CC95B71919C477760088F04A /* test.json */; };
 		CC994C4919C38FAC00283EC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4819C38FAC00283EC5 /* main.m */; };
 		CC994C4C19C38FAC00283EC5 /* JHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */; };
-		CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC994C4E19C38FAC00283EC5 /* JHViewController.m */; };
 		CC994C5219C38FAC00283EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5019C38FAC00283EC5 /* Main.storyboard */; };
 		CC994C5419C38FAD00283EC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5319C38FAD00283EC5 /* Images.xcassets */; };
 		CC994C5719C38FAD00283EC5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC994C5519C38FAD00283EC5 /* LaunchScreen.xib */; };
@@ -79,8 +78,6 @@
 		CC994C4819C38FAC00283EC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC994C4A19C38FAC00283EC5 /* JHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHAppDelegate.h; sourceTree = "<group>"; };
 		CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHAppDelegate.m; sourceTree = "<group>"; };
-		CC994C4D19C38FAC00283EC5 /* JHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHViewController.h; sourceTree = "<group>"; };
-		CC994C4E19C38FAC00283EC5 /* JHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHViewController.m; sourceTree = "<group>"; };
 		CC994C5119C38FAC00283EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC994C5319C38FAD00283EC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC994C5619C38FAD00283EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -222,8 +219,6 @@
 				CC994C6F19C3B5BB00283EC5 /* AFNetworking */,
 				CC994C4A19C38FAC00283EC5 /* JHAppDelegate.h */,
 				CC994C4B19C38FAC00283EC5 /* JHAppDelegate.m */,
-				CC994C4D19C38FAC00283EC5 /* JHViewController.h */,
-				CC994C4E19C38FAC00283EC5 /* JHViewController.m */,
 				CC994C5319C38FAD00283EC5 /* Images.xcassets */,
 				CC95B71419C451BC0088F04A /* JHInputTableViewController.h */,
 				CC95B71519C451BC0088F04A /* JHInputTableViewController.m */,
@@ -440,7 +435,6 @@
 				CCA9FD4619C49834000A1814 /* JHTimelineViewController.m in Sources */,
 				CCA9FD3F19C48ED5000A1814 /* UIImage+MultiFormat.m in Sources */,
 				CCA9FD4019C48ED5000A1814 /* UIImage+WebP.m in Sources */,
-				CC994C4F19C38FAC00283EC5 /* JHViewController.m in Sources */,
 				CC994C8419C3B5BC00283EC5 /* AFHTTPRequestOperationManager.m in Sources */,
 				CCA9FD4219C48ED5000A1814 /* UIImageView+WebCache.m in Sources */,
 				CC994C8819C3B5BC00283EC5 /* AFURLConnectionOperation.m in Sources */,
