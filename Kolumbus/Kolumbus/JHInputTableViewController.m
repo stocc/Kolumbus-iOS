@@ -32,6 +32,7 @@
     self.startDate = [NSDate date];
     self.endDate = [NSDate date];
     
+    //Finn:
     // Finish button
     finish = [[JHButton alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-108, self.view.frame.size.width, 44)];
     [finish setNormalColor:[UIColor colorWithRed:(255.0/255.0) green:(142.0/255.0) blue:(7.0/255.0) alpha:1]];
@@ -50,6 +51,40 @@
 
 
 }
+
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"about"]) {
+        //Set delegate to dismiss later
+        JHAboutViewController *aboutVC = (JHAboutViewController *)segue.destinationViewController;
+        aboutVC.delegate = self;
+        
+    }else if ([segue.identifier rangeOfString:@"pickDateFor"].length != 0){
+        // can be pickDateForStart or pickDateForEnd, hackily find out which one it is and bring up DatePicker accordingly
+        
+        UINavigationController *navCon = (UINavigationController *)segue.destinationViewController;
+        JHDatePickerTableViewController *datePicker = (JHDatePickerTableViewController *)navCon.viewControllers[0];
+        datePicker.delegate = self;
+        
+        if ([segue.identifier rangeOfString:@"Start"].length != 0) {
+            self.currentlyEditing = @"start";
+        }else{
+            self.currentlyEditing = @"end";
+        }
+        
+        
+    }else if ([segue.identifier isEqualToString:@"pickLocation"]){
+        //Location Picker setup with delegate for data backpass
+        UINavigationController *navCon = (UINavigationController *)segue.destinationViewController;
+        JHLocationPickerTableViewController *locationPicker = (JHLocationPickerTableViewController *)navCon.viewControllers[0];
+        locationPicker.delegate = self;
+    }
+}
+
+
+#pragma mark - Actions
 
 - (void)finishSuggestions {
     
@@ -71,14 +106,7 @@
     
 }
 
-
-
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-
-    NSLog(@"Location error %@",error.description);
-
-}
+//Keeping track of changing values
 - (IBAction)stepperChanged:(UIStepper *)sender {
     self.stepLabel.text = [NSString stringWithFormat:@"%.f",sender.value];
     
@@ -87,45 +115,21 @@
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"about"]) {
-        JHAboutViewController *aboutVC = (JHAboutViewController *)segue.destinationViewController;
-        aboutVC.delegate = self;
-    }else if ([segue.identifier rangeOfString:@"pickDateFor"].length != 0){
-    
-        UINavigationController *navCon = (UINavigationController *)segue.destinationViewController;
-        JHDatePickerTableViewController *datePicker = (JHDatePickerTableViewController *)navCon.viewControllers[0];
-        datePicker.delegate = self;
-        
-        if ([segue.identifier rangeOfString:@"Start"].length != 0) {
-            self.currentlyEditing = @"start";
-        }else{
-            self.currentlyEditing = @"end";
-        }
-        
-                if ([segue.identifier rangeOfString:@"Start"].length != 0) {
-                        self.currentlyEditing = @"start";
-                    }else{
-                        self.currentlyEditing = @"end";
-                }
-    }else if ([segue.identifier isEqualToString:@"pickLocation"]){
-        UINavigationController *navCon = (UINavigationController *)segue.destinationViewController;
-        JHLocationPickerTableViewController *locationPicker = (JHLocationPickerTableViewController *)navCon.viewControllers[0];
-        locationPicker.delegate = self;
-    }
-}
+
+
+#pragma mark - About View Controller Delegate
 
 -(void)hideMe{
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
+#pragma mark - Date Picker View Controller Delegate
 
 -(void)didFinishPickingDate:(NSDate *)date{
     if ([self.currentlyEditing isEqualToString:@"start"]) {
         self.startDate = date;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"d.M.Y"];
-        NSLog(@"%@",[formatter stringFromDate:date]);
         self.startDateLabel.text = [formatter stringFromDate:date];
     }else{
         self.endDate = date;
@@ -139,6 +143,9 @@
 -(void)didNotPickDate{
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
+
+#pragma mark - Location Picker Table View Controller Delegate
+
 -(void)didSelectLocation:(CLLocation *)location WithName:(NSString *)name{
     [self dismissViewControllerAnimated:YES completion:^{}];
     self.locationLabel.text = name;
