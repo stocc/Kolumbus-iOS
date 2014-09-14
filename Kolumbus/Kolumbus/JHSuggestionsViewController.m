@@ -50,7 +50,7 @@
     [self.view addSubview:tableView];
     
     // Show all on Map
-    UIBarButtonItem *map = [[UIBarButtonItem alloc] initWithTitle:@"Select All" style:UIBarButtonItemStyleBordered target:self action:@selector(selectAll)];
+    UIBarButtonItem *map = [[UIBarButtonItem alloc] initWithTitle:@"Alles ausw." style:UIBarButtonItemStyleBordered target:self action:@selector(selectAll)];
     self.navigationItem.rightBarButtonItem = map;
     
     // Finish button
@@ -72,7 +72,7 @@
     // loading spinner
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Loading";
+    hud.labelText = @"Lädt";
     
     
     

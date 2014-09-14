@@ -44,7 +44,7 @@
     // load until ETAs arrive
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Loading";
+    hud.labelText = @"Lädt";
     
     [MBProgressHUD performSelector:@selector(hideAllHUDsForView:animated:) withObject:self.view afterDelay:3];
     
@@ -228,22 +228,19 @@
     
     //http://maps.apple.com/?daddr=San+Francisco,+CA&saddr=cupertino
     
-    if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
-        NSString *urlString = [NSString stringWithFormat:@"comgooglemaps-x-callback://?saddr=%@&daddr=%@&directionsmode=transit&x-success=kolumbus://&x-source=Kolumbus",
-                               [NSString stringWithFormat:@"%@, %@", from[0], from[1]],
-                               [NSString stringWithFormat:@"%@, %@", to[0], to[1]]];
-        
-        
-        
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
-    } else {
-        NSString *urlString = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%@&daddr=%@", [NSString stringWithFormat:@"%@, %@", from[0], from[1]], [NSString stringWithFormat:@"%@, %@", to[0], to[1]]];
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
-        
-        
-    }
+    NSString *urlString;
+    
+    /*urlString = [NSString stringWithFormat:@"comgooglemaps-x-callback://?saddr=%@&daddr=%@&directionsmode=transit&x-success=kolumbus://&x-source=Kolumbus",
+                           [NSString stringWithFormat:@"%@, %@", from[0], from[1]],
+                           [NSString stringWithFormat:@"%@, %@", to[0], to[1]]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];*/
+    
+    
+    
+    urlString = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%@&daddr=%@", [NSString stringWithFormat:@"%@, %@", from[0], from[1]], [NSString stringWithFormat:@"%@, %@", to[0], to[1]]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
     
 }
 
@@ -288,7 +285,8 @@
     [manager GET:@"json" parameters:@{@"origin":[NSString stringWithFormat:@"%@, %@", from[0], from[1]],                                                            @"destination":[NSString stringWithFormat:@"%@, %@", to[0], to[1]],
                                       @"mode":@"transit",
                                       @"departure_time":[NSString stringWithFormat:@"%.f",[[NSDate date] timeIntervalSince1970]],
-                                      @"key":googleDirectionsKey}
+                                      @"key":googleDirectionsKey,
+                                      @"region":@"de"}
          success:^(NSURLSessionDataTask *task, id responseObject){
              
              if ([responseObject[@"routes"] count] != 0) {
