@@ -12,6 +12,8 @@
 
 @interface JHTimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic) NSDictionary *suggestions;
+
 - (void)loadData:(NSDictionary *)data;
 
 @end

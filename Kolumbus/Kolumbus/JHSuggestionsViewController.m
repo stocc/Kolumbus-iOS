@@ -112,6 +112,7 @@
 
     // parse selected ones into array 'selecteds'
     NSMutableArray *selecteds = [NSMutableArray new];
+    NSMutableDictionary *selects = [NSMutableDictionary new];
     [selections enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([selections[key]  isEqual: @0]) {
             [selecteds addObject:key];
@@ -120,10 +121,18 @@
     
     NSLog(@"%@", selecteds);
     
-    if (selecteds.count == 0)
+    if (selecteds.count == 0) {
         [[[UIAlertView alloc] initWithTitle:@"He du!" message:@"Bitte wähle mindestens einen Vorschlag aus" delegate:nil cancelButtonTitle:@"Ok, mach ich" otherButtonTitles:nil, nil] show];
+    } else {
+        
+        for (int i=0; i<selecteds.count; i++) {
+            [selects setValue:input[selecteds[i]] forKey:selecteds[i]];
+        }
+        
+    }
     
     JHTimelineViewController *timelineVC = [[JHTimelineViewController alloc] init];
+    timelineVC.suggestions = selects;
     [self.navigationController pushViewController:timelineVC animated:YES];
     
     [JHCommunicator getFinalTripFrom:[NSDate date] until:[NSDate date] spots:@{@"dinner" : @[@"123"], @"lunch" : @[@"123"], @"sights to see" : @[@"123"], @"museum" : @[@"123"], @"cafe" : @[@"123"]} finish:^(NSDictionary *response) {

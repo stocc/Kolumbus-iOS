@@ -33,6 +33,8 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     
+    NSLog(@"%@", _suggestions);
+    
     /*/ loading spinner
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
