@@ -211,13 +211,13 @@
         
         
         
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     } else {
         NSString *urlString = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%@&daddr=%@",
                                [NSString stringWithFormat:@"%f,%f",from.latitude,from.longitude],
                                [NSString stringWithFormat:@"%f,%f",to.latitude,to.longitude]];
         
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 
         
     }
@@ -232,17 +232,20 @@
     
     NSString *urlString;
     
-    /*urlString = [NSString stringWithFormat:@"comgooglemaps-x-callback://?saddr=%@&daddr=%@&directionsmode=transit&x-success=kolumbus://&x-source=Kolumbus",
+    urlString = [NSString stringWithFormat:@"comgooglemaps-x-callback://?saddr=%@&daddr=%@&directionsmode=transit&x-success=kolumbus://&x-source=Kolumbus",
                            [NSString stringWithFormat:@"%@, %@", from[0], from[1]],
                            [NSString stringWithFormat:@"%@, %@", to[0], to[1]]];
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];*/
+    NSLog(@"%@",urlString);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
     
     
     urlString = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%@&daddr=%@", [NSString stringWithFormat:@"%@, %@", from[0], from[1]], [NSString stringWithFormat:@"%@, %@", to[0], to[1]]];
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    NSLog(@"%@",urlString);
+
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
 }
 
