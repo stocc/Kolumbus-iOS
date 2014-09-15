@@ -79,6 +79,8 @@
     
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
+    NSLog(@"Data: %@", data);
+    
     if (data[@"error"]) {
         // DEBUG [[[UIAlertView alloc] initWithTitle:@"Wow" message:[NSString stringWithFormat:@"You crashed it :( Error is: %@", data[@"error"]] delegate:nil cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil] show];
         // DEBUG [self.navigationController popViewControllerAnimated:YES];
