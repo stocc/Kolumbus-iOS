@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		67F4E0BFDE304906A4D23357 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B79D246D801E4C109EFDD87C /* libPods.a */; };
-		6963660F19C5157A00C23E4A /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6963660E19C5157A00C23E4A /* GoogleMaps.framework */; };
 		6963661119C515C600C23E4A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6963661019C515C600C23E4A /* AVFoundation.framework */; };
 		6963661319C515CE00C23E4A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6963661219C515CE00C23E4A /* CoreData.framework */; };
 		6963661519C515E100C23E4A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6963661419C515E100C23E4A /* CoreText.framework */; };
@@ -48,7 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6963660E19C5157A00C23E4A /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		6963661019C515C600C23E4A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6963661219C515CE00C23E4A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6963661419C515E100C23E4A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -119,7 +117,6 @@
 				6963661519C515E100C23E4A /* CoreText.framework in Frameworks */,
 				6963661319C515CE00C23E4A /* CoreData.framework in Frameworks */,
 				6963661119C515C600C23E4A /* AVFoundation.framework in Frameworks */,
-				6963660F19C5157A00C23E4A /* GoogleMaps.framework in Frameworks */,
 				CC95B71119C43F800088F04A /* MapKit.framework in Frameworks */,
 				697D6BC119C3AD3B0096B8EE /* CoreLocation.framework in Frameworks */,
 				67F4E0BFDE304906A4D23357 /* libPods.a in Frameworks */,
@@ -171,7 +168,6 @@
 				6963661219C515CE00C23E4A /* CoreData.framework */,
 				6963661019C515C600C23E4A /* AVFoundation.framework */,
 				CC95B71919C477760088F04A /* test.json */,
-				6963660E19C5157A00C23E4A /* GoogleMaps.framework */,
 				CC95B71019C43F800088F04A /* MapKit.framework */,
 				697D6BC019C3AD3B0096B8EE /* CoreLocation.framework */,
 				B79D246D801E4C109EFDD87C /* libPods.a */,
