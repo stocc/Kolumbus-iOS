@@ -193,8 +193,8 @@
 
 - (void)showInfo:(UIButton *)sender {
     
-    int section = [[[NSString stringWithFormat:@"%i", sender.tag] substringToIndex:1] intValue];
-    int row = [[[NSString stringWithFormat:@"%i", sender.tag] substringFromIndex:1] intValue];
+    int section = [[[NSString stringWithFormat:@"%li", (long)sender.tag] substringToIndex:1] intValue];
+    int row = [[[NSString stringWithFormat:@"%li", (long)sender.tag] substringFromIndex:1] intValue];
     
     NSLog(@"Attempting to show more for section: %i  row: %i", section, row);
     
@@ -248,7 +248,7 @@
     JSFavStarControl *stars = [[JSFavStarControl alloc] initWithLocation:CGPointMake(70, 60) dotImage:[UIImage imageNamed:@"dot"] starImage:[UIImage imageNamed:@"star"] rating:[model[@"rating"] intValue]];
     [cell.contentView addSubview:stars];
     
-    cell.accessoryType = ([selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    cell.accessoryType = ([selections[[NSString stringWithFormat:@"%li%li", (long)indexPath.section, (long)indexPath.row]]  isEqual: @0]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
     UILabel *reviewCount = [[UILabel alloc] initWithFrame:CGRectMake(175, 53, 100, 40)];
     reviewCount.backgroundColor = [UIColor clearColor];
@@ -261,7 +261,7 @@
     
     UIButton *moreInfo = [[UIButton alloc] initWithFrame:CGRectMake(width-85, 30, 40, 40)];
     [moreInfo setBackgroundImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
-    moreInfo.tag = [[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row] intValue];
+    moreInfo.tag = [[NSString stringWithFormat:@"%li%li", (long)indexPath.section, (long)indexPath.row] intValue];
     [moreInfo addTarget:self action:@selector(showInfo:) forControlEvents:UIControlEventTouchUpInside];
     //[cell.contentView addSubview:moreInfo];
     
@@ -286,7 +286,7 @@
     [tv deselectRowAtIndexPath:indexPath animated:YES];
     
     // invert the checkmark
-    selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]] = ([selections[[NSString stringWithFormat:@"%i%i", indexPath.section, indexPath.row]]  isEqual: @0]) ? @1 : @0;
+    selections[[NSString stringWithFormat:@"%li%li", (long)indexPath.section, (long)indexPath.row]] = ([selections[[NSString stringWithFormat:@"%li%li", (long)indexPath.section, (long)indexPath.row]]  isEqual: @0]) ? @1 : @0;
     [tv reloadData];
 }
 
